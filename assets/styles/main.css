@@ -1,0 +1,6 @@
+@import "variables.css";
+@import "sidebar/sidebar.css";
+
+:root {
+    interpolate-size: allow-keywords;
+}
