@@ -9,6 +9,7 @@ export const useAuthStore = defineStore('auth', {
     state: () => ({
         user: null as UserModel | null,
         isAuth: false,
+
     }),
     actions: {
         async login(params: LoginParams) {
