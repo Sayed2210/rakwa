@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <main>
+  <main class="dashboard">
     <DashboradLayoutHeader />
     <div class="flex">
       <DashboradLayoutSidebar />
@@ -12,9 +12,6 @@
       </div>
     </div>
   </main>
-
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
