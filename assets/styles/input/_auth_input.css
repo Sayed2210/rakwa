@@ -1,0 +1,30 @@
+.input-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+
+  .input-label {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  .input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 0.5rem;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+
+    &::placeholder {
+      color: var(--text-color-2);
+    }
+  }
+}

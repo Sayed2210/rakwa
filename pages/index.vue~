@@ -6,7 +6,6 @@ const username = ref<string>("");
   <div class="input-wrapper">
     <label for="username">Username</label>
     <input
-      class="input-auth"
       type="text"
       id="username"
       v-model="username"
