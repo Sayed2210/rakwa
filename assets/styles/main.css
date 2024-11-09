@@ -1,6 +1,21 @@
 @import "variables.css";
-@import "sidebar/sidebar.css";
+
+/*layouts*/
+@import "sidebar/_sidebar.css";
+@import "header/_header.css";
+
+/*inputs*/
 @import "input/_auth_input.css";
+@import "input/_check_box.css";
+
+/*auth*/
+@import "login/_login_form.css";
+
+/*buttons*/
+@import "buttons/_primary_button.css";
+
+/*swiper*/
+@import "login/_swiper_login.css";
 
 
 @font-face {
@@ -9,4 +24,38 @@
     font-weight: bold;
     font-style: normal;
     font-display: swap;
+}
+@font-face {
+    font-family: 'Exo-semi-bold';
+    src: url('../fonts/Exo-SemiBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'Exo-medium';
+    src: url('../fonts/Exo-Medium.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Jost-regular';
+    src: url('../fonts/Jost-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}@font-face {
+    font-family: 'Jost-medium';
+    src: url('../fonts/Jost-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+p, label {
+    font-family: "Jost-regular", serif;
 }

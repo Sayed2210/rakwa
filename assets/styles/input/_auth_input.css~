@@ -27,7 +27,7 @@
       outline: none;
       border-color: var(--border-color);
     }
-    &:not(:focus):invalid {
+    &:invalid {
       border-color: red;
     }
 

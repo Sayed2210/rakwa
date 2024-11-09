@@ -30,7 +30,7 @@ export default class LoginController extends ControllerInterface<UserModel> {
       await router.push("/")
       // useLoaderStore().endLoadingWithDialog();
     } else {
-      throw new Error('Error while login')
+      throw new Error('Error while Login')
     }
     return this.state
   }

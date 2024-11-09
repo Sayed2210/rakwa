@@ -3,17 +3,7 @@ const username = ref<string>("");
 </script>
 
 <template>
-  <div class="input-wrapper">
-    <label for="username">Username</label>
-    <input
-      class="input-auth"
-      type="text"
-      id="username"
-      v-model="username"
-      placeholder="Username"
-      aria-label="Username"
-    />
-  </div>
+
 </template>
 
 <style scoped></style>
