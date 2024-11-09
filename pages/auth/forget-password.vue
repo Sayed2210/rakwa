@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 definePageMeta({
   layout: "auth",
 });
@@ -8,7 +7,7 @@ definePageMeta({
 <template>
   <div class="container md:mx-auto lg:mx-auto px-8">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-      <LoginForm class="col-span-1" />
+      <ResetPasswordForgetPasswordForm class="col-span-1" />
       <div class="col-span-1 hidden md:block">
         <LoginSwiper />
       </div>

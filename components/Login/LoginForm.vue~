@@ -1,6 +1,9 @@
 <script setup lang="ts">
+
 const email = ref<string>("");
 const password = ref<string>("");
+
+
 </script>
 
 <template>
@@ -23,9 +26,7 @@ const password = ref<string>("");
       </svg>
       <span>{{ $t("back_to_home") }}</span></NuxtLink
     >
-    <h1 class="main-title">
-      {{ $t("welcome_in") }} <span class="rakwa">Rakwa</span> !
-    </h1>
+    <h1 class="main-title">{{ $t("welcome_in")}} <span class="rakwa">Rakwa</span> !</h1>
     <p class="mb-4">{{ $t("Login_to_access_your_account") }}</p>
     <div class="input-wrapper">
       <label class="input-label" for="email">Email</label>
@@ -62,7 +63,7 @@ const password = ref<string>("");
       <button class="primary-button">{{ $t("login") }}</button>
     </div>
     <div class="sign-up-link-wrapper text-center">
-      <p class="sign-up-info justify-center">
+      <p class="sign-up-info  justify-center">
         {{ $t("dont_have_account") }}
         <NuxtLink to="/register" class="sign-up-link">
           {{ $t("sign_up") }}

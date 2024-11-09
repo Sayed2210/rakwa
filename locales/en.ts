@@ -36,7 +36,17 @@ export default {
   dont_have_account: "Don't have an account?",
   sign_up: "Sign up",
   welcome_in: "Welcome in",
+  submit: "Submit",
+  Didnt_receive_a_code: "Didn't receive a code?",
+  Verify_code: "Verify code",
+  resend: "Resend",
+  An_authentication_code_has_been_sent_to_your_code:
+    "An authentication code has been sent to your code",
+  An_authentication_code_has_been_sent_to_your_email:
+    "An authentication code has been sent to your email",
   Login_to_access_your_account: "Login to access your account",
-  forget_password: "Forget password",
+  forget_your_password: "Forget your password",
+  Dont_worry_happens_to_all_of_us_Enter_your_email_below_to_recover_your_password:
+    "Don’t worry, happens to all of us. Enter your email below to recover your password.",
   back_to_home: "Back to home", // This key should exist in your 'en' locale.
 };

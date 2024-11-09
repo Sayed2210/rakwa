@@ -38,3 +38,8 @@
     }
   }
 }
+
+html[dir="rtl"] .input-wrapper .input-label {
+  right: 1rem;
+  left: unset;
+}
