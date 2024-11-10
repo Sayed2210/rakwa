@@ -10,6 +10,7 @@
 
 /*auth*/
 @import "login/_login_form.css";
+@import "register/_register.css";
 
 /*buttons*/
 @import "buttons/_primary_button.css";
@@ -65,5 +66,11 @@
 p,
 label {
   font-family: "Jost-regular", serif;
+}
+
+p {
   color: var(--text-color);
+}
+label {
+  color: #1c1b1f;
 }

@@ -2,6 +2,28 @@
 definePageMeta({
   layout: "auth",
 });
+
+useHead({
+  title: "Verify Code",
+  meta: [
+    {
+      name: "description",
+      content: "Verify Code",
+    },
+    {
+      name: "keywords",
+      content: "Verify Code",
+    },
+    {
+      property: "og:title",
+      content: "Verify Code",
+    },
+    {
+      property: "og:description",
+      content: "Verify Code",
+    },
+  ],
+});
 </script>
 
 <template>

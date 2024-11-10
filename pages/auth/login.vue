@@ -1,7 +1,47 @@
 <script setup lang="ts">
-
 definePageMeta({
   layout: "auth",
+});
+
+useHead({
+  title: "Login",
+  meta: [
+    {
+      hid: "description",
+      name: "description",
+      content: "Login to your account",
+    },
+    {
+      hid: "og:title",
+      name: "og:title",
+      content: "Login",
+    },
+    {
+      hid: "og:description",
+      name: "og:description",
+      content: "Login to your account",
+    },
+    {
+      hid: "twitter:title",
+      name: "twitter:title",
+      content: "Login",
+    },
+    {
+      hid: "twitter:description",
+      name: "twitter:description",
+      content: "Login to your account",
+    },
+    {
+      hid: "keywords",
+      name: "keywords",
+      content: "Login",
+    },
+    {
+      hid: "keywords",
+      name: "keywords",
+      content: "Authentication",
+    },
+  ],
 });
 </script>
 

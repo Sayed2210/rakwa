@@ -64,7 +64,7 @@ const password = ref<string>("");
     <div class="sign-up-link-wrapper text-center">
       <p class="sign-up-info justify-center">
         {{ $t("dont_have_account") }}
-        <NuxtLink to="/register" class="sign-up-link">
+        <NuxtLink to="/auth/register" class="sign-up-link">
           {{ $t("sign_up") }}
         </NuxtLink>
       </p>

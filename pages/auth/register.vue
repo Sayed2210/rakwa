@@ -4,37 +4,37 @@ definePageMeta({
 });
 
 useHead({
-  title: "Forget Password",
+  title: "Register",
   meta: [
     {
       name: "description",
-      content: "Forget Password",
+      content: "Register",
     },
     {
       name: "keywords",
-      content: "Forget Password",
+      content: "Register",
     },
     {
       name: "og:title",
-      content: "Forget Password",
+      content: "Register",
     },
     {
       name: "og:description",
-      content: "Forget Password",
+      content: "Register",
     },
   ],
 });
 </script>
 
 <template>
-  <div class="container md:mx-auto lg:mx-auto px-8">
+  <section class="container md:mx-auto lg:mx-auto px-8">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-      <ResetPasswordForgetPasswordForm class="col-span-1" />
-      <div class="col-span-1 hidden md:block">
+      <div class="col-span-1">
         <LoginSwiper />
       </div>
+      <RegisterForm class="col-span-1" />
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped></style>

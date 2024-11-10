@@ -1,15 +1,10 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <main class="auth">
-    <AuthLayoutHeader/>
+    <AuthLayoutHeader />
     <slot></slot>
   </main>
-
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -16,6 +16,10 @@ export default defineNuxtConfig({
     "nuxt-swiper",
     "@nuxtjs/i18n",
   ],
+  image: {
+    format: ['webp'],
+    dir: 'assets/images',
+  },
   css: ["~/assets/styles/main.css"],
   i18n: {
     strategy: "no_prefix",

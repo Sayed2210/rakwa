@@ -48,5 +48,21 @@ export default {
   forget_your_password: "Forget your password",
   Dont_worry_happens_to_all_of_us_Enter_your_email_below_to_recover_your_password:
     "Don’t worry, happens to all of us. Enter your email below to recover your password.",
-  back_to_home: "Back to home", // This key should exist in your 'en' locale.
+  back_to_home: "Back to home",
+  Your_previous_password_has_been_reseted_Please_set_a_new_password_for_your_account:
+    "Your previous password has been reseted. Please set a new password for your account.",
+  Re_enter_Password: "Re-enter Password",
+  Create_Password: "Create Password",
+  Set_a_password: "Set a password",
+  Set_password: "Set password",
+  Passwords_do_not_match: "Passwords do not match",
+  Passwords_must_be_at_least_6_characters:
+    "Passwords must be at least 6 characters",
+  Passwords_must_be_at_least_8_characters:
+    "Passwords must be at least 8 characters",
+  Lets_get_you_all_set_up_so_you_can_access_your_personal_account:
+    "Let’s get you all st up so you can access your personal account.",
+  first_name: "First Name",
+  last_name: "Last Name",
+  Already_have_an_account:"Already have an account"
 };
