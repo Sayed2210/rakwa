@@ -65,5 +65,4 @@
 p,
 label {
   font-family: "Jost-regular", serif;
-  color: var(--text-color);
 }

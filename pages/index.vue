@@ -1,12 +1,9 @@
 <script setup lang="ts">
-
+const username = ref<string>("");
 </script>
 
 <template>
-  dsagdsagdsa
 
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

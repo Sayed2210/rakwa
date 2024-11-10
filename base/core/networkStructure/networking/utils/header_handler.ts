@@ -1,4 +1,4 @@
-import { useAuthStore } from '~/stores/login'
+import { useAuthStore } from '~/stores/Login'
 
 class HeaderHandler {
   private static instance: HeaderHandler
