@@ -1,11 +1,11 @@
 <script setup lang="ts"></script>
 
 <template>
-  <header class="header px-8">
-    <nav class="container md:mx-auto">
-      <div class="logo">
+  <header class="header">
+    <nav class="container md:mx-auto px-8">
+      <router-link class="logo">
         <img src="/public/logo.png" alt="logo" class="logo-img" />
-      </div>
+      </router-link>
     </nav>
   </header>
 </template>

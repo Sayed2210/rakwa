@@ -6,7 +6,7 @@
       <div class="nav-wrapper flex items-center justify-between">
         <NuxtLink to="/" class="logo">
           <NuxtImg
-            src="/logo.png"
+            src="/public/logo.png"
             alt="logo"
             class="logo-img"
             format="webp"

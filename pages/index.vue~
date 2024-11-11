@@ -3,9 +3,6 @@ const username = ref<string>("");
 </script>
 
 <template>
-  <section class="content">
-    <HomeHeroSection />
-  </section>
 
 
 </template>

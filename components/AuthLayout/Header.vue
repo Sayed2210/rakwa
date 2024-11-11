@@ -3,9 +3,9 @@
 <template>
   <header class="header">
     <nav class="container md:mx-auto px-8">
-      <div class="logo">
+      <NuxtLink to="/" class="logo">
         <img src="/public/logo.png" alt="logo" class="logo-img" />
-      </div>
+      </NuxtLink>
     </nav>
   </header>
 </template>
