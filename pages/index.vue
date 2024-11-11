@@ -5,6 +5,7 @@ const username = ref<string>("");
 <template>
   <section class="content">
     <HomeHeroSection />
+    <HomeCategoriesSection />
   </section>
 
 

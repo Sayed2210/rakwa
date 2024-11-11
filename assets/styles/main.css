@@ -18,6 +18,10 @@
 /*swiper*/
 @import "login/_swiper_login.css";
 
+/*home*/
+@import "home/_layout.css";
+@import "home/_hero_section.css";
+
 @font-face {
   font-family: "Exo-bold";
   src: url("../fonts/Exo-Bold.ttf") format("truetype");
@@ -73,4 +77,44 @@ p {
 }
 label {
   color: #1c1b1f;
+}
+
+/*main title section styles*/
+.main-section-title {
+  font-family: "Jost-medium", serif;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #e80306, #9e0204, #820203);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 59px;
+    height: 5px;
+    border-radius: 0.5rem;
+    background: linear-gradient(to right, #e80306, #9e0204, #820203);
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+.sub-section-title {
+  font-family: "Exo-bold", serif;
+  width: 320px;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  margin-inline: auto;
+  color: var(--primary-color);
+  text-align: center;
+  text-wrap: pretty;
+  @media screen and (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 }

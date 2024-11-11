@@ -12,7 +12,6 @@ export default {
   city: "City",
   country: "Country",
   state: "State",
-  categories: "Categories",
   zipCode: "Zip Code",
   Explore_our_Popular_Categories: "Explore our Popular Categories",
   description: "Description",

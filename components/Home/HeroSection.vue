@@ -21,6 +21,7 @@
             class="slide-img w-full"
             format="webp"
           />
+          <div class="overlay"></div>
         </div>
       </SwiperSlide>
       <SwiperSlide>
@@ -31,6 +32,7 @@
             class="slide-img w-full"
             format="webp"
           />
+          <div class="overlay"></div>
         </div>
       </SwiperSlide>
       <SwiperSlide>
@@ -41,6 +43,7 @@
             class="slide-img w-full"
             format="webp"
           />
+          <div class="overlay"></div>
         </div>
       </SwiperSlide>
     </Swiper>
