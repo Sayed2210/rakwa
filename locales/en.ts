@@ -67,4 +67,12 @@ export default {
   first_name: "First Name",
   last_name: "Last Name",
   Already_have_an_account: "Already have an account",
+  most_visited_places: "Most visited places",
+  The_Worlds_Top_Attractions: "The World’s Top Attractions",
+  Exclusive_Deals_Offers: "Exclusive Deals & Offers",
+  Explore_a_curated_collection_of_today_top_ads_featuring_limited:
+    "Explore a curated collection of today top ads featuring limited",
+  start_now: "Start Now..?",
+  Explore_a_curated_collection_of_today_top_ads_featuring_limited_time_deals_exclusive_products_and_unbeatable_discounts_across_a_wide_range_of_categories:
+    "Explore a curated collection of today top ads featuring limited-time deals, exclusive products, and unbeatable discounts across a wide range of categories.",
 };

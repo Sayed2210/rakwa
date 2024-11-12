@@ -1,0 +1,45 @@
+.offer-banner {
+  padding: 2rem;
+  padding-inline-start: 24rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 1rem;
+  background-image: url("./../../images/offer.png");
+  background-size: cover;
+  background-position: left center;
+  background-repeat: no-repeat;
+  @media screen {
+    @media (max-width: 768px) {
+      padding-inline-start: 2rem;
+    }
+  }
+  h4,
+  h5 {
+    font-family: "Exo-medium", serif;
+    color: #ffffff;
+  }
+  h4 {
+    font-size: 1.6rem;
+  }
+  h5 {
+    font-size: 1rem;
+  }
+  .start-now {
+    background-color: #ffffff;
+    color: var(--primary-color);
+    font-family: "Exo-semi-bold", serif;
+    border: none;
+    padding: 0.8rem 2.5rem;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+    width: fit-content;
+    &:hover {
+      background-color: var(--primary-color);
+      color: #ffffff;
+    }
+  }
+}

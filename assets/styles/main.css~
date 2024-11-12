@@ -23,7 +23,7 @@
 @import "home/_hero_section.css";
 @import "home/_categories_section.css";
 @import "home/_most_visited_section.css";
-@import "home/_offer_banner.css";
+
 @font-face {
   font-family: "Exo-bold";
   src: url("../fonts/Exo-Bold.ttf") format("truetype");

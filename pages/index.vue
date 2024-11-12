@@ -6,9 +6,9 @@ const username = ref<string>("");
   <section class="content">
     <HomeHeroSection />
     <HomeCategoriesSection />
+    <HomeMostVisitedSection />
+    <HomeOffersBanner />
   </section>
-
-
 </template>
 
 <style scoped></style>

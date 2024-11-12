@@ -2,7 +2,7 @@
 
 <template>
   <header class="header">
-    <nav class="container md:mx-auto px-8">
+    <nav class="container mx-auto px-8">
       <NuxtLink to="/" class="logo">
         <img src="/public/logo.png" alt="logo" class="logo-img" />
       </NuxtLink>

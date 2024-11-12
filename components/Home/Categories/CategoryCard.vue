@@ -1,0 +1,18 @@
+<script setup lang="ts"></script>
+
+<template>
+  <div class="category-card">
+    <div class="category-img">
+      <NuxtImg
+        src="/night-life.png"
+        alt="category image"
+        class="category-img"
+        format="webp"
+      />
+    </div>
+    <h6 class="category-title">home service</h6>
+    <p class="category-count">5 place</p>
+  </div>
+</template>
+
+<style scoped></style>

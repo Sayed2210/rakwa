@@ -2,15 +2,10 @@
 
 <template>
   <header class="header">
-    <nav class="container md:mx-auto px-8">
+    <nav class="container mx-auto px-8">
       <div class="nav-wrapper flex items-center justify-between">
         <NuxtLink to="/" class="logo">
-          <NuxtImg
-            src="/logo.png"
-            alt="logo"
-            class="logo-img"
-            format="webp"
-          />
+          <NuxtImg src="/logo.png" alt="logo" class="logo-img" format="webp" />
         </NuxtLink>
         <div class="links">
           <NuxtLink class="link" to="/">Home</NuxtLink>

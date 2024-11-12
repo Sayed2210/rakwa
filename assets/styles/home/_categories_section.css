@@ -1,3 +1,60 @@
 .categories-section {
-
+  /*background-image: url("~/assets/images/rakwa.png");*/
+  /*background-size: cover;*/
+  /*background-position: right center;*/
+  /*background-repeat: no-repeat;*/
+  /*padding: 2rem 0;*/
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .category-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: 1.25rem;
+    .category-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(232, 3, 6, 0.1);
+      img {
+        width: 35px;
+        height: 35px;
+        background-color: transparent;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+    .category-title {
+      font-size: 1.25rem;
+      font-family: "Jost-semiBold", serif;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    &:hover {
+      background-color: var(--main-color);
+      .category-title,
+      .category-count {
+        color: #ffffff;
+      }
+    }
+  }
 }

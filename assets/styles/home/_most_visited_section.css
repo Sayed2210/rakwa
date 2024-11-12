@@ -1,0 +1,124 @@
+.most-visited-section {
+  background-color: #fbfbfb;
+  overflow: hidden;
+  .place-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    transition: all 0.3s ease-in-out;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    background-color: #fff;
+    &:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .place-img {
+      width: 100%;
+      position: relative;
+      transition: all 0.3s ease-in-out;
+      height: 226px;
+      overflow: hidden;
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.5
+        ); /* Black overlay with 50% opacity */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: bold;
+        text-align: center;
+        opacity: 0.2;
+        transition: all 0.3s ease-in-out;
+      }
+      &:hover {
+        img {
+          transform: scale(1.1);
+        }
+        .overlay {
+          opacity: 0;
+        }
+      }
+      .sponsor {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        background-color: #eda145;
+        font-family: "Jost-semiBold", serif;
+        font-size: 0.8rem;
+        color: #fff;
+        padding: 0.5rem 1.5rem;
+        border-radius: 1.8rem;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.25rem;
+      }
+      .fav {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        border-radius: 50%;
+        width: 2.5rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease-in-out;
+        background-color: rgba(0, 0, 0, 0.1);
+        padding: 0.5rem;
+      }
+    }
+    .place-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0 1rem 1rem;
+      .place-type {
+        font-size: 0.8rem;
+        font-family: "Jost-medium", serif;
+        color: var(--main-color);
+        background-color: rgba(235, 3, 6, 0.1);
+        padding: 0.5rem 1rem;
+        border-radius: 1.25rem;
+        width: fit-content;
+      }
+      .place-title {
+        font-size: 1.25rem;
+        font-family: "Exo-semi-bold", serif;
+        color: var(--primary-color);
+      }
+      .rate {
+        font-family: "Jost-regular", serif;
+        color: var(--text-color);
+        font-size: 0.8rem;
+      }
+      .place-description {
+        font-size: 0.8rem;
+        font-family: "Jost-regular", serif;
+        color: var(--text-color);
+      }
+      .location {
+        font-family: "Jost-medium", serif;
+        font-size: 0.8rem;
+        color: var(--primary-color);
+        text-decoration: underline;
+      }
+    }
+  }
+}
