@@ -75,4 +75,7 @@ export default {
   start_now: "Start Now..?",
   Explore_a_curated_collection_of_today_top_ads_featuring_limited_time_deals_exclusive_products_and_unbeatable_discounts_across_a_wide_range_of_categories:
     "Explore a curated collection of today top ads featuring limited-time deals, exclusive products, and unbeatable discounts across a wide range of categories.",
+  Explore_news: "Explore News",
+  blogs: "Blogs",
+  Rakwa_USA_is_your_premier_directory_for_exploring_and_connecting_with_the_finest_Arab_American_businesses_across_the_United_States_celebrating_our_rich_culture_and_community: "Rakwa USA is your premier directory for exploring and connecting with the finest Arab American businesses across the United States, celebrating our rich culture and community."
 };

@@ -3,6 +3,7 @@
 /*layouts*/
 @import "sidebar/_sidebar.css";
 @import "header/_header.css";
+@import "footer/_footer.css";
 
 /*inputs*/
 @import "input/_auth_input.css";
@@ -24,6 +25,8 @@
 @import "home/_categories_section.css";
 @import "home/_most_visited_section.css";
 @import "home/_offer_banner.css";
+@import "home/_blogs_section.css";
+
 @font-face {
   font-family: "Exo-bold";
   src: url("../fonts/Exo-Bold.ttf") format("truetype");

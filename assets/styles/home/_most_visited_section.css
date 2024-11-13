@@ -1,7 +1,9 @@
-.most-visited-section {
+.most-visited-section,
+.blogs-section {
   background-color: #fbfbfb;
   overflow: hidden;
-  .place-card {
+  .place-card,
+  .blog-card {
     width: 100%;
     height: 100%;
     display: flex;
@@ -14,9 +16,10 @@
     overflow: hidden;
     background-color: #fff;
     &:hover {
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
-    .place-img {
+    .place-img,
+    .blog-img {
       width: 100%;
       position: relative;
       transition: all 0.3s ease-in-out;
@@ -83,7 +86,8 @@
         padding: 0.5rem;
       }
     }
-    .place-info {
+    .place-info,
+    .blog-info {
       display: flex;
       flex-direction: column;
       justify-content: center;

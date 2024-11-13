@@ -8,6 +8,7 @@ const username = ref<string>("");
     <HomeCategoriesSection />
     <HomeMostVisitedSection />
     <HomeOffersBanner />
+    <HomeBlogsSection />
   </section>
 </template>
 
