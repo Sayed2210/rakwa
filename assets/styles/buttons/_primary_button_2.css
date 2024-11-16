@@ -1,0 +1,9 @@
+.primary-button-2 {
+  border-radius: 6px;
+  background-color: var(--main-color);
+  color: var(--secondary-color);
+  &:hover {
+    background-color: var(--secondary-color);
+    color: var(--main-color);
+  }
+}

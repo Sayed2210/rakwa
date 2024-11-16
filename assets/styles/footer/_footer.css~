@@ -3,7 +3,7 @@
     margin-bottom: -5px;
   }
   .company-info {
-    background-color: #2a3342;
+  background-color: #2a3342;
     border-bottom: 1px solid var(--border-color);
     padding: 2rem 0;
     .description {
@@ -55,9 +55,10 @@
         }
       }
     }
+
+
   }
   .copy-right {
-    background-color: #2a3342;
     padding: 1rem 0;
     .copy-right-text {
     }

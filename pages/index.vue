@@ -1,5 +1,18 @@
 <script setup lang="ts">
-const username = ref<string>("");
+useSeoMeta({
+  title: "Home",
+  ogTitle: "Home",
+  description: "Home",
+  ogDescription: "Home",
+});
+
+useHead({
+  link: [{ rel: "canonical", href: "https://example.com" }, {
+    rel: "icon",
+    type: "image/x-icon",
+    href: "/favicon.ico",
+  }],
+});
 </script>
 
 <template>

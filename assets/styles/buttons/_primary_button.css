@@ -1,17 +1,23 @@
+.primary-button,
+.primary-button-2,
+.secondary-button {
+  font-family: "Exo-semi-bold", serif;
+  border: none;
+  width: 100%;
+  min-width: fit-content;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
 .primary-button {
-    background-color: var(--main-color);
-    color: var(--secondary-color);
-    font-family: "Exo-semi-bold", serif;
-    width: 100%;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 1.5rem;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: all 0.3s ease-in-out;
-    &:hover {
-        background-color: var(--secondary-color);
-        color: var(--main-color);
-    }
+  border-radius: 1.5rem;
+  background-color: var(--main-color);
+  color: var(--secondary-color);
+  &:hover {
+    background-color: var(--secondary-color);
+    color: var(--main-color);
+  }
 }

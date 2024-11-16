@@ -1,0 +1,4 @@
+export default function getLastSegment(path) {
+  const segments = path.split("/");
+  return segments.pop() || ""; // Return last segment or empty string
+}

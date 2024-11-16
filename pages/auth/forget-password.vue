@@ -23,7 +23,16 @@ useHead({
       content: "Forget Password",
     },
   ],
+  link: [{ rel: "canonical", href: "https://example.com" }],
 });
+
+useSeoMeta({
+  title: "Forget Password",
+  description: "Forget Password",
+  ogTitle: "Forget Password",
+  ogDescription: "Forget Password",
+})
+
 </script>
 
 <template>

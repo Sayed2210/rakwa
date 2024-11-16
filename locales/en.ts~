@@ -98,6 +98,5 @@ export default {
   add_address: "Add a address",
   add_email: "Add a email",
   add_phone: "Add a phone",
-  remove_photo: "Remove photo",
   Attach_photo_not_exceeding_3_5_MB: "Attach photo not exceeding 3.5 MB",
 };

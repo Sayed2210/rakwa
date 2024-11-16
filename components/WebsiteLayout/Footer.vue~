@@ -111,7 +111,7 @@
       </div>
     </div>
     <div class="copy-right">
-      <div class="container mx-auto px-8 flex justify-between items-center">
+      <div class="container mx-auto px-8">
         <p class="copy-right-text">
           {{ $t("Copyright") }} &copy; {{ new Date().getFullYear() }}
           {{ $t("Rakwa") }}

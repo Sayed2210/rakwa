@@ -9,7 +9,6 @@
 /*inputs*/
 @import "input/_auth_input.css";
 @import "input/_check_box.css";
-@import "input/_switch.css";
 
 /*auth*/
 @import "login/_login_form.css";

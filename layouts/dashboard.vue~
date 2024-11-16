@@ -6,7 +6,7 @@
     <DashboradLayoutBanner />
     <div class="flex gap-4 p-10">
       <DashboradLayoutSidebar />
-      <div class="w-full border border-gray-200 p-4 bg-white rounded-2xl">
+      <div class="w-full border border-gray-200 p-4 bg-white rounded">
         <slot />
       </div>
     </div>

@@ -87,7 +87,7 @@
             <div class="dropdown-content">
               <ul>
                 <li class="dropdown-item">
-                  <NuxtLink to="/profile">
+                  <NuxtLink to="/dashboard/profile">
                     <span>{{ $t("profile_settings") }}</span
                     ><NuxtImg
                       src="/setting.png"

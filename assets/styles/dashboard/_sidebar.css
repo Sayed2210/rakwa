@@ -1,0 +1,39 @@
+.sidebar {
+  border-radius: 1rem;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  border: 1px solid var(--secondary-color);
+  width: 300px;
+  @media screen and (max-width: 768px) {
+    width: fit-content;
+  }
+    .routes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      a {
+        padding: 1rem;
+        color: var(--text-color);
+        cursor: pointer;
+        font-size: 1rem;
+        font-family: "Jost-regular", serif;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+        @media screen and (max-width: 768px) {
+          font-size: 0.8rem;
+          .link {
+            display: none;
+          }
+        }
+        &:hover {
+          color: var(--main-color);
+          background-color: rgba(243, 3, 6, 0.1);
+        }
+      }
+    }
+  }
+}
