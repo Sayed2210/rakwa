@@ -8,6 +8,7 @@
 
   .input-label {
     font-size: 0.8rem;
+    z-index: 10;
     position: absolute;
     top: -0.6rem;
     left: 1rem;

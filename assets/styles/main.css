@@ -10,6 +10,7 @@
 @import "input/_auth_input.css";
 @import "input/_check_box.css";
 @import "input/_switch.css";
+@import "input/_input_image.css";
 
 /*auth*/
 @import "login/_login_form.css";
@@ -34,6 +35,13 @@
 /*profile*/
 @import "profile/_user_photo.css";
 @import "profile/_profile_tabs.css";
+
+
+/*listing*/
+@import "listing/_add_list.css";
+
+/*helpers*/
+@import "helpers/_tooltip.css";
 
 /*fonts*/
 @font-face {
@@ -129,14 +137,4 @@ label {
   @media screen and (max-width: 768px) {
     font-size: 1.5rem;
   }
-}
-
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
 }

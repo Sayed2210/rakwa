@@ -28,6 +28,12 @@ function onFileChange(event: Event) {
       <div class="image" v-if="imgUrl">
         <img :src="imgUrl" alt="Previewed Image" />
       </div>
+      <div class="image" v-else>
+        <img
+          src="@/assets/images/close-up-toothy-smiling-brunet-man.png"
+          alt="Previewed Image"
+        />
+      </div>
     </div>
     <div class="upload">
       <div class="actions">

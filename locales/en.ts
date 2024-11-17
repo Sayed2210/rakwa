@@ -102,4 +102,8 @@ export default {
   add_phone: "Add a phone",
   remove_photo: "Remove photo",
   Attach_photo_not_exceeding_3_5_MB: "Attach photo not exceeding 3.5 MB",
+  basic_information: "Basic Information",
+  location: "Location",
+  gallery: "Gallery",
+  listing_title: "Listing Title",
 };

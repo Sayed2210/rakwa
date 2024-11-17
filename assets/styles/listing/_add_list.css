@@ -1,0 +1,14 @@
+.listing-section {
+  .listing-section-title {
+    font-family: "Jost-medium", serif;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    color: var(--main-color);
+    text-wrap: pretty;
+    border-bottom: 1px solid var(--border-color);
+    @media screen and (max-width: 768px) {
+      font-size: 0.8rem;
+    }
+  }
+}

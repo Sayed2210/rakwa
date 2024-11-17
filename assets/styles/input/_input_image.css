@@ -1,0 +1,31 @@
+.input-image {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+  .img {
+    img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+  }
+  .upload {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: all 0.3s ease-in-out;
+    .actions {
+      display: flex;
+      gap: 1rem;
+      @media screen and (max-width: 768px) {
+        flex-direction: column;
+      }
+    }
+    input[type="file"] {
+      display: none;
+    }
+  }
+}
