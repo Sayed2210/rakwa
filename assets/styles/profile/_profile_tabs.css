@@ -1,0 +1,20 @@
+.tabs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border-bottom: 1px solid var(--border-color);
+    .tab {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        font-family: "Jost-medium", serif;
+        transition: all 0.3s ease-in-out;
+        color: var(--primary-color);
+        &.active {
+            border-bottom: 2px solid var(--main-color);
+            color: var(--main-color);
+        }
+    }
+}

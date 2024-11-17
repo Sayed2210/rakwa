@@ -33,6 +33,7 @@
 
 /*profile*/
 @import "profile/_user_photo.css";
+@import "profile/_profile_tabs.css";
 
 /*fonts*/
 @font-face {
@@ -128,4 +129,14 @@ label {
   @media screen and (max-width: 768px) {
     font-size: 1.5rem;
   }
+}
+
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }

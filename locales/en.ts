@@ -11,6 +11,8 @@ export default {
   goBack: "Go Back",
   address: "Address",
   city: "City",
+  user_info: "User Info",
+  change_password: "Change Password",
   About_the_company: "About the company",
   country: "Country",
   state: "State",

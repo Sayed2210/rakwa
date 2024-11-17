@@ -5,7 +5,6 @@
   &:hover {
     background-color: #ffffff;
     color: var(--main-color);
-    border: 1px solid var(--main-color);
     svg {
       path {
         fill: var(--main-color);

@@ -1,18 +1,37 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref, defineProps, defineEmits } from "vue";
+
+const props = defineProps<{ initialImage?: string }>();
+const emit = defineEmits<{ (e: "update:image", file: File | null): void }>();
+
+const imgUrl = ref<string>(props.initialImage || "");
+const image = ref<File | null>(null);
+
+function onFileChange(event: Event) {
+  const file = (event.target as HTMLInputElement).files?.[0] || null;
+
+  if (file) {
+    imgUrl.value = URL.createObjectURL(file); // Generate preview URL
+    image.value = file; // Store file to be sent
+    emit("update:image", file); // Emit event to parent with selected file
+  } else {
+    imgUrl.value = "";
+    image.value = null;
+    emit("update:image", null);
+  }
+}
+</script>
 
 <template>
-  <div class="user-photo">
+  <div class="input-image">
     <div class="img">
-      <NuxtImg
-        src="/user-photo-2.png"
-        alt="user"
-        class="user img"
-        format="webp"
-      />
+      <div class="image" v-if="imgUrl">
+        <img :src="imgUrl" alt="Previewed Image" />
+      </div>
     </div>
     <div class="upload">
       <div class="actions">
-        <button class="primary-button-2" aria-label="submit">
+        <label class="secondary-button" for="image" aria-label="submit">
           <svg
             width="14"
             height="13"
@@ -37,10 +56,14 @@
             </defs>
           </svg>
           {{ $t("add_photo") }}
-        </button>
-        <button class="secondary-button" aria-label="submit">
-          {{ $t("remove_photo") }}
-        </button>
+        </label>
+        <input
+          type="file"
+          accept="image/jp2, image/jpeg, image/jpg, image/png, image/webp"
+          id="image"
+          class="input"
+          @change="onFileChange"
+        />
       </div>
       <p>{{ $t("Attach_photo_not_exceeding_3_5_MB") }}</p>
     </div>

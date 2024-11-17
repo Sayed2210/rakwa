@@ -20,16 +20,29 @@ useHead({
     },
   ],
 });
+
+const toggle = ref<boolean>(false);
 </script>
 
 <template>
   <ProfileUserPhoto />
-  <div class="tab">
-    <button type="button" class="active">{{ $t("user_info") }}</button>
-    <button type="button">{{ $t("change_password") }}</button>
+  <div class="tabs">
+    <button type="button" :class="[toggle ? 'active' : '' , 'tab']" @click="toggle = true">
+      {{ $t("user_info") }}
+    </button>
+    <button type="button" :class="[!toggle ? 'active' : '' , 'tab']" @click="toggle = false">
+      {{ $t("change_password") }}
+    </button>
   </div>
-  <ProfileUserInfo />
-  <ProfilePasswordUpdate />
+  <Suspense>
+    <template #default>
+      <ProfileUserInfo v-if="toggle" />
+      <ProfilePasswordUpdate v-else />
+    </template>
+    <template #fallback>
+      <div class="loader"></div>
+    </template>
+  </Suspense>
 </template>
 
 <style scoped></style>

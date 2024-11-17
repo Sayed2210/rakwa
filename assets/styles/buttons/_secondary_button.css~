@@ -2,6 +2,7 @@
   background-color: #ffffff;
   color: var(--main-color);
   border-radius: 6px;
+
   border: 1px solid var(--main-color);
   svg {
     path {

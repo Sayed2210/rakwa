@@ -8,7 +8,7 @@ export default defineNuxtConfig({
       viewport: "width=device-width, initial-scale=1",
     },
     layoutTransition: {
-      name: 'fade',
+      name: 'slide',
       mode: 'out-in' // default
     }
   },

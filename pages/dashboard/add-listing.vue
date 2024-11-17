@@ -1,0 +1,29 @@
+<script setup lang="ts">
+definePageMeta({
+  layout: "dashboard",
+});
+
+useSeoMeta({
+  title: "Add Listing",
+  ogTitle: "Add Listing",
+  description: "Add Listing",
+  ogDescription: "Add Listing",
+});
+
+useHead({
+  link: [
+    { rel: "canonical", href: "https://example.com" },
+    {
+      rel: "icon",
+      type: "image/x-icon",
+      href: "/logo.png",
+    },
+  ],
+});
+</script>
+
+<template>
+  <ListingAddList />
+</template>
+
+<style scoped></style>
