@@ -15,7 +15,8 @@ const cities = ref([
 
 const handleImage = (file: File | null) => {
   image.value = file;
-};
+  console.log(image.value);
+}
 </script>
 
 <template>

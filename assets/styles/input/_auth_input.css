@@ -12,7 +12,6 @@
     position: absolute;
     top: -0.6rem;
     left: 1rem;
-    pointer-events: none;
     transition: all 0.3s ease-in-out;
     background-color: #fff;
     padding-inline: 4px;
@@ -21,7 +20,7 @@
     gap: 0.5rem;
   }
 
-  .input {
+  .input, .p-multiselect {
     width: 100%;
     padding: 1rem;
     border: 1px solid var(--border-color);

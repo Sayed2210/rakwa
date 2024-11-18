@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref, defineProps, defineEmits } from "vue";
-
 const props = defineProps<{ initialImage?: string }>();
 const emit = defineEmits<{ (e: "update:image", file: File | null): void }>();
 

@@ -8,9 +8,9 @@ export default defineNuxtConfig({
       viewport: "width=device-width, initial-scale=1",
     },
     layoutTransition: {
-      name: 'fade',
-      mode: 'out-in' // default
-    }
+      name: "fade",
+      mode: "out-in", // default
+    },
   },
   modules: [
     "@pinia/nuxt",
@@ -19,10 +19,11 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "nuxt-swiper",
     "@nuxtjs/i18n",
+    "@primevue/nuxt-module",
   ],
   image: {
-    format: ['webp'],
-    dir: 'assets/images',
+    format: ["webp"],
+    dir: "assets/images",
   },
   css: ["~/assets/styles/main.css"],
   i18n: {

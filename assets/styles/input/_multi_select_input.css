@@ -1,0 +1,90 @@
+/* Multiselect Wrapper */
+.p-multiselect {
+  /* Chip Styling */
+  .p-chip {
+    font-size: 1rem;
+    font-family: "Jost-regular", serif;
+    background-color: rgba(235, 3, 6, 0.2);
+    color: var(--main-color);
+    border-radius: 0.5rem !important;
+    padding-inline: 1rem !important;
+    gap: 0.25rem;
+  }
+
+  /* Hover State */
+  &:not(.p-disabled):hover {
+    border-color: var(--border-color) !important;
+  }
+}
+
+/* Multiselect Overlay */
+.p-multiselect-overlay {
+  border-radius: 0.5rem !important;
+  border: 1px solid var(--border-color) !important;
+  padding: 0.5rem;
+  background-color: #ffffff !important;
+
+  /* Search Input */
+  .p-inputtext {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    transition: all 0.3s ease-in-out;
+
+    &:focus,
+    &:hover {
+      outline: none;
+    }
+  }
+
+  /* Checkbox Styling */
+  .p-checkbox {
+    display: none;
+  }
+
+  /* Option List */
+  .p-multiselect-list-container {
+    .p-multiselect-option {
+      padding: 0.5rem;
+      span[data-pc-section="optionlabel"] {
+        font-family: "Jost-regular", serif;
+        font-size: 1rem;
+        color: var(--text-color);
+      }
+      &.p-focus {
+        background-color: rgba(235, 3, 6, 0.2) !important;
+        color: var(--main-color) !important;
+        span[data-pc-section="optionlabel"] {
+          color: var(--main-color) !important;
+        }
+      }
+    }
+  }
+}
+
+/* Placeholder Text */
+.p-multiselect-label.p-placeholder,
+.p-select-label.p-placeholder {
+  font-family: "Jost-regular", serif;
+  color: var(--text-color) !important;
+  font-size: 1rem;
+}
+.p-multiselect-label {
+  gap: 0.25rem !important;
+}
+
+/* Dropdown Icon */
+.p-multiselect-dropdown,
+.p-select-dropdown {
+  svg {
+    path {
+      fill: var(--text-color);
+    }
+  }
+}
+
+/* Input Icon */
+.p-inputicon {
+  display: none;
+}

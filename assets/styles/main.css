@@ -10,7 +10,10 @@
 @import "input/_auth_input.css";
 @import "input/_check_box.css";
 @import "input/_switch.css";
-@import "input/_input_image.css";
+@import "input/_image_input.css";
+@import "input/_multi_select_input.css";
+@import "input/_input_select.css";
+
 
 /*auth*/
 @import "login/_login_form.css";
@@ -138,3 +141,4 @@ label {
     font-size: 1.5rem;
   }
 }
+
