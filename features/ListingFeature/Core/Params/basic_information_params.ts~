@@ -23,8 +23,6 @@ export default class BasicInformation implements Params {
     this.categories = categories;
     this.serviceCategory = serviceCategory;
     this.keywords = keywords;
-    this.minimumPriceRange = minimumPriceRange;
-    this.maximumPriceRange = maximumPriceRange;
   }
 
   toMap(): { [p: string]: any } {
@@ -32,10 +30,8 @@ export default class BasicInformation implements Params {
     data["title"] = this.title;
     data["logo"] = this.logo;
     data["categories"] = this.categories;
-    data["service_category"] = this.serviceCategory;
+    data["serviceCategory"] = this.serviceCategory;
     data["keywords"] = this.keywords;
-    data["minimum_price_range"] = this.minimumPriceRange;
-    data["maximum_price_range"] = this.maximumPriceRange;
     return data;
   }
 }
