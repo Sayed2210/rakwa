@@ -1,7 +1,7 @@
 .p-select {
-    width: 100%;
-    padding: 1rem;
-    border: 1px solid var(--border-color) !important;
-    border-radius: 0.25rem !important;
-    transition: all 0.3s ease-in-out;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 0.25rem !important;
+  transition: all 0.3s ease-in-out;
 }

@@ -1,23 +1,23 @@
 import type Params from "~/base/core/Params/params";
-import BasicInformation from "./basic_information_params";
+import BasicInformationParams from "./basic_information_params";
 import LocationParams from "./location_params";
 import DetailsParams from "./details_params";
-import OpeningHours from "./opening_hours";
+import OpeningHoursParams from "./opening_hours";
 import PricingBookableServices from "./pricing_bookable_services";
 export default class ListingParams implements Params {
-  public basicInformation: BasicInformation;
+  public basicInformation: BasicInformationParams;
   public Location: LocationParams;
   public gallery: string[];
   public details: DetailsParams;
-  public openingHours: OpeningHours[];
+  public openingHours: OpeningHoursParams[];
   public pricingBookableServices: PricingBookableServices[];
 
   constructor(
-    basicInformation: BasicInformation,
+    basicInformation: BasicInformationParams,
     Location: LocationParams,
     gallery: string[],
     details: DetailsParams,
-    openingHours: OpeningHours[],
+    openingHours: OpeningHoursParams[],
     pricingBookableServices: PricingBookableServices[],
   ) {
     this.basicInformation = basicInformation;
@@ -31,10 +31,11 @@ export default class ListingParams implements Params {
   toMap(): { [p: string]: any } {
     const data: { [p: string]: any } = {};
     data["basic_information"] = this.basicInformation.toMap();
+    console.log(data["basic_information"]);
     data["location"] = this.Location.toMap();
     data["gallery"] = this.gallery;
     data["details"] = this.details.toMap();
-    data["opening_hours"] = this.openingHours.map((item: OpeningHours) =>
+    data["opening_hours"] = this.openingHours.map((item: OpeningHoursParams) =>
       item.toMap(),
     );
     data["pricing_bookable_services"] = this.pricingBookableServices.map(

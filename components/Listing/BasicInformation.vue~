@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import MultiSelect from "primevue/multiselect";
 import Select from "primevue/select";
+import BasicInformationParams from "~/features/ListingFeature/Core/Params/basic_information_params";
 
 const selectedCity = ref();
 const cities = ref([
@@ -11,46 +12,31 @@ const cities = ref([
   { name: "Paris", code: "PRS" },
 ]);
 
-const title = ref<string>("");
-const keywords = ref<string>("");
-const description = ref<string>("");
-const categories = ref<number[]>([]);
-const minimumPriceRange = ref<number>(0);
-const maximumPriceRange = ref<number>(0);
+const basicInformation = ref<BasicInformationParams>(
+  new BasicInformationParams("", null, [], 0, "", "", 0, 0),
+);
 
 const emit = defineEmits<{
-  (e: "update:title", title: string): void;
-  (e: "update:keywords", keywords: string): void;
-  (e: "update:description", description: string): void;
-  (e: "update:categories", categories: number[]): void;
-  (e: "update:minimumPriceRange", minimumPriceRange: number): void;
-  (e: "update:maximumPriceRange", maximumPriceRange: number): void;
+  (
+    e: "update:basicInformation",
+    basicInformation: BasicInformationParams,
+  ): void;
 }>();
 
 watch(
-  [
-    title,
-    keywords,
-    description,
-    categories,
-    minimumPriceRange,
-    maximumPriceRange,
-  ],
+  () => basicInformation.value,
   () => {
-    emit("update:title", title.value);
-    emit("update:keywords", keywords.value);
-    emit("update:description", description.value);
-    emit(
-      "update:categories",
-      categories.value.map((item) => item.id),
-    );
-    emit("update:minimumPriceRange", minimumPriceRange.value);
-    emit("update:maximumPriceRange", maximumPriceRange.value);
+    console.log(basicInformation.value);
+    emit("update:basicInformation", basicInformation.value);
   },
+  { deep: true },
 );
 </script>
 
 <template>
+  <div class="col-span-1 md:col-span-2">
+    <GlobalUploadImage @update:image="basicInformation.logo = $event" />
+  </div>
   <div class="col-span-1 md:col-span-1">
     <div class="input-wrapper">
       <label class="input-label" for="listing_title">
@@ -59,7 +45,7 @@ watch(
       <input
         type="text"
         class="input"
-        v-model="title"
+        v-model="basicInformation.title"
         :placeholder="$t('listing_title')"
       />
     </div>
@@ -106,7 +92,7 @@ watch(
       <input
         type="text"
         class="input"
-        v-model="keywords"
+        v-model="basicInformation.keywords"
         :placeholder="$t('keywords')"
       />
     </div>
@@ -117,7 +103,7 @@ watch(
         {{ $t("category") }}
       </label>
       <MultiSelect
-        v-model="categories"
+        v-model="basicInformation.categories"
         display="chip"
         :options="cities"
         optionLabel="name"
@@ -184,7 +170,7 @@ watch(
         inputmode="numeric"
         class="input"
         min="0"
-        v-model="minimumPriceRange"
+        v-model="basicInformation.minimumPriceRange"
         :placeholder="$t('minimum_price_range')"
       />
     </div>
@@ -233,7 +219,7 @@ watch(
         inputmode="numeric"
         class="input"
         min="0"
-        v-model="maximumPriceRange"
+        v-model="basicInformation.maximumPriceRange"
         :placeholder="$t('maximum_price_range')"
       />
     </div>
@@ -245,7 +231,7 @@ watch(
       </label>
       <textarea
         class="input"
-        v-model="description"
+        v-model="basicInformation.description"
         :placeholder="$t('description')"
       />
     </div>

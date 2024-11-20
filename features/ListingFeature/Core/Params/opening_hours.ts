@@ -1,6 +1,6 @@
 import type Params from "~/base/core/Params/params";
 
-export default class OpeningHours implements Params {
+export default class OpeningHoursParams implements Params {
   public day: number;
   public from: string;
   public to: string;

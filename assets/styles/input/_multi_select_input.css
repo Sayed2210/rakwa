@@ -18,7 +18,8 @@
 }
 
 /* Multiselect Overlay */
-.p-multiselect-overlay {
+.p-multiselect-overlay,
+.p-select-overlay {
   border-radius: 0.5rem !important;
   border: 1px solid var(--border-color) !important;
   padding: 0.5rem;
@@ -44,8 +45,10 @@
   }
 
   /* Option List */
-  .p-multiselect-list-container {
-    .p-multiselect-option {
+  .p-multiselect-list-container,
+  .p-select-list-container {
+    .p-multiselect-option,
+    .p-select-option {
       padding: 0.5rem;
       span[data-pc-section="optionlabel"] {
         font-family: "Jost-regular", serif;

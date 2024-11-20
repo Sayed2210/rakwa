@@ -7,12 +7,12 @@ const route = useRoute();
 <template>
   <div class="dashboard-banner">
     <div class="container mx-auto px-8">
-      <h1>
-        <span>
+      <div>
+        <h1>
           {{ $t("home") }}
-        </span>
-        <span >
-<!--          :class="[dir == 'rtl' ? 'ar' : '']"-->
+        </h1>
+        <span>
+          <!--          :class="[dir == 'rtl' ? 'ar' : '']"-->
           <svg
             width="13"
             height="11"
@@ -28,10 +28,10 @@ const route = useRoute();
             />
           </svg>
         </span>
-        <span>
+        <h2>
           {{ getLastSegment(route.path) }}
-        </span>
-      </h1>
+        </h2>
+      </div>
     </div>
   </div>
 </template>

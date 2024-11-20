@@ -129,4 +129,8 @@ export default {
   your_profile: "Your Profile",
   profile_settings: "Profile Settings",
   service_category: "Service Category",
+  profile: "Profile",
+  keywords_description: "Keywords Description",
+  handleBasicInformation: "Handle Basic Information",
+  category: "Category",
 };

@@ -1,20 +1,22 @@
 import type Params from "~/base/core/Params/params";
 
-export default class BasicInformation implements Params {
+export default class BasicInformationParams implements Params {
   public title: string;
-  public logo: string;
-  public categories: number[];
+  public logo: File | null;
+  public categories: number[] = [];
   public serviceCategory: number;
   public keywords: string;
+  public description: string;
   public minimumPriceRange: number;
   public maximumPriceRange: number;
 
   constructor(
     title: string,
-    logo: string,
-    categories: number[],
+    logo: File | null,
+    categories: number[] = [],
     serviceCategory: number,
     keywords: string,
+    description: string,
     minimumPriceRange: number,
     maximumPriceRange: number,
   ) {
@@ -23,6 +25,7 @@ export default class BasicInformation implements Params {
     this.categories = categories;
     this.serviceCategory = serviceCategory;
     this.keywords = keywords;
+    this.description = description;
     this.minimumPriceRange = minimumPriceRange;
     this.maximumPriceRange = maximumPriceRange;
   }
@@ -30,10 +33,11 @@ export default class BasicInformation implements Params {
   toMap(): { [p: string]: any } {
     const data: { [p: string]: any } = {};
     data["title"] = this.title;
-    data["logo"] = this.logo;
+    if (this.logo && this.logo instanceof File) data["logo"] = this.logo;
     data["categories"] = this.categories;
     data["service_category"] = this.serviceCategory;
     data["keywords"] = this.keywords;
+    data["description"] = this.description;
     data["minimum_price_range"] = this.minimumPriceRange;
     data["maximum_price_range"] = this.maximumPriceRange;
     return data;
