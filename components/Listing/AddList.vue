@@ -12,11 +12,20 @@ const handleBasicInformation = (basicInformation: any) => {
       {{ $t("basic_information") }}
     </h4>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <BasicInformation @update:basicInformation="handleBasicInformation" />
+      <ListingBasicInformation
+        @update:basicInformation="handleBasicInformation"
+      />
     </div>
     <h4 class="listing-section-title">{{ $t("location") }}</h4>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <ListingLocation />
+    </div>
+    <h4 class="listing-section-title">{{ $t("Attachments") }}</h4>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="col-span-1 md:col-span-2">
+        <ListingGallary />
+      </div>
+      <ListingDetails />
     </div>
   </div>
 </template>

@@ -91,7 +91,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="col-span-2">
+  <div class="col-span-1 md:col-span-2">
     <div id="map" class="rounded-xl" style="width: 100%; height: 290px"></div>
   </div>
   <div class="col-span-1 md:col-span-1">

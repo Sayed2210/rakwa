@@ -13,7 +13,7 @@
 @import "input/_image_input.css";
 @import "input/_multi_select_input.css";
 @import "input/_input_select.css";
-
+@import "input/_multi_images_input.css";
 
 /*auth*/
 @import "login/_login_form.css";
@@ -38,7 +38,6 @@
 /*profile*/
 @import "profile/_user_photo.css";
 @import "profile/_profile_tabs.css";
-
 
 /*listing*/
 @import "listing/_add_list.css";
@@ -141,4 +140,3 @@ label {
     font-size: 1.5rem;
   }
 }
-

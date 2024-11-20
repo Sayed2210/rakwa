@@ -9,9 +9,12 @@
   label {
     cursor: pointer;
     font-size: 0.8rem;
-    font-family: "Jost-semiBold", serif;
+    font-family: "Jost-regular", serif;
     transition: all 0.3s ease-in-out;
     color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
   .switch {
     position: relative;
