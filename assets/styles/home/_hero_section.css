@@ -1,18 +1,23 @@
 .hero-section {
+  height: 650px;
   .hero-swiper {
+    height: 650px;
     .swiper-pagination-bullet {
       background-color: #ecf0f1;
       width: 70px;
       height: 7px;
       border-radius: 1.8rem;
-        margin-bottom: 2rem;
+      margin-bottom: 2rem;
     }
     .slide {
       position: relative;
+      height: 100%;
 
       .slide-img {
-        object-fit: contain;
+        aspect-ratio: 16/9;
+        object-fit: cover;
         object-position: center;
+        height: 100%;
       }
       .overlay {
         position: absolute;

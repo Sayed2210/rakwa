@@ -1,20 +1,18 @@
 import type Params from "~/base/core/Params/params";
+import DaysParams from "~/features/ListingFeature/Core/Params/days_params";
 
 export default class OpeningHoursParams implements Params {
-  public day: number;
-  public from: string;
-  public to: string;
-  constructor(day: number, from: string, to: string) {
-    this.day = day;
-    this.from = from;
-    this.to = to;
+  public days: DaysParams[];
+  public timeZone: string;
+  constructor(days: DaysParams[], timeZone: string) {
+    this.days = days;
+    this.timeZone = timeZone;
   }
 
   toMap(): { [p: string]: any } {
     const data: { [p: string]: any } = {};
-    data["day"] = this.day;
-    data["from"] = this.from;
-    data["to"] = this.to;
+    data["days"] = this.days;
+    data["time_zone"] = this.timeZone;
     return data;
   }
 }

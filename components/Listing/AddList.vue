@@ -27,6 +27,25 @@ const handleBasicInformation = (basicInformation: any) => {
       </div>
       <ListingDetails />
     </div>
+    <div class="listing-section-title">
+      <h4>{{ $t("opening_price") }}</h4>
+      <div class="input-wrapper-switch">
+        <div class="switch">
+          <input type="checkbox" id="opening_price" />
+          <label for="opening_price" class="slider"></label>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <ListingOpeningPrice />
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="col-span-1 md:col-span-2">
+        <button class="primary-button-2" aria-label="submit">
+          {{ $t("add") }}
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 

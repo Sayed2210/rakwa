@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import Aura from "@primevue/themes/aura";
+
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
@@ -21,6 +23,16 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@primevue/nuxt-module",
   ],
+  primevue: {
+    options: {
+      theme: {
+        preset: Aura,
+        options: {
+          darkModeSelector: false,
+        },
+      },
+    },
+  },
   image: {
     format: ["webp"],
     dir: "assets/images",

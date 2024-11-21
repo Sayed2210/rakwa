@@ -20,7 +20,7 @@
     gap: 0.5rem;
   }
 
-  .input, .p-multiselect {
+  .input, .p-datepicker .p-inputtext {
     width: 100%;
     padding: 1rem;
     border: 1px solid var(--border-color);

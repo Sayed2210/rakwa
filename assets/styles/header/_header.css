@@ -100,6 +100,7 @@
         cursor: pointer;
         .name {
           font-size: 0.75rem;
+
           font-family: "Jost-regular", serif;
           color: var(--primary-color);
         }
@@ -115,6 +116,11 @@
         &:hover {
           color: var(--main-color);
         }
+      }
+      img.user-photo {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
       }
       .dropdown-content {
         position: absolute;

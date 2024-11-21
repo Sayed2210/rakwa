@@ -1,0 +1,32 @@
+.day {
+  .day-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    .day-of-week {
+      font-size: 1rem;
+      font-family: "Jost-medium", serif;
+      color: var(--text-color-2);
+      padding: 0.5rem 1rem;
+      border-radius: 0.8rem;
+      background-color: rgba(87, 107, 116, 0.1);
+    }
+    button {
+      font-family: "Jost-medium", serif;
+      color: var(--main-color);
+      text-decoration: underline;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        color: var(--primary-color);
+      }
+    }
+  }
+  .time-wrapper {
+    .time {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+}

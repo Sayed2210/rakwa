@@ -41,6 +41,7 @@
 
 /*listing*/
 @import "listing/_add_list.css";
+@import "listing/_days.css";
 
 /*helpers*/
 @import "helpers/_tooltip.css";
