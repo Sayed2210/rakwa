@@ -158,4 +158,7 @@ export default {
   opening_price: "Opening Price",
   linkedin: "Linkedin",
   time_zone: "Time Zone",
+  Sorry_you_dont_have_any_listing: "Sorry..you don’t have any listing",
+  sorry_you_dont_have_any_listing_right_now_go_and_add_a_new_listing_to_see_how_people_will_react_about:
+    "sorry..you don’t have any listing right now go and add a new listing to see how people will react about.",
 };

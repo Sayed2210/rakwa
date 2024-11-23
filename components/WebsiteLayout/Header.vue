@@ -97,7 +97,7 @@
                   </NuxtLink>
                 </li>
                 <li class="dropdown-item">
-                  <NuxtLink to="/add-listing">
+                  <NuxtLink to="/dashboard/add-listing">
                     <span>{{ $t("add_listing") }}</span
                     ><NuxtImg
                       src="/add.png"
@@ -113,7 +113,7 @@
                   </NuxtLink>
                 </li>
                 <li class="dropdown-item">
-                  <NuxtLink to="/my-listings">
+                  <NuxtLink to="/dashboard/listings">
                     <span>{{ $t("my_listing") }}</span>
                     <NuxtImg
                       src="/my-listing.png"

@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="grid grid-cols-1 gap-4 mt-4">
+  <div class="grid grid-cols-1 gap-4 mt-12">
     <div class="col-span-1">
       <div class="input-wrapper">
         <label class="input-label" for="current_password">{{

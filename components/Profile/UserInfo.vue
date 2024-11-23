@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 mt-12 gap-4">
     <div class="col-span-1">
       <div class="input-wrapper">
         <label class="input-label" for="first_name">First Name</label>

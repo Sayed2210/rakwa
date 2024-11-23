@@ -63,7 +63,7 @@
           </NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/dashboard/my-listings" class="flex items-center gap-2">
+          <NuxtLink to="/dashboard/listings" class="flex items-center gap-2">
             <span
               ><svg
                 width="19"

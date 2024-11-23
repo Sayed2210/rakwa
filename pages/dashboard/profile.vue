@@ -27,10 +27,10 @@ const toggle = ref<boolean>(false);
 <template>
   <ProfileUserPhoto />
   <div class="tabs">
-    <button type="button" :class="[toggle ? 'active' : '' , 'tab']" @click="toggle = true">
+    <button type="button" aria-label="user_info" :class="[toggle ? 'active' : '' , 'tab']" @click="toggle = true">
       {{ $t("user_info") }}
     </button>
-    <button type="button" :class="[!toggle ? 'active' : '' , 'tab']" @click="toggle = false">
+    <button type="button" aria-label="change_password" :class="[!toggle ? 'active' : '' , 'tab']" @click="toggle = false">
       {{ $t("change_password") }}
     </button>
   </div>
