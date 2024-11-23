@@ -4,7 +4,7 @@
   <div class="listing-card">
     <div class="listing-img">
       <NuxtImg
-        src="/listing-img.png"
+        src="/place.png"
         alt="listing image"
         class="place-img"
         format="webp"

@@ -28,6 +28,9 @@
 /*swiper*/
 @import "login/_swiper_login.css";
 
+
+
+
 /*home*/
 @import "home/_layout.css";
 @import "home/_hero_section.css";
@@ -39,6 +42,12 @@
 /*profile*/
 @import "profile/_user_photo.css";
 @import "profile/_profile_tabs.css";
+
+/*bookmarks*/
+@import "bookmarks/_bookmark_card.css";
+
+/*reviews*/
+@import "reviews/_review_card.css";
 
 /*listing*/
 @import "listing/_add_list.css";

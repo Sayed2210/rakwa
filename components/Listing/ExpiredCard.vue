@@ -4,7 +4,7 @@
   <div class="listing-card">
     <div class="listing-img">
       <NuxtImg
-        src="/listing-img.png"
+        src="/place.png"
         alt="listing image"
         class="place-img"
         format="webp"
@@ -15,7 +15,7 @@
       <div class="listing-header">
         <div class="status expired">
           <IconsCloseCircle />
-          <span>{{ $t("views") }} :</span>
+          <span>{{ $t("expired") }} :</span>
           <span>90</span>
         </div>
         <div class="actions">

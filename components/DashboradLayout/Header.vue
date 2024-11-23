@@ -97,7 +97,7 @@
                   </NuxtLink>
                 </li>
                 <li class="dropdown-item">
-                  <NuxtLink to="/add-listing">
+                  <NuxtLink to="/dashboard/add-listing">
                     <span>{{ $t("add_listing") }}</span
                     ><NuxtImg
                       src="/add.png"
@@ -107,13 +107,13 @@
                   </NuxtLink>
                 </li>
                 <li class="dropdown-item">
-                  <NuxtLink to="/bookings">
+                  <NuxtLink to="/dashboard/bookings">
                     <span>{{ $t("my_bookings") }}</span
                     ><NuxtImg src="/task.png" alt="my bookings" format="webp" />
                   </NuxtLink>
                 </li>
                 <li class="dropdown-item">
-                  <NuxtLink to="/my-listings">
+                  <NuxtLink to="/dashboard/listings">
                     <span>{{ $t("my_listing") }}</span>
                     <NuxtImg
                       src="/my-listing.png"
@@ -123,7 +123,7 @@
                   </NuxtLink>
                 </li>
                 <li class="dropdown-item">
-                  <NuxtLink to="/messages">
+                  <NuxtLink to="/dashboard/messages">
                     <span>{{ $t("messages") }}</span>
                     <NuxtImg
                       src="/messages.png"
@@ -133,7 +133,7 @@
                   </NuxtLink>
                 </li>
                 <li class="dropdown-item">
-                  <NuxtLink to="/bookmarks">
+                  <NuxtLink to="/dashboard/bookmarks">
                     <span>{{ $t("bookmarks") }}</span>
                     <NuxtImg
                       src="/heart.svg"
@@ -143,7 +143,7 @@
                   </NuxtLink>
                 </li>
                 <li class="dropdown-item">
-                  <NuxtLink to="/reviews">
+                  <NuxtLink to="/dashboard/reviews">
                     <span>{{ $t("reviews") }}</span>
                     <NuxtImg src="/like.png" alt="my bookmarks" format="webp" />
                   </NuxtLink>

@@ -87,6 +87,7 @@
       }
     }
     .place-info,
+    .bookmark-img,
     .blog-info {
       display: flex;
       flex-direction: column;

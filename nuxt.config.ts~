@@ -37,7 +37,7 @@ export default defineNuxtConfig({
     format: ["webp"],
     dir: "assets/images",
   },
-  css: ["~/assets/styles/main.min.css"],
+  css: ["~/assets/styles/main.css"],
   i18n: {
     strategy: "no_prefix",
     defaultLocale: "en",

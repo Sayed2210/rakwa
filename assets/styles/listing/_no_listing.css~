@@ -1,4 +1,6 @@
-.no-listing {
+.no-listing,
+.no-reviews,
+.no-bookmark {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,10 +11,14 @@
   @media screen and (max-width: 768px) {
     width: 100%;
   }
-  .no-listing-img {
+  .no-listing-img,
+  .no-reviews-img,
+  .no-bookmark-img {
     width: 250px;
   }
-  .no-listing-title {
+  .no-listing-title,
+  .no-reviews-title,
+  .no-bookmark-title {
     font-family: "Jost-semiBold", serif;
     font-size: 1.2rem;
     color: #000000;
@@ -20,9 +26,12 @@
       font-size: 0.8rem;
     }
   }
-  .no-listing-description {
+  .no-listing-description,
+  .no-reviews-description,
+  .no-bookmark-description {
     font-family: "Jost-regular", serif;
     font-size: 1rem;
+    text-wrap: pretty;
     margin-bottom: 1rem;
     color: var(--text-color);
     text-align: center;

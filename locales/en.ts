@@ -161,4 +161,16 @@ export default {
   Sorry_you_dont_have_any_listing: "Sorry..you don’t have any listing",
   sorry_you_dont_have_any_listing_right_now_go_and_add_a_new_listing_to_see_how_people_will_react_about:
     "sorry..you don’t have any listing right now go and add a new listing to see how people will react about.",
+  Sorry_you_dont_have_any_bookmark: "Sorry..you don’t have any bookmark",
+  sorry_you_dont_have_any_bookmark_right_now_go_and_add_a_new_bookmark_to_see_how_people_will_react_about:
+    "sorry..you don’t have any bookmark right now go and add a new listing to see how people will react about.",
+  add_bookmark: "Add Bookmark",
+  Sorry_you_dont_have_any_reviews: "Sorry..you don’t have any reviews",
+  sorry_you_dont_have_any_reviews_right_now_go_and_add_a_new_reviews_to_see_how_people_will_react_about:
+    "sorry..you don’t have any reviews right now go and add a new reviews to see how people will react about.",
+  add_reviews: "Add Reviews",
+  your_review_on: "Your Review on",
+  review_on: "Review on",
+  "other_reviews": "Other Reviews",
+  "my_reviews": "My Reviews",
 };

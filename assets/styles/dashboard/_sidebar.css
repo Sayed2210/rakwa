@@ -33,6 +33,10 @@
           color: var(--main-color);
           background-color: rgba(243, 3, 6, 0.1);
         }
+        &.router-link-exact-active {
+          color: var(--main-color);
+          background-color: rgba(243, 3, 6, 0.1);
+        }
       }
     }
   }
