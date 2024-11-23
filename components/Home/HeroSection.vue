@@ -35,18 +35,48 @@
           <div class="overlay"></div>
         </div>
       </SwiperSlide>
-<!--      <SwiperSlide>-->
-<!--        <div class="slide">-->
-<!--          <NuxtImg-->
-<!--            src="/hero-image-3.png"-->
-<!--            alt="login swiper image"-->
-<!--            class="slide-img w-full"-->
-<!--            format="webp"-->
-<!--          />-->
-<!--          <div class="overlay"></div>-->
-<!--        </div>-->
-<!--      </SwiperSlide>-->
+      <!--      <SwiperSlide>-->
+      <!--        <div class="slide">-->
+      <!--          <NuxtImg-->
+      <!--            src="/hero-image-3.png"-->
+      <!--            alt="login swiper image"-->
+      <!--            class="slide-img w-full"-->
+      <!--            format="webp"-->
+      <!--          />-->
+      <!--          <div class="overlay"></div>-->
+      <!--        </div>-->
+      <!--      </SwiperSlide>-->
     </Swiper>
+    <div class="container info-container mx-auto px-8">
+      <div class="info">
+        <h1 class="website-main-title">
+          {{ $t("Your_Guide_to_Living_Working_and_Thriving_Overseas") }}
+        </h1>
+        <p class="website-sub-title">
+          {{
+            $t(
+              "Discover_expert_resources_tips_and_a_community_to_help_you_settle_and_succeed_anywhere_in_the_world",
+            )
+          }}
+        </p>
+        <div class="website-input-search">
+          <IconsAddress />
+          <input
+            type="text"
+            :placeholder="$t('search')"
+            class="search-input"
+            aria-label="search"
+            name="search"
+          />
+          <button class="primary-button" aria-label="search">
+            {{ $t("search") }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hero-bg">
+      <NuxtImg src="/hero-background.png" alt="hero-background" format="webp" />
+    </div>
   </section>
 </template>
 

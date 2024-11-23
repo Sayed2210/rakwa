@@ -171,6 +171,10 @@ export default {
   add_reviews: "Add Reviews",
   your_review_on: "Your Review on",
   review_on: "Review on",
-  "other_reviews": "Other Reviews",
-  "my_reviews": "My Reviews",
+  other_reviews: "Other Reviews",
+  my_reviews: "My Reviews",
+  Discover_expert_resources_tips_and_a_community_to_help_you_settle_and_succeed_anywhere_in_the_world:
+    "Discover expert resources, tips, and a community to help you settle and succeed anywhere in the world",
+  Your_Guide_to_Living_Working_and_Thriving_Overseas:
+    "Your Guide to Living, Working, and Thriving Overseas",
 };
