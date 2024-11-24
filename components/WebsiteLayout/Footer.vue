@@ -87,7 +87,7 @@
                 }}</NuxtLink>
               </li>
               <li class="links-item">
-                <NuxtLink to="/about-us" class="links-link">{{
+                <NuxtLink to="/privacy" class="links-link">{{
                   $t("Privacy")
                 }}</NuxtLink>
               </li>

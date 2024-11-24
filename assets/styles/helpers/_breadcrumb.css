@@ -1,0 +1,19 @@
+.breadcrumb {
+  font-family: "Jost-medium", serif;
+  font-size: 1rem;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  .arrow {
+    &.ar {
+      transform: rotate(180deg);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+  .active {
+    color: var(--text-color);
+  }
+}
