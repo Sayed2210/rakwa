@@ -182,4 +182,6 @@ export default {
     "It was renamed or maybe it didn't exist at all.",
   contact_us: "Contact Us",
   Reach_Out_to_Us_Anytime: "Reach Out to Us Anytime",
+  together_we_are_shaping_a_promising_future:
+    "together, we are shaping a promising future",
 };
