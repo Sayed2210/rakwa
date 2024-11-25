@@ -1,0 +1,20 @@
+<script setup lang="ts">
+useSeoMeta({
+  title: "Contact Us",
+  ogTitle: "Contact Us",
+  description: "Contact Us",
+  ogDescription: "Contact Us",
+});
+</script>
+
+<template>
+  <section class="contact-us">
+    <div class="container mx-auto px-8">
+      <GlobalBreadcrumb title="Contact Us" />
+      <ContactUsReachOut />
+      <ContactUsContactForm />
+    </div>
+  </section>
+</template>
+
+<style scoped></style>

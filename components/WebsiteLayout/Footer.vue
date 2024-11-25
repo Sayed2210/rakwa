@@ -74,10 +74,12 @@
             </svg>
             <ul class="links-list">
               <li class="links-item">
-                <NuxtLink to="/" class="links-link">{{ $t("FAQs") }}</NuxtLink>
+                <NuxtLink to="/FAQ" class="links-link">{{
+                  $t("FAQs")
+                }}</NuxtLink>
               </li>
               <li class="links-item">
-                <NuxtLink to="/contact" class="links-link">{{
+                <NuxtLink to="/terms-and-conditions" class="links-link">{{
                   $t("terms_of_service")
                 }}</NuxtLink>
               </li>

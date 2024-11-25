@@ -180,4 +180,6 @@ export default {
   The_page_doesnt_exist_The_page_you_are_looking_for_has_been_moved_and_removed_It_was_renamed_or_maybe_it_didn_exist_at_all:
     "The page doesn't exist! The page you are looking for has been moved and removed,\n" +
     "It was renamed or maybe it didn't exist at all.",
+  contact_us: "Contact Us",
+  Reach_Out_to_Us_Anytime: "Reach Out to Us Anytime",
 };

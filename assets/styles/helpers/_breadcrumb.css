@@ -1,19 +1,29 @@
-.breadcrumb {
-  font-family: "Jost-medium", serif;
-  font-size: 1rem;
-  color: var(--primary-color);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  .arrow {
-    &.ar {
-      transform: rotate(180deg);
+.breadcrumb-wrapper {
+  .breadcrumb {
+    font-family: "Jost-medium", serif;
+    font-size: 1rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    .arrow {
+      &.ar {
+        transform: rotate(180deg);
+      }
+    }
+    @media screen and (max-width: 768px) {
+      font-size: 0.8rem;
+    }
+    .active {
+      color: var(--text-color);
     }
   }
-  @media screen and (max-width: 768px) {
-    font-size: 0.8rem;
-  }
-  .active {
-    color: var(--text-color);
+  .breadcrumb-title {
+    font-family: "Exo-bold", serif;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    @media screen and (max-width: 768px) {
+      font-size: 1.5rem;
+    }
   }
 }

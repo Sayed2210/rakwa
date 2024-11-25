@@ -1,0 +1,15 @@
+.faq {
+  .p-accordionpanel {
+    border: 1px solid var(--border-color) !important;
+    border-radius: 0.5rem !important;
+    margin-bottom: 1rem;
+    .accord-title {
+      font-family: "Jost-regular", serif;
+      font-size: 1.5rem;
+      color: #0f1833;
+    }
+    .accord-content {
+      color: #66686D;
+    }
+  }
+}

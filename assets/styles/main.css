@@ -57,6 +57,15 @@
 @import "helpers/_not_found.css";
 @import "helpers/_breadcrumb.css";
 
+/*privacy*/
+@import "privacy/_privacy.css";
+
+/*faq*/
+@import "faq/_faq.css";
+
+/*contact us*/
+@import "contact_us/_contact_us.css";
+
 /*fonts*/
 @font-face {
   font-family: "Exo-bold";
@@ -123,20 +132,21 @@ label {
   color: transparent;
   text-align: center;
   position: relative;
-  &::after {
-    content: "";
-    position: absolute;
-    top: -3px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 59px;
-    height: 5px;
-    border-radius: 0.5rem;
-    background: linear-gradient(to right, #e80306, #9e0204, #820203);
-  }
   @media screen and (max-width: 768px) {
     font-size: 1rem;
   }
+}
+
+.main-section-title::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 59px;
+  height: 5px;
+  border-radius: 0.5rem;
+  background: linear-gradient(to right, #e80306, #9e0204, #820203);
 }
 
 .sub-section-title {

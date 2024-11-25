@@ -1,0 +1,15 @@
+.contact-us {
+  .sub-section-title {
+    width: initial;
+  }
+  .contact-us-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #fcfcfc;
+    padding: 1rem;
+  }
+  .contact-form {
+    margin-bottom: 2rem;
+  }
+}
