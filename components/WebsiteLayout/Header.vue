@@ -9,7 +9,7 @@
         </NuxtLink>
         <div class="links">
           <NuxtLink class="link" to="/">Home</NuxtLink>
-          <NuxtLink class="link" to="/about">About Us</NuxtLink>
+          <NuxtLink class="link" to="/about-us">About Us</NuxtLink>
           <NuxtLink class="link" to="/contact">Blog</NuxtLink>
           <div class="dropdown">
             <span class="dropdown-trigger"

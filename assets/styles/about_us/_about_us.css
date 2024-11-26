@@ -1,0 +1,124 @@
+.future {
+  .sub-section-title {
+    width: 450px;
+    @media screen and (max-width: 768px) {
+      width: 300px;
+      font-size: 1.8rem;
+    }
+  }
+  .about-us-swiper {
+    .swiper-slide {
+      width: 400px !important;
+      border-radius: 1rem;
+      overflow: hidden;
+      @media screen and (max-width: 768px) {
+        width: 300px !important;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+  .social {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    background-color: var(--third-color);
+    width: fit-content;
+    margin-inline: auto;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    span {
+      font-family: "Exo-medium", sans-serif;
+      font-size: 0.8rem;
+      color: var(--text-color);
+    }
+    svg {
+      cursor: pointer;
+      path {
+        transition: all 0.3s ease-in-out;
+      }
+      &:hover {
+        path {
+          fill: var(--main-color);
+        }
+      }
+    }
+  }
+}
+
+.our-vision,
+.our-team {
+  margin-top: 6rem;
+  @media screen and (max-width: 768px) {
+    margin-top: 3rem;
+  }
+  .main-title {
+    text-align: center;
+    font-size: 1.8rem;
+  }
+
+  .our-vision-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border: 1px solid var(--border-color-2);
+    border-radius: 1rem;
+    padding: 1rem;
+    .our-vision-card-title {
+      font-family: "Exo-semi-bold", sans-serif;
+      font-size: 1rem;
+    }
+    .icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: rgba(255, 6, 4, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.our-team {
+  .team-member-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 1px solid var(--border-color-2);
+    border-radius: 1rem;
+    padding: 1rem;
+    .team-member-card-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    .team-member-card-name {
+      font-family: "Exo-semi-bold", sans-serif;
+      font-size: 1rem;
+    }
+    .social {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      svg {
+        cursor: pointer;
+        path {
+          transition: all 0.3s ease-in-out;
+        }
+        &:hover {
+          path {
+            fill: var(--main-color);
+          }
+        }
+      }
+    }
+  }
+}

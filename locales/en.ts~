@@ -191,7 +191,8 @@ export default {
   Our_vision: "Our Vision",
   Our_Mission: "Our Mission",
   Our_values: "Our Values",
-  our_team: "Our Team",
+  Our_team: "Our Team",
   Our_Goal: "Our Goals",
   Meet_the_faces_behind_the_magic: "Meet the faces behind the magic",
+  
 };

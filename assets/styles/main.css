@@ -66,6 +66,9 @@
 /*contact us*/
 @import "contact_us/_contact_us.css";
 
+/*about us*/
+@import "about_us/_about_us.css";
+
 /*fonts*/
 @font-face {
   font-family: "Exo-bold";
@@ -162,3 +165,5 @@ label {
     font-size: 1.5rem;
   }
 }
+
+

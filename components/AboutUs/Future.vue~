@@ -5,9 +5,9 @@
     <h2 class="main-section-title">
       {{ $t("about_us") }}
     </h2>
-    <h3 class="sub-section-title">
+    <h4 class="sub-section-title">
       {{ $t("together_we_are_shaping_a_promising_future") }}
-    </h3>
+    </h4>
     <Swiper
       class="mySwiper about-us-swiper"
       :slides-per-view="5"
