@@ -70,7 +70,6 @@
 @import "about_us/_about_us.css";
 
 /*blogs*/
-@import "blogs/_blog_card.css";
 
 /*fonts*/
 @font-face {
