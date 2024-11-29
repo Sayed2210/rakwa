@@ -47,7 +47,7 @@
                 <NuxtLink to="/" class="links-link">{{ $t("home") }}</NuxtLink>
               </li>
               <li class="links-item">
-                <NuxtLink to="/blogs" class="links-link">{{
+                <NuxtLink to="/contact" class="links-link">{{
                   $t("blogs")
                 }}</NuxtLink>
               </li>

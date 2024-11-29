@@ -2,9 +2,9 @@
 
 <template>
   <section class="our-team">
-    <h4 class="main-title">
+    <h2 class="sub-section-title">
       {{ $t("our_team") }}
-    </h4>
+    </h2>
     <p class="text-center">
       {{ $t("Meet_the_faces_behind_the_magic") }}
     </p>
@@ -17,7 +17,7 @@
             class="team-member-card-img"
             format="webp"
           />
-          <h6 class="team-member-card-name">John Doe</h6>
+          <h3 class="team-member-card-name">John Doe</h3>
           <p class="team-member-card-role">CEO</p>
           <div class="social">
             <IconsFaceGray />

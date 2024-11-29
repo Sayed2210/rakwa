@@ -193,5 +193,12 @@ export default {
   Our_values: "Our Values",
   our_team: "Our Team",
   Our_Goal: "Our Goals",
+  All_Articles: "All Articles",
+  client_opinions: "Client Opinions",
+  Reliable_reviews_from_our_customers_whose_experiences_are_the_best_proof_of_the_quality_of_what_we_offer:
+    "Reliable reviews from our customers whose experiences are the best proof of the quality of what we offer",
+  Stay_Connected_with_Rakwa: "Stay Connected with Rakwa",
+  From_guiding_you_to_the_perfect_service_to_answering_your_questions_were_committed_to_supporting_you_every_step_of_the_way_Dont_hesitate_to_reach_out_together_we_can_create_meaningful_connections:
+    "From guiding you to the perfect service to answering your questions, we’re committed to supporting you every step of the way. Don’t hesitate to reach out—together, we can create meaningful connections.",
   Meet_the_faces_behind_the_magic: "Meet the faces behind the magic",
 };

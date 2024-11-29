@@ -2,9 +2,9 @@
 
 <template>
   <section class="our-vision">
-    <h4 class="main-title">
+    <h2 class="sub-section-title">
       {{ $t("The_Heart_Behind") }} <span class="rakwa">Rakwa</span>
-    </h4>
+    </h2>
     <p class="text-center">
       {{ $t("Driven_by_your_needs_inspired_by_your_trust") }}
     </p>
@@ -13,7 +13,7 @@
         <div class="icon">
           <IconsOurGoal />
         </div>
-        <h5 class="our-vision-card-title">{{ $t("Our_Goal") }}</h5>
+        <h3 class="our-vision-card-title">{{ $t("Our_Goal") }}</h3>
         <p>
           Rakwa was born out of a vision to simplify access to Arab businesses
           and services. Whether you’re a resident or a visitor in Turkey, or
@@ -25,7 +25,7 @@
         <div class="icon">
           <IconsOurVision />
         </div>
-        <h5 class="our-vision-card-title">{{ $t("Our_vision") }}</h5>
+        <h3 class="our-vision-card-title">{{ $t("Our_vision") }}</h3>
         <p>
           Rakwa was born out of a vision to simplify access to Arab businesses
           and services. Whether you’re a resident or a visitor in Turkey, or
@@ -37,7 +37,7 @@
         <div class="icon">
           <IconsOurMission />
         </div>
-        <h5 class="our-vision-card-title">{{ $t("Our_Mission") }}</h5>
+        <h3 class="our-vision-card-title">{{ $t("Our_Mission") }}</h3>
         <p>
           Rakwa was born out of a vision to simplify access to Arab businesses
           and services. Whether you’re a resident or a visitor in Turkey, or

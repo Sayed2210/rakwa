@@ -4,7 +4,7 @@ useSeoMeta({
   ogTitle: "About Us",
   description: "About Us",
   ogDescription: "About Us",
-})
+});
 </script>
 
 <template>
@@ -14,6 +14,10 @@ useSeoMeta({
       <AboutUsFuture />
       <AboutUsOurVision />
       <AboutUsOurTeam />
+    </div>
+    <AboutUsCallUs />
+    <div class="container mx-auto px-8">
+      <AboutUsClientOpinions />
     </div>
   </section>
 </template>

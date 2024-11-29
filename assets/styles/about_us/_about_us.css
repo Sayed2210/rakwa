@@ -1,9 +1,15 @@
-.future {
+.future,
+.our-vision,
+.our-team,
+.client-opinions {
   .sub-section-title {
     width: 450px;
     @media screen and (max-width: 768px) {
       width: 300px;
       font-size: 1.8rem;
+    }
+    + p {
+      font-family: "Exo-medium", sans-serif;
     }
   }
   .about-us-swiper {
@@ -51,14 +57,11 @@
 }
 
 .our-vision,
-.our-team {
+.our-team,
+.client-opinions {
   margin-top: 6rem;
   @media screen and (max-width: 768px) {
     margin-top: 3rem;
-  }
-  .main-title {
-    text-align: center;
-    font-size: 1.8rem;
   }
 
   .our-vision-card {
@@ -121,4 +124,109 @@
       }
     }
   }
+}
+
+.call-us {
+  display: flex;
+  gap: 1rem;
+  padding: 2rem 0;
+  margin-top: 6rem;
+  background-color: rgba(255, 6, 4, 0.1);
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    margin-top: 3rem;
+  }
+  .call-us-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    .call-us-title {
+      font-family: "Exo-medium", sans-serif;
+      font-size: 1.2rem;
+    }
+    p {
+      color: var(--text-color-2);
+      font-family: "Exo-regular", sans-serif;
+      font-size: 1rem;
+    }
+    .secondary-button {
+      border-radius: 2rem;
+      width: fit-content;
+    }
+  }
+  .img {
+    img {
+      width: 200px;
+      @media screen and (max-width: 768px) {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.client-opinions {
+  margin-bottom: 6rem;
+  @media screen and (max-width: 768px) {
+    margin-bottom: 3rem;
+  }
+  .client-opinions-swiper {
+    margin-top: 2rem;
+    .arrows {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .custom-next,
+    .custom-prev {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+    }
+    .client-opinion-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+      .client-opinion-card-img {
+        width: 20px;
+        height: 20px;
+      }
+      .client-opinion-card-text {
+        font-family: "Jost-regular", sans-serif;
+        quotes: "" " " "";
+        color: var(--text-color);
+      }
+      .client-info {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        img {
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
+        }
+        .client-opinion-card-name {
+          font-family: "Jost-medium", sans-serif;
+          font-size: 1rem;
+        }
+        .client-opinion-card-email {
+          color: var(--text-color);
+          font-family: "Jost-medium", sans-serif;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+html[dir="rtl"] .arrows {
+  flex-direction: row-reverse;
 }
