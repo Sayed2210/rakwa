@@ -1,0 +1,6 @@
+.leave-comment {
+    .comment-form {
+      width: 75%;
+        
+    }
+}

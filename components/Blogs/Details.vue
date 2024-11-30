@@ -57,6 +57,9 @@
         <BlogsTags />
       </div>
     </div>
+    <BlogsComments />
+    <BlogsLeaveComment />
+
   </section>
 </template>
 

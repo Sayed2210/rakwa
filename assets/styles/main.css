@@ -57,6 +57,7 @@
 @import "helpers/_not_found.css";
 @import "helpers/_breadcrumb.css";
 @import "helpers/_social.css";
+@import "helpers/_pagination.css";
 
 /*privacy*/
 @import "privacy/_privacy.css";
@@ -77,6 +78,9 @@
 @import "blogs/_blog_tags.css";
 @import "blogs/_blog_details.css";
 @import "blogs/_next_previous.css";
+@import "blogs/_comments.css";
+@import "blogs/_leave_comment.css";
+
 
 
 

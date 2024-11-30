@@ -1,0 +1,40 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  span {
+    cursor: pointer;
+    font-family: "Jost-medium", sans-serif;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    transition: all 0.3s ease-in-out;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    &.active {
+      color: var(--secondary-color);
+      background-color: var(--primary-color);
+    }
+
+    svg {
+      path {
+        transition: all 0.3s ease-in-out;
+        fill: var(--primary-color);
+      }
+    }
+    &:hover {
+      color: var(--secondary-color);
+      background-color: var(--primary-color);
+      svg {
+        path {
+          fill: var(--secondary-color);
+        }
+      }
+    }
+  }
+}
