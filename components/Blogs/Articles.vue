@@ -20,12 +20,9 @@
         </div>
       </div>
       <div class="col-span-1">
-        <div class="filter">
-          <div class="filter-icon">
-            <IconsFilter />
-          </div>
-          <div class="filter-title">{{ $t("Filter") }}</div>
-        </div>
+        <BlogsCategories />
+        <BlogsRecentPosts />
+        <BlogsTags />
       </div>
     </div>
   </section>

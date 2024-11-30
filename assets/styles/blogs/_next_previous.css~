@@ -1,0 +1,44 @@
+.next-previous {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  .next,
+  .previous {
+    cursor: pointer;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    width: 50%;
+    height: 115px;
+    border: 1px solid var(--border-color);
+    .arrow {
+      width: 70px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--third-color);
+      border-radius: 0.8rem;
+      transition: all 0.3s ease-in-out;
+    }
+      &:hover {
+        svg {
+          path {
+            fill: var(--main-color);
+          }
+        }
+      }
+    .info {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      .title {
+        font-family: "Exo-semi-bold", sans-serif;
+        font-size: 1.2rem;
+        text-wrap: pretty;
+      }
+    }
+  }
+}

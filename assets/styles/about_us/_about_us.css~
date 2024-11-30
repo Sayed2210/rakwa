@@ -27,6 +27,33 @@
       }
     }
   }
+  .social {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    background-color: var(--third-color);
+    width: fit-content;
+    margin-inline: auto;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    span {
+      font-family: "Exo-medium", sans-serif;
+      font-size: 0.8rem;
+      color: var(--text-color);
+    }
+    svg {
+      cursor: pointer;
+      path {
+        transition: all 0.3s ease-in-out;
+      }
+      &:hover {
+        path {
+          fill: var(--main-color);
+        }
+      }
+    }
+  }
 }
 
 .our-vision,

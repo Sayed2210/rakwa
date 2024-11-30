@@ -118,7 +118,7 @@
           {{ $t("Copyright") }} &copy; {{ new Date().getFullYear() }}
           {{ $t("Rakwa") }}
         </p>
-        <div class="social">
+        <div class="footer-social">
           <NuxtImg
             src="/Facebook.png"
             alt="Facebook"

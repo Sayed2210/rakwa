@@ -61,7 +61,7 @@
     padding: 1rem 0;
     .copy-right-text {
     }
-    .social {
+    .footer-social {
       display: flex;
       gap: 0.5rem;
       .social-img {

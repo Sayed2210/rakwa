@@ -1,0 +1,36 @@
+.blogs-categories,
+.blogs-recent-posts,
+.blogs-tags{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  .categories-title,
+  .recent-posts-title,
+  .blogs-tags-title {
+    font-family: "Exo-semi-bold", sans-serif;
+    font-size: 1.2rem;
+  }
+
+  .categories-list ,
+  .recent-posts-list{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    .category-item {
+      gap: 0.5rem;
+      cursor: pointer;
+      font-family: "Jost-regular", sans-serif;
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        color: var(--main-color);
+      }
+    }
+  }
+}

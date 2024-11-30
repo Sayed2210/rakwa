@@ -56,6 +56,7 @@
 @import "helpers/_tooltip.css";
 @import "helpers/_not_found.css";
 @import "helpers/_breadcrumb.css";
+@import "helpers/_social.css";
 
 /*privacy*/
 @import "privacy/_privacy.css";
@@ -71,6 +72,14 @@
 
 /*blogs*/
 @import "blogs/_blog_card.css";
+@import "blogs/_blog_categories.css";
+@import "blogs/_recent_posts.css";
+@import "blogs/_blog_tags.css";
+@import "blogs/_blog_details.css";
+@import "blogs/_next_previous.css";
+
+
+
 
 /*fonts*/
 @font-face {
@@ -184,3 +193,5 @@ label {
     font-size: 1.5rem;
   }
 }
+
+

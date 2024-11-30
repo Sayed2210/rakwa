@@ -1,0 +1,35 @@
+.blogs-recent-posts {
+  .recent-posts-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-family: "Jost-regular", sans-serif;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      color: var(--main-color);
+    }
+    .post-img {
+      width: 160px;
+      height: 90px;
+      border-radius: 0.8rem;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .post-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+        .date {
+          font-size: 0.8rem;
+        }
+        .post-title {
+          font-size: 1rem;
+            font-family: "Jost-medium";
+        }
+    }
+  }
+}

@@ -193,6 +193,7 @@ export default {
   Our_values: "Our Values",
   our_team: "Our Team",
   Our_Goal: "Our Goals",
+  Recent_Posts: "Recent Posts",
   All_Articles: "All Articles",
   client_opinions: "Client Opinions",
   Reliable_reviews_from_our_customers_whose_experiences_are_the_best_proof_of_the_quality_of_what_we_offer:
