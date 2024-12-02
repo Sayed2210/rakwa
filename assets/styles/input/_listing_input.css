@@ -1,0 +1,27 @@
+.listing-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  input[type="text"] {
+    padding: 1rem;
+    padding-inline-start: 2.5rem;
+    transition: all 0.3s ease-in-out;
+    border-radius: 3rem;
+    background-color: #fafafa;
+    min-width: 400px;
+    caret-color: var(--text-color);
+    &:focus {
+      outline: none;
+    }
+    &::placeholder {
+      color: var(--border-color);
+    }
+  }
+  .search-icon {
+    position: absolute;
+    left: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+}

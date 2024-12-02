@@ -1,0 +1,36 @@
+.show-map {
+  padding: 2rem;
+  margin-top: 3rem;
+  border-radius: 1rem;
+  background-image: url("../../images/map-bg.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .show-map-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    padding: 1rem 2rem;
+    border: none;
+    cursor: pointer;
+    font-family: "Exo-semi-bold", sans-serif;
+    font-size: 1rem;
+    color: var(--main-color);
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      background-color: var(--main-color);
+      color: #ffffff;
+      svg {
+        path {
+          fill: #ffffff;
+        }
+      }
+    }
+  }
+}

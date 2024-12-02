@@ -39,6 +39,7 @@ export default {
   add: "Add",
   search: "Search",
   filter: "Filter",
+  show_on_map: "Show on map",
   enter_your_email: "Enter your email",
   remember_me: "Remember me",
   dont_have_account: "Don't have an account?",

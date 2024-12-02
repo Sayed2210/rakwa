@@ -14,13 +14,13 @@
       </div>
     </div>
     <div class="previous">
+      <div class="arrow">
+        <IconsArrowRight />
+      </div>
       <div class="info">
         <p>Previous</p>
         <span class="title">Blog</span>
       </div>
-        <div class="arrow">
-          <IconsArrowRight />
-        </div>
     </div>
   </div>
 </template>

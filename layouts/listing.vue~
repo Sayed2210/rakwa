@@ -1,0 +1,11 @@
+<script setup lang="ts"></script>
+
+<template>
+  <main class="website">
+    <ListingLayoutHeader />
+    <slot></slot>
+  </main>
+  <WebsiteLayoutFooter />
+</template>
+
+<style scoped></style>
