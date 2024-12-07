@@ -1,0 +1,82 @@
+.listing-filter {
+  border: 1px solid var(--border-color-2);
+  border-radius: 0.5rem;
+  > div {
+    padding: 1rem;
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--border-color-2);
+    }
+  }
+  .filter-title {
+    font-family: "exo-semi-bold", serif;
+    font-size: 1rem;
+    color: var(--primary-color);
+  }
+  .clear-filter {
+    font-family: "exo-semi-bold", serif;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+
+  .filtered-items,
+  .filter-items {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    .filtered-item {
+      font-family: "exo-semi-bold", serif;
+      font-size: 0.9rem;
+      color: #ffffff;
+      background-color: var(--main-color);
+      padding: 0.5rem 1rem;
+      border-radius: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+    .filter-item {
+      font-family: "exo-semi-bold", serif;
+      font-size: 0.9rem;
+      color: var(--text-color);
+      background-color: #fff;
+      border: 1px solid var(--text-color);
+      padding: 0.5rem 1rem;
+      border-radius: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+  }
+  .range-filter {
+    .range {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: "Jost-regular", serif;
+      color: var(--text-color);
+    }
+    .range-slider {
+      margin: 1rem 0;
+      .p-slider {
+        height: 5px;
+      }
+      .p-slider-handle {
+        border: none;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .p-slider-range {
+        background-color: var(--main-color);
+      }
+    }
+  }
+}
