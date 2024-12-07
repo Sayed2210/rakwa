@@ -39,6 +39,11 @@ export default {
   add: "Add",
   search: "Search",
   filter: "Filter",
+  Filters: "Filters",
+  Try_spelling_checks_or_using_generic_terms_and_here_are_a_similar_listing_like_your_search:
+    "Try spelling checks or using generic terms and here are a similar listing like your search",
+  Sorry_there_are_no_results_of_your_research:
+    "Sorry, there are no results of your research",
   show_on_map: "Show on map",
   enter_your_email: "Enter your email",
   remember_me: "Remember me",

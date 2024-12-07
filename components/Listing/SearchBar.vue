@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Popover from "primevue/popover";
+</script>
 
 <template>
   <section class="search-bar">
@@ -7,17 +9,24 @@
       <span>120 results</span>
     </div>
     <div class="actions">
-      <button type="button" class="dropdown-button">
-        {{ $t("search") }}
-        <span>
-          <IconsArrowDown />
-        </span></button
-      ><button type="button" class="dropdown-button">
-        {{ $t("sort") }}
-        <span>
-          <IconsSort />
-        </span>
-      </button>
+      <div class="dropdown">
+        <button type="button" class="dropdown-button">
+          {{ $t("category") }}
+          <span>
+            <IconsArrowDown />
+          </span>
+        </button>
+        <GlobalDropdown />
+      </div>
+      <div class="dropdown">
+        <button type="button" class="dropdown-button">
+          {{ $t("sort") }}
+          <span>
+            <IconsSort />
+          </span>
+        </button>
+        <GlobalDropdown />
+      </div>
     </div>
   </section>
 </template>

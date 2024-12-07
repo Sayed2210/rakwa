@@ -1,0 +1,16 @@
+<script setup lang="ts">
+
+</script>
+
+<template>
+  <aside class="listing-filter">
+    <div class="title"></div>
+    <h2 class="title">{{$t("Filters")}} </h2>
+
+  </aside>
+
+</template>
+
+<style scoped>
+
+</style>

@@ -52,9 +52,9 @@
       <p class="place-type">
         {{ $t("restaurant") }}
       </p>
-      <h6 class="place-title">
+      <h2 class="place-title">
         {{ $t("Avail Insurance Solutions") }}
-      </h6>
+      </h2>
       <div class="rate flex items-center gap-1">
         <GlobalRate :rateCount="4" />
         <span>(136 {{ $t("rate") }})</span>
