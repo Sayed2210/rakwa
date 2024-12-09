@@ -31,7 +31,9 @@ const props = defineProps<{ showMap?: boolean }>();
           <ListingListCard />
         </div>
       </div>
-      <div class="col-span-1 md:col-span-2" v-if="props.showMap">map</div>
+      <div class="col-span-1 md:col-span-2" v-if="props.showMap">
+        <ListingMap />
+      </div>
     </div>
   </section>
 </template>
