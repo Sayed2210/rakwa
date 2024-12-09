@@ -13,8 +13,8 @@ useSeoMeta({
 
 <template>
   <section class="bookmarks-section">
-<!--    <BookmarksBookmarkCard />-->
-    <BookmarksNoBookmark />
+    <BookmarksBookmarkCard />
+<!--    <BookmarksNoBookmark />-->
   </section>
 </template>
 

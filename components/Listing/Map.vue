@@ -1,8 +1,12 @@
 <script setup lang="ts">
-
 import {useNuxtApp} from "#app";
 
 const { $googleMaps } = useNuxtApp();
+
+const location = ref({
+  latitude: -34.397,
+  longitude: 150.644
+})
 
 const initMap = async () => {
   try {
@@ -65,7 +69,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="map" class="rounded-xl" style="width: 100%; height: 290px"></div>
+  <div id="map" class="rounded-xl" style="width: 100%; height: 480px"></div>
 
 </template>
 

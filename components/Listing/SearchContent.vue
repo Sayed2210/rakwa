@@ -28,10 +28,10 @@ const props = defineProps<{ showMap?: boolean }>();
           <ListingNoListingSearch />
         </div>
         <div class="col-span-1" v-for="i in 12" :key="i">
-          <ListingListCard />
+          <ListingListCard :showMap="showMap" />
         </div>
       </div>
-      <div class="col-span-1 md:col-span-2" v-if="props.showMap">
+      <div class="col-span-1 md:col-span-2" v-if="showMap">
         <ListingMap />
       </div>
     </div>
