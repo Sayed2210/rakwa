@@ -1,0 +1,22 @@
+.img-gallery {
+  display: flex;
+
+  img {
+    height: 307px;
+    width: 107px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border-radius: 0.8rem;
+    margin-right: 0.5rem;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+
+
+    &:hover {
+      width: 307px;
+      -webkit-filter: grayscale(0);
+      filter: grayscale(0);
+    }
+  }
+}

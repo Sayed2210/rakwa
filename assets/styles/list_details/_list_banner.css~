@@ -1,0 +1,42 @@
+.dashboard-banner {
+  .list-info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    @media screen and (max-width: 768px) {
+      margin-top: 1rem;
+    }
+    gap: 1rem;
+    .list-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      h3 {
+        font-size: 1.5rem;
+        font-family: "Exo-semi-bold", serif;
+        color: var(--secondary-color);
+      }
+      span {
+        font-size: 1rem;
+        font-family: "Jost-medium", serif;
+        color: var(--text-color);
+      }
+    }
+    .rate {
+      color: var(--secondary-color);
+    }
+    .list-description {
+      color: var(--secondary-color);
+      width: 50%;
+      @media screen and (max-width: 768px) {
+        width: 100%;
+      }
+    }
+    .location {
+      color: var(--secondary-color);
+      text-decoration: underline;
+      font-family: "Jost-medium", serif;
+      font-size: 0.8rem;
+    }
+  }
+}

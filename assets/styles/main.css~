@@ -55,8 +55,10 @@
 @import "listing/_show_on_map.css";
 @import "listing/_search_bar.css";
 @import "listing/_listing_search_card.css";
-@import "listing/_no_listing_search.=.css";
+@import "listing/_no_listing_search.css";
 @import "listing/_listing_filter.css";
+@import "list_details/_list_banner.css";
+
 
 /*helpers*/
 @import "helpers/_tooltip.css";

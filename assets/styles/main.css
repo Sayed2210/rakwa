@@ -57,6 +57,8 @@
 @import "listing/_listing_search_card.css";
 @import "listing/_no_listing_search.css";
 @import "listing/_listing_filter.css";
+@import "list_details/_list_banner.css";
+@import "list_details/_img_gallery.css";
 
 /*helpers*/
 @import "helpers/_tooltip.css";
