@@ -6,20 +6,32 @@ const images = [
   "/hans-vivek-LcJZ1J9rF10-unsplash.jpg",
   "/40171.png",
 ];
+
+const hoveredImage = ref<string | null>(null);
 </script>
 
 <template>
   <div class="img-gallery">
-    <NuxtImg
+    <div
+      :class="['img', image === images[images.length - 1] ? 'last-img' : '']"
       v-for="image in images"
-      :src="image"
-      alt="listing image"
-      :class="[
-        image === images[0] ? 'main-img' : '',
-      ]"
-      format="webp"
-
-    />
+    >
+      <NuxtImg
+        alt="listing image"
+        :src="image"
+        :class="[
+          image === images[0] && !hoveredImage ? 'main-img' : '',
+          { 'main-img': image === hoveredImage },
+        ]"
+        format="webp"
+        loading="lazy"
+        @mouseover="hoveredImage = image"
+        @mouseleave="hoveredImage = null"
+      />
+      <span class="gallery-icon" v-if="image === images[images.length - 1]">
+        <IconsGallery />
+      </span>
+    </div>
   </div>
 </template>
 

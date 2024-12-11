@@ -59,6 +59,7 @@
 @import "listing/_listing_filter.css";
 @import "list_details/_list_banner.css";
 @import "list_details/_img_gallery.css";
+@import "list_details/_price_range.css";
 
 /*helpers*/
 @import "helpers/_tooltip.css";

@@ -215,4 +215,5 @@ export default {
   From_guiding_you_to_the_perfect_service_to_answering_your_questions_were_committed_to_supporting_you_every_step_of_the_way_Dont_hesitate_to_reach_out_together_we_can_create_meaningful_connections:
     "From guiding you to the perfect service to answering your questions, we’re committed to supporting you every step of the way. Don’t hesitate to reach out—together, we can create meaningful connections.",
   Meet_the_faces_behind_the_magic: "Meet the faces behind the magic",
+  not_verified_claim_this_listing_now: "not verified..! claim this listing now ?",
 };
