@@ -5,6 +5,8 @@
     <div class="grid mt-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       <div class="col-span-1 md:col-span-2">
         <ListingDetailsGallery />
+        <ListingDetailsInfo />
+
       </div>
       <div class="col-span-1">
         <ListingDetailsPriceRange />

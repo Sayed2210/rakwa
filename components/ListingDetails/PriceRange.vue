@@ -8,6 +8,17 @@ import AccordionContent from 'primevue/accordioncontent';
 
 <template>
   <section class="price-range">
+    <div class="prices-range">
+      <div class="start">
+        200 USD
+      </div>
+      <span class="icon">
+        <IconsPriceRange />
+      </span>
+      <div class="end">
+        2000 USD
+      </div>
+    </div>
     <div class="opening-hours">
       <div class="opening-hours-title">
         <div class="flex gap-2 items-center">
@@ -63,6 +74,12 @@ import AccordionContent from 'primevue/accordioncontent';
     </div>
     <div class="no-verified">
       {{ $t("not_verified_claim_this_listing_now") }}
+    </div>
+    <div class="request-sent">
+      <span>
+        <IconsClockYellow />
+      </span>
+      {{ $t("claim_request_sent") }}
     </div>
     <div class="user">
       <div class="user-avatar">

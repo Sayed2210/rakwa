@@ -6,7 +6,9 @@
   --text-color: #909dad;
   --text-color-2: #47586e;
   --text-color-3: #313131;
+  --text-primary-color: #FFF4F1;
   --border-color: #dde2ed;
   --border-color-2: #FFF4F1;
 
 }
+

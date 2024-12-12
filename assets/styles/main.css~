@@ -57,11 +57,12 @@
 @import "listing/_listing_search_card.css";
 @import "listing/_no_listing_search.css";
 @import "listing/_listing_filter.css";
+
+
 @import "list_details/_list_banner.css";
 @import "list_details/_img_gallery.css";
-@import "list_details/_list_details.css";
 @import "list_details/_price_range.css";
-@import "list_details/_book_now.css";
+@import "list_details/_listing_info.css";
 
 /*helpers*/
 @import "helpers/_tooltip.css";
