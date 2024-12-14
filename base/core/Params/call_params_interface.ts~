@@ -1,7 +1,6 @@
 import type Params from '~/base/core/Params/params'
 
 export enum CrudType {
-  FormData = 'formData',
   POST = 'post',
   GET = 'get'
 }

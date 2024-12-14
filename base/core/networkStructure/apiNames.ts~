@@ -9,7 +9,7 @@ class ApiNames {
     return this._instance;
   }
 
-  public baseUrl = "https://doma.zaidia.net/api/";
+  public baseUrl = "https://doma.zaidia.net/";
 
   //auth
   public login = "login";

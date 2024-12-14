@@ -1,15 +1,35 @@
 <script setup lang="ts">
-const userType = ref<string>("");
+import RegisterController from "~/features/RegisterFeature/presentation/controllers/register_controller";
+import RegisterParams from "~/features/RegisterFeature/Core/Params/register_params";
+
+// const userType = ref<string>("");
 const firstName = ref<string>("");
 const lastName = ref<string>("");
 const email = ref<string>("");
 const phone = ref<string>("");
 const password = ref<string>("");
 const confirmPassword = ref<string>("");
+
+
+const registerController = RegisterController.Instance;
+
+const register = async () => {
+  const params = new RegisterParams(
+    firstName.value,
+    lastName.value,
+    email.value,
+    phone.value,
+    password.value,
+    confirmPassword.value,
+    1
+  );
+  await registerController.Register(params);
+};
+
 </script>
 
 <template>
-  <div class="login-form">
+  <form @submit.prevent="register" class="login-form">
     <NuxtLink to="/" class="back-link">
       <svg
         width="9"
@@ -31,44 +51,45 @@ const confirmPassword = ref<string>("");
     <h1 class="main-title">
       {{ $t("welcome_in") }} <span class="rakwa">Rakwa</span> !
     </h1>
-    <div v-if="!userType">
-      <p class="mb-4">
-        {{
-          $t(
-            "Dont_worry_happens_to_all_of_us_Enter_your_email_below_to_recover_your_password",
-          )
-        }}
-      </p>
-      <div class="user-type flex gap-4 items-center mb-4">
-        <div class="user-type-item">
-          <input
-            type="radio"
-            name="user-type"
-            id="user-type-1"
-            value="user"
-            v-model="userType"
-          />
-          <label for="user-type-1">
-            <NuxtImg src="/owner.png" alt="guest" format="webp" />
-            <span>{{ $t("owner") }}</span>
-          </label>
-        </div>
-        <div class="user-type-item">
-          <input
-            type="radio"
-            name="user-type"
-            id="user-type-2"
-            value="business"
-            v-model="userType"
-          />
-          <label for="user-type-2">
-            <NuxtImg src="/guest.png" alt="guest" format="webp" />
-            <span>{{ $t("guest") }}</span>
-          </label>
-        </div>
-      </div>
-    </div>
-    <div v-else>
+<!--    <div v-if="!userType">-->
+<!--      <p class="mb-4">-->
+<!--        {{-->
+<!--          $t(-->
+<!--            "Dont_worry_happens_to_all_of_us_Enter_your_email_below_to_recover_your_password",-->
+<!--          )-->
+<!--        }}-->
+<!--      </p>-->
+<!--      <div class="user-type flex gap-4 items-center mb-4">-->
+<!--        <div class="user-type-item">-->
+<!--          <input-->
+<!--            type="radio"-->
+<!--            name="user-type"-->
+<!--            id="user-type-1"-->
+<!--            value="user"-->
+<!--            v-model="userType"-->
+<!--          />-->
+<!--          <label for="user-type-1">-->
+<!--            <NuxtImg src="/owner.png" alt="guest" format="webp" />-->
+<!--            <span>{{ $t("owner") }}</span>-->
+<!--          </label>-->
+<!--        </div>-->
+<!--        <div class="user-type-item">-->
+<!--          <input-->
+<!--            type="radio"-->
+<!--            name="user-type"-->
+<!--            id="user-type-2"-->
+<!--            value="business"-->
+<!--            v-model="userType"-->
+<!--          />-->
+<!--          <label for="user-type-2">-->
+<!--            <NuxtImg src="/guest.png" alt="guest" format="webp" />-->
+<!--            <span>{{ $t("guest") }}</span>-->
+<!--          </label>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+    <div >
+<!--      v-else-->
       <p class="mb-4">
         {{
           $t("Lets_get_you_all_set_up_so_you_can_access_your_personal_account")
@@ -148,7 +169,7 @@ const confirmPassword = ref<string>("");
     </div>
 
     <div class="login-button-wrapper mb-6 mt-6">
-      <button class="primary-button" aria-label="submit">
+      <button type="submit" class="primary-button" aria-label="submit">
         {{ $t("submit") }}
       </button>
     </div>
@@ -160,7 +181,7 @@ const confirmPassword = ref<string>("");
         </NuxtLink>
       </p>
     </div>
-  </div>
+  </form>
 </template>
 
 <style scoped></style>

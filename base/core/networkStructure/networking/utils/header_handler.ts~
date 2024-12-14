@@ -1,7 +1,7 @@
 class HeaderHandler {
   private static instance: HeaderHandler;
 
-  private userStore = useUserStore();
+  private userStore = useAuthStore();
 
 
 
@@ -16,14 +16,14 @@ class HeaderHandler {
 
   getHeader(isAuth = false): { [key: string]: string } {
     const headers: { [key: string]: string } = {};
-    const userStore = this.userStore; // Initialize the store here
-
-    if (userStore?.user !== null) {
-      const token: string | undefined = userStore?.user?.apiToken;
-      if (isAuth) {
-        headers['Authorization'] = 'Bearer ' + token;
-      }
-    }
+    // const userStore = this.userStore; // Initialize the store here
+    //
+    // if (userStore?.user !== null) {
+    //   const token: string | undefined = userStore?.user?.apiToken;
+    //   if (isAuth) {
+    //     headers['Authorization'] = 'Bearer ' + token;
+    //   }
+    // }
 
     const savedLocale = localStorage.getItem('lang');
     if (savedLocale) {
