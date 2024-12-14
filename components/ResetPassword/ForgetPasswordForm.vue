@@ -1,9 +1,18 @@
 <script setup lang="ts">
+import SentCodeController from "~/features/ResetPasswordFeature/presentation/controllers/sent_code_controller";
+import SentCodeParams from "~/features/ResetPasswordFeature/Core/Params/sent_code_params";
+
 const email = ref<string>("");
+
+const sentCodeController = SentCodeController.getInstance();
+
+const sentCode = async () => {
+  await sentCodeController.sentCode(new SentCodeParams(email.value));
+};
 </script>
 
 <template>
-  <div class="login-form">
+  <form @submit.prevent="sentCode" class="login-form">
     <NuxtLink to="/" class="back-link">
       <svg
         width="9"
@@ -45,7 +54,7 @@ const email = ref<string>("");
         {{ $t("submit") }}
       </button>
     </div>
-  </div>
+  </form>
 </template>
 
 <style scoped></style>

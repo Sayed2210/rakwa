@@ -20,7 +20,7 @@ export default class ListingParamsBuilder {
   private constructor() {}
 
   // Static method to get the singleton instance
-  public static get instance(): ListingParamsBuilder {
+  public static get Instance(): ListingParamsBuilder {
     if (!ListingParamsBuilder._instance) {
       ListingParamsBuilder._instance = new ListingParamsBuilder();
     }

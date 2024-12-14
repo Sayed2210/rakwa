@@ -39,6 +39,8 @@ export default abstract class RepoInterface<T> {
     return ResponseType.withData
   }
 
+
+
   abstract onParse(data: any): T
 
   get hasPagination(): boolean {
@@ -56,9 +58,9 @@ export default abstract class RepoInterface<T> {
               httpResponse.data.status) ??
           true
       if (checkResponse) {
-        if (this.responseType === ResponseType.withData) {
+        if (this.responseType === ResponseType.withoutData) {
           return new DataSuccess<T>({
-            data: this.onParse(httpResponse.data.data) ?? this.onParse(httpResponse.data),
+            data: this.onParse(httpResponse.data?.data) ?? this.onParse(httpResponse.data),
             message: httpResponse.data.message,
           })
         }

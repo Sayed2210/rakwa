@@ -65,7 +65,7 @@ const login = async () => {
           {{ $t("remember_me") }}
         </label>
       </div>
-      <NuxtLink to="/forget-password" class="forget-password-link"
+      <NuxtLink to="/auth/forget-password" class="forget-password-link"
         >{{ $t("forget_password") }}
       </NuxtLink>
     </div>
