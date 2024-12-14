@@ -63,6 +63,7 @@
 @import "list_details/_img_gallery.css";
 @import "list_details/_price_range.css";
 @import "list_details/_listing_info.css";
+@import "list_details/_list_reviews.css";
 
 /*helpers*/
 @import "helpers/_tooltip.css";
@@ -97,6 +98,7 @@
 /*dialogs*/
 @import "dialogs/_main_dialog.css";
 @import "dialogs/_loader_dialogs.css";
+@import "dialogs/_add_rate_dialog.css";
 
 /*fonts*/
 @font-face {

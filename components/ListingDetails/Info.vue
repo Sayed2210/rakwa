@@ -16,7 +16,7 @@ const initMap = async () => {
         document.getElementById("map") as HTMLElement,
         {
           center: { lat: location.value.latitude, lng: location.value.longitude },
-          zoom: 8,
+          zoom: 14,
         },
     );
     const marker = new google.maps.Marker({
