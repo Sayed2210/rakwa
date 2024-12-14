@@ -58,7 +58,7 @@
 @import "listing/_no_listing_search.css";
 @import "listing/_listing_filter.css";
 
-
+/*list details*/
 @import "list_details/_list_banner.css";
 @import "list_details/_img_gallery.css";
 @import "list_details/_price_range.css";
@@ -93,6 +93,10 @@
 @import "blogs/_next_previous.css";
 @import "blogs/_comments.css";
 @import "blogs/_leave_comment.css";
+
+/*dialogs*/
+@import "dialogs/_main_dialog.css";
+
 
 /*fonts*/
 @font-face {

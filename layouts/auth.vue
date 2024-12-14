@@ -4,6 +4,7 @@
   <main class="auth">
     <AuthLayoutHeader />
     <slot></slot>
+    <GlobalMainDialog />
   </main>
 </template>
 
