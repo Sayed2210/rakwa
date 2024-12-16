@@ -1,4 +1,5 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
 
 <template>
   <main class="dashboard">
@@ -10,6 +11,8 @@
         <slot />
       </div>
     </div>
+    <GlobalMainDialog />
+
   </main>
 </template>
 

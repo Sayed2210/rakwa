@@ -2,6 +2,8 @@
 import LoginParams from "~/features/LoginFeature/Core/Params/login_params";
 import LoginController from "~/features/LoginFeature/presentation/controllers/login_controller";
 
+
+const router = useRouter()
 const email = ref<string>("");
 const password = ref<string>("");
 
@@ -9,7 +11,7 @@ const loginController = LoginController.getInstance();
 
 const login = async () => {
   await loginController.login(
-      new LoginParams(email.value, password.value, "")
+      new LoginParams(email.value, password.value, ""), router
   );
 };
 </script>

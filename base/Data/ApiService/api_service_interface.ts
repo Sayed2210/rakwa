@@ -83,10 +83,11 @@ export default abstract class ServicesInterface {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const statusCode = error.response?.status;
+        const message = error.response?.data.message;
         switch (statusCode) {
           case 400:
-            console.error(`BadRequestException >> ${statusCode}`);
-            throw new BadRequestException("Bad request");
+            console.error(`BadRequestException >> ${message}`);
+            throw new BadRequestException(message);
           case 403:
             console.error(`ForbiddenException >> ${statusCode}`);
             throw new ForbiddenException("Forbidden");
@@ -107,7 +108,7 @@ export default abstract class ServicesInterface {
             throw new ConflictException("Conflict");
           case 500:
             console.error(`InternalServerException >> ${statusCode}`);
-            throw new InternalServerException("Internal server error");
+            throw new InternalServerException(message ?? "Internal server error");
           case 501:
             console.error(`NotImplementedException >> ${statusCode}`);
             throw new NotImplementedException("Not implemented");
@@ -148,6 +149,6 @@ export default abstract class ServicesInterface {
   }
 
   abstract applyService(
-    params: Params,
+    params: Params | {},
   ): Promise<{ data: any; statusCode: number }>;
 }

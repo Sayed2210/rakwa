@@ -34,8 +34,8 @@ const renderBullet = (index: number, className: string): string => {
     <!--    </SwiperSlide>-->
     <SwiperSlide>
       <div class="slide">
-        <img
-          src="~/assets/images/login.png"
+        <NuxtImg
+          src="/Group-1.png"
           alt="login swiper image"
           class="slide-img"
         />
@@ -43,8 +43,8 @@ const renderBullet = (index: number, className: string): string => {
     </SwiperSlide>
     <SwiperSlide>
       <div class="slide">
-        <img
-          src="~/assets/images/login-2.png"
+        <NuxtImg
+          src="/Group-3.png"
           alt="login swiper image"
           class="slide-img"
         />

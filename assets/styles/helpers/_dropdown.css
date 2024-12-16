@@ -1,4 +1,4 @@
-.dropdown {
+.dropdown, .dropdown-links {
   position: relative;
   padding-bottom: 0.5rem;
   .dropdown-trigger {

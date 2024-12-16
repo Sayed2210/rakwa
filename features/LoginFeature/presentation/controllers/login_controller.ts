@@ -3,7 +3,6 @@ import UserModel from "~/features/LoginFeature/Data/models/user_model";
 import type { DataState } from "~/base/core/networkStructure/Resources/dataState/data_state";
 import type Params from "~/base/core/Params/params";
 import LoginUseCase from "~/features/LoginFeature/Domain/use_case/login_use_case";
-import { useRouter } from "vue-router";
 import { useUserStore } from "~/stores/user";
 import errorImage from "~/assets/images/error.png";
 import successImage from "~/assets/images/success-dialog.png";
@@ -23,7 +22,7 @@ export default class LoginController extends ControllerInterface<UserModel> {
     return this.instance;
   }
 
-  async login(params: Params) {
+  async login(params: Params, router: any) {
     // useLoaderStore().setLoadingWithDialog();
     try {
       const router = useRouter();
@@ -40,10 +39,11 @@ export default class LoginController extends ControllerInterface<UserModel> {
         await router.push("/");
         const userStore = useUserStore();
         if (this.state.value.data) {
+          console.log(this.state.value.data)
           userStore.setUser(this.state.value.data);
-        } else {
-          throw new Error(this.state.value.error?.title);
         }
+      }else {
+        throw new Error(this.state.value.error?.title);
       }
       // useLoaderStore().endLoadingWithDialog();
     } catch (error: any) {

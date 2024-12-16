@@ -1,9 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
 
 <template>
   <main class="website">
     <ListingLayoutHeader />
     <slot></slot>
+    <GlobalMainDialog />
+
     <WebsiteLayoutFooter />
   </main>
 </template>

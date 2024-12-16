@@ -1,42 +1,47 @@
 import { ControllerInterface } from "~/base/persention/Controller/controller_interface";
-import UserModel from "~/features/LoginFeature/Data/models/user_model";
+import UserModel from "~/features/UpdateProfileFeature/Data/models/user_model";
 import type { DataState } from "~/base/core/networkStructure/Resources/dataState/data_state";
 import type Params from "~/base/core/Params/params";
-import LoginUseCase from "~/features/LoginFeature/Domain/use_case/login_use_case";
-import { useRouter } from "vue-router";
+import UpdateProfileUseCase from "~/features/UpdateProfileFeature/Domain/use_case/update_profile_use_case";
 import { useUserStore } from "~/stores/user";
 import errorImage from "~/assets/images/error.png";
+import successImage from "~/assets/images/success-dialog.png";
 import DialogSelector from "~/base/persention/Dialogs/dialog_selector";
 
-export default class LoginController extends ControllerInterface<UserModel> {
-  private static instance: LoginController;
+export default class UpdateProfileController extends ControllerInterface<UserModel> {
+  private static instance: UpdateProfileController;
   private constructor() {
     super();
   }
-  private LoginUseCase = new LoginUseCase();
+  private UpdateProfileUseCase = new UpdateProfileUseCase();
 
   static getInstance() {
     if (!this.instance) {
-      this.instance = new LoginController();
+      this.instance = new UpdateProfileController();
     }
     return this.instance;
   }
 
-  async login(params: Params) {
+  async updateProfile(params: Params, ) {
     // useLoaderStore().setLoadingWithDialog();
     try {
-      const router = useRouter();
       const dataState: DataState<UserModel> =
-        await this.LoginUseCase.call(params);
+        await this.UpdateProfileUseCase.call(params);
       this.setState(dataState);
       if (this.isDataSuccess()) {
-        await router.push("/");
+        DialogSelector.instance.successDialog.openDialog({
+          dialogName: "dialog",
+          titleContent: "UpdateProfile Success",
+          imageElement: successImage,
+          messageContent: null,
+        });
         const userStore = useUserStore();
         if (this.state.value.data) {
+          console.log(this.state.value.data)
           userStore.setUser(this.state.value.data);
-        } else {
-          throw new Error(this.state.value.error?.title);
         }
+      }else {
+        throw new Error(this.state.value.error?.title);
       }
       // useLoaderStore().endLoadingWithDialog();
     } catch (error: any) {

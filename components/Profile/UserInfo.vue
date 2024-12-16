@@ -1,7 +1,73 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+
+import UpdateProfileController
+  from "~/features/UpdateProfileFeature/presentation/controllers/update_profile_controller";
+import UpdateProfileParams from "~/features/UpdateProfileFeature/Core/Params/update_profile_params";
+//state
+const firstName = ref<string>("");
+const lastName = ref<string>("");
+const name = ref<string>("");
+const email = ref<string>("");
+const phone = ref<string>("");
+const type = ref<number>(0);
+const aboutMe = ref<string>("");
+const sendNotifications = ref<boolean>(false);
+const facebook = ref<string>("");
+const x = ref<string>("");
+const instagram = ref<string>("");
+const youtube = ref<string>("");
+const linkedin = ref<string>("");
+const whatsapp = ref<string>("");
+
+//controller
+const updateProfileController = UpdateProfileController.getInstance();
+
+const updateProfile = async () => {
+  await updateProfileController.updateProfile(
+      new UpdateProfileParams(
+          firstName.value,
+          lastName.value,
+          name.value,
+          email.value,
+          phone.value,
+          type.value,
+          aboutMe.value,
+          sendNotifications.value,
+          facebook.value,
+          x.value,
+          instagram.value,
+          youtube.value,
+          linkedin.value,
+          whatsapp.value
+      )
+  );
+}
+
+const user = useUserStore().user;
+
+onMounted(() => {
+  if (user) {
+    firstName.value = user.name;
+    lastName.value = user.name;
+    name.value = user.name;
+    email.value = user.email;
+    phone.value = user.phone;
+    type.value = user.type;
+    aboutMe.value = user.aboutMe;
+    sendNotifications.value = user.sendNotifications;
+    facebook.value = user.facebook;
+    x.value = user.x;
+    instagram.value = user.instagram;
+    youtube.value = user.youtube;
+    linkedin.value = user.linkedin;
+    whatsapp.value = user.whatsapp;
+  }
+
+})
+</script>
 
 <template>
-  <div class="grid grid-cols-1 md:grid-cols-2 mt-12 gap-4">
+  <form @submit.prevent="updateProfile" class="grid grid-cols-1 md:grid-cols-2 mt-12 gap-4">
     <div class="col-span-1">
       <div class="input-wrapper">
         <label class="input-label" for="first_name">First Name</label>
@@ -9,6 +75,7 @@
           class="input"
           type="text"
           id="first_name"
+          v-model="firstName"
           placeholder="Enter your First Name"
         />
       </div>
@@ -20,6 +87,7 @@
           class="input"
           type="text"
           id="last_name"
+          v-model="lastName"
           placeholder="Enter your Last Name"
         />
       </div>
@@ -31,6 +99,7 @@
           class="input"
           type="text"
           id="email"
+          v-model="email"
           placeholder="Enter your email"
         />
       </div>
@@ -42,6 +111,7 @@
           class="input"
           type="text"
           id="phone"
+          v-model="phone"
           placeholder="Enter your phone"
         />
       </div>
@@ -55,6 +125,7 @@
           class="input"
           type="text"
           id="display_name"
+          v-model="displayName"
           placeholder="Enter your phone"
         />
       </div>
@@ -66,6 +137,7 @@
           class="input"
           type="text"
           id="about_me"
+          v-model="aboutMe"
           placeholder="Enter your information"
         />
       </div>
@@ -76,7 +148,7 @@
           $t("turn_off_notification")
         }}</label>
         <div class="switch">
-          <input type="checkbox" id="notification" />
+          <input type="checkbox" id="notification" value="true" />
           <label for="notification" class="slider"></label>
         </div>
       </div>
@@ -115,6 +187,7 @@
           class="input"
           type="text"
           id="whatsapp"
+          v-model="whatsapp"
           placeholder="Enter your link"
         />
       </div>
@@ -142,6 +215,7 @@
           class="input"
           type="text"
           id="twitter"
+          v-model="twitter"
           placeholder="Enter your link"
         />
       </div>
@@ -177,6 +251,7 @@
           class="input"
           type="text"
           id="linkedin"
+          v-model="linkedin"
           placeholder="Enter your link"
         />
       </div>
@@ -215,6 +290,7 @@
           class="input"
           type="text"
           id="facebook"
+          v-model="facebook"
           placeholder="Enter your link"
         />
       </div>
@@ -265,6 +341,7 @@
           class="input"
           type="text"
           id="instagram"
+          v-model="instagram"
           placeholder="Enter your link"
         />
       </div>
@@ -292,6 +369,7 @@
           class="input"
           type="text"
           id="youtube"
+          v-model="youtube"
           placeholder="Enter your link"
         />
       </div>
@@ -306,7 +384,7 @@
         </button>
       </div>
     </div>
-  </div>
+  </form>
 </template>
 
 <style scoped></style>

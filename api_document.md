@@ -809,6 +809,7 @@
     "limit": 10
   }
   ```
+
   - **Method:** `GET or POST`
     ```json
     [
@@ -854,7 +855,6 @@
 
 - **Response Status Code:** `200`
 - **Response Message:** `Review deleted successfully.`
-  
 
 - **Endpoint:** `other_reviews`
 - **Method:** `GET or POST`
@@ -870,4 +870,230 @@
 - **Response Status Code:** `200`
 - **Response Message:** `Other reviews fetched successfully.`
 
+- **Endpoint:** `add_listing`
+- **Method:** `POST`
 
+  - **Params:**
+
+    ```json
+    {
+      "basic_information": {
+        "image": "https://cdn_icons_png.flaticon.com/512/149/149071.png",
+        "title": "Listing 1",
+        "keywords": "keyword1, keyword2, keyword3",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "category_id": 1,
+        "service_id": 1,
+        "minimum_price": 100,
+        "maximum_price": 200
+      },
+      "location_information": {
+        "address": "123 Main St",
+        "friendly_address": "Anytown",
+        "google_map_id": "US",
+        "region": "USA",
+        "lat": "12345",
+        "lng": "67890"
+      },
+      "attachments": {
+        "images": [
+          {
+            "image": "https://cdn_icons_png.flaticon.com/512/149/149071.png"
+          },
+          {
+            "image": "https://cdn_icons_png.flaticon.com/512/149/149071.png"
+          }
+        ],
+        "is_contact_widget": true,
+        "whatsapp_number": "1234567890",
+        "twitter_link": "https://twitter.com/example",
+        "facebook_link": "https://www.facebook.com/example",
+        "instagram_link": "https://www.instagram.com/example",
+        "youtube_link": "https://www.youtube.com/example",
+        "linkedin_link": "https://www.linkedin.com/example"
+      },
+      "opening_hours": [
+        {
+          "day_id": 1,
+          "opening_hours": [
+            {
+              "opening_time": "09:00",
+              "closing_time": "17:00"
+            }
+          ]
+        },
+        {
+          "day_id": 2,
+          "opening_hours": [
+            {
+              "opening_time": "09:00",
+              "closing_time": "17:00"
+            }
+          ]
+        },
+        {
+          "day_id": 3,
+          "opening_hours": [
+            {
+              "opening_time": "09:00",
+              "closing_time": "17:00"
+            }
+          ]
+        },
+        {
+          "day_id": 4,
+          "opening_hours": [
+            {
+              "opening_time": "09:00",
+              "closing_time": "17:00"
+            }
+          ]
+        },
+      ]
+    }
+    ```
+
+- **Response Status Code:** `200`
+- **Response Message:** `Listing added successfully.`
+
+- **Endpoint:** `update_listing`
+- **Method:** `POST`
+
+  - **Params:**
+
+    ```json
+    {
+        listing_id: 1,
+    "basic_information": {
+        "image": "https://cdn_icons_png.flaticon.com/512/149/149071.png",
+        "title": "Listing 1",
+        "keywords": "keyword1, keyword2, keyword3",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "category_id": 1,
+        "service_id": 1,
+        "minimum_price": 100,
+        "maximum_price": 200
+      },
+      "location_information": {
+        "address": "123 Main St",
+        "friendly_address": "Anytown",
+        "google_map_id": "US",
+        "region": "USA",
+        "lat": "12345",
+        "lng": "67890"
+      },
+      "attachments": {
+        "images": [
+          {
+            "image": "https://cdn_icons_png.flaticon.com/512/149/149071.png"
+          },
+          {
+            "image": "https://cdn_icons_png.flaticon.com/512/149/149071.png"
+          }
+        ],
+        "is_contact_widget": true,
+        "whatsapp_number": "1234567890",
+        "twitter_link": "https://twitter.com/example",
+        "facebook_link": "https://www.facebook.com/example",
+        "instagram_link": "https://www.instagram.com/example",
+        "youtube_link": "https://www.youtube.com/example",
+        "linkedin_link": "https://www.linkedin.com/example"
+      },
+      "opening_hours": [
+        {
+          "day_id": 1,
+          "opening_hours": [
+            {
+              "opening_time": "09:00",
+              "closing_time": "17:00"
+            }
+          ]
+        },
+        {
+          "day_id": 2,
+          "opening_hours": [
+            {
+              "opening_time": "09:00",
+              "closing_time": "17:00"
+            }
+          ]
+        },
+        {
+          "day_id": 3,
+          "opening_hours": [
+            {
+              "opening_time": "09:00",
+              "closing_time": "17:00"
+            }
+          ]
+        },
+        {
+          "day_id": 4,
+          "opening_hours": [
+            {
+              "opening_time": "09:00",
+              "closing_time": "17:00"
+            }
+          ]
+        },
+      ]
+    }
+    ```
+
+- **Response Status Code:** `200`
+- **Response Message:** `Listing updated successfully.`
+
+- **Endpoint:** `search_listing`
+- **Method:** `POST`
+- **Params:**
+
+  ```json
+  {
+    "page": 1,
+    "limit": 10,
+    "keyword": "keyword1"
+  }
+  ```
+  
+- **Response:**
+  ```json
+  [
+    {
+        "id": 1,
+      "name": "Listing 1",
+      "image": "https://cdn_icons_png.flaticon.com/512/149/149071.png"
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      "address": "123 Main St, Anytown, USA",
+      "views": 10
+    }
+  {
+        "id": 1,
+      "name": "Listing 1",
+      "image": "https://cdn_icons_png.flaticon.com/512/149/149071.png"
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      "address": "123 Main St, Anytown, USA",
+      "views": 10
+    }
+  ]
+  ```
+
+- **Response Status Code:** `200`
+- **Response Message:** `Listings fetched successfully.`
+
+- **Endpoint:** `filter_listings`
+- **Method:** `POST`
+  - **Params:**
+
+    ```json
+    {
+        "status": "open",
+        "state": "state",
+        "rate_count": 5,
+        "distance": [10, 50],
+        "price": [100, 200],
+        "address": 1,
+    }
+    ```
+
+- **Response Status Code:** `200`
+- **Response Message:** `Listings fetched successfully.`

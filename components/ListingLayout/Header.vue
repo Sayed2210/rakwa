@@ -1,4 +1,15 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import LogoutController from "~/features/LogoutFeature/presentation/controllers/logout_controller";
+
+const user = useUserStore();
+const router = useRouter();
+
+const logoutController = LogoutController.getInstance();
+
+const logout = async () => {
+  await logoutController.Logout(router);
+};
+</script>
 
 <template>
   <header class="header">
@@ -16,17 +27,17 @@
           />
         </div>
         <div class="user">
-          <!--     <div class="not-auth">-->
-          <!--        <NuxtLink to="/auth/login" class="login-link">-->
-          <!--        {{ $t("login") }}-->
-          <!--      </NuxtLink>-->
-          <!--      <span>/</span>-->
-          <!--     <NuxtLink to="/auth/register" class="register-link">-->
-          <!--    {{ $t("register") }}-->
-          <!--  </NuxtLink>-->
-          <!-- <NuxtImg src="/user.png" alt="user" format="webp" />-->
-          <!--</div>-->
-          <div class="auth">
+          <div class="not-auth" v-if="!user.isAuth">
+            <NuxtLink to="/auth/login" class="login-link">
+              {{ $t("login") }}
+            </NuxtLink>
+            <span>/</span>
+            <NuxtLink to="/auth/register" class="register-link">
+              {{ $t("register") }}
+            </NuxtLink>
+            <NuxtImg src="/user.png" alt="user" format="webp" />
+          </div>
+          <div class="auth" v-else>
             <svg
               width="8"
               height="5"
@@ -39,10 +50,10 @@
                 fill="black"
               />
             </svg>
-            <div class="info">
-              <span class="name">Elsayed</span>
-              <span class="role">Admin</span>
-            </div>
+              <div class="info">
+                <span class="name">{{ user.user?.name }}</span>
+                <span class="role">{{ user.user?.type }}</span>
+              </div>
             <NuxtImg src="/user-photo.png" alt="user" class="user-photo" />
             <div class="dropdown-content">
               <ul>
@@ -119,10 +130,10 @@
                   </NuxtLink>
                 </li>
                 <li class="dropdown-item">
-                  <NuxtLink to="/logout">
-                    <span>{{ $t("logout") }}</span>
+                  <button type="button" @click="logout" to="/logout">
                     <NuxtImg src="/login.svg" alt="logout" format="webp" />
-                  </NuxtLink>
+                    <span>{{ $t("logout") }}</span>
+                  </button>
                 </li>
               </ul>
             </div>

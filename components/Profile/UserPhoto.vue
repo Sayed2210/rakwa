@@ -1,10 +1,20 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const image = ref<string>("");
+
+const user = useUserStore().user;
+
+onMounted(() => {
+  if (user) {
+    image.value = user.image;
+  }
+})
+</script>
 
 <template>
   <div class="user-photo">
     <div class="img">
       <NuxtImg
-        src="/user-photo-2.png"
+        :src="image"
         alt="user"
         class="user img"
         format="webp"

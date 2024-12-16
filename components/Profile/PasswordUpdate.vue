@@ -1,7 +1,25 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import ChangePasswordController from "~/features/ChangePasswordFeature/presentation/controllers/change_password_controller";
+import ChangePasswordParams from "~/features/ChangePasswordFeature/Core/Params/change_password_params";
+
+const currentPassword = ref<string>("");
+const newPassword = ref<string>("");
+const newPasswordConfirmation = ref<string>("");
+const changePasswordController = ChangePasswordController.getInstance();
+
+const changePassword = async () => {
+  await changePasswordController.changePassword(
+    new ChangePasswordParams(
+      currentPassword.value,
+      newPassword.value,
+      newPasswordConfirmation.value,
+    ),
+  );
+};
+</script>
 
 <template>
-  <div class="grid grid-cols-1 gap-4 mt-12">
+  <form @submit.prevent="changePassword" class="grid grid-cols-1 gap-4 mt-12">
     <div class="col-span-1">
       <div class="input-wrapper">
         <label class="input-label" for="current_password">{{
@@ -11,6 +29,7 @@
           class="input"
           type="password"
           id="current_password"
+          v-model="currentPassword"
           placeholder="Enter your Current password"
         />
       </div>
@@ -24,6 +43,7 @@
           class="input"
           type="password"
           id="new_password"
+          v-model="newPassword"
           placeholder="Enter your new password"
         />
       </div>
@@ -37,6 +57,7 @@
           class="input"
           type="password"
           id="new_password_confirm"
+          v-model="newPasswordConfirmation"
           placeholder="Enter your new password confirmation"
         />
       </div>
@@ -59,7 +80,7 @@
         </button>
       </div>
     </div>
-  </div>
+  </form>
 </template>
 
 <style scoped></style>
