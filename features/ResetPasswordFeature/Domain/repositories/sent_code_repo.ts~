@@ -16,10 +16,6 @@ class SentCodeRepo extends RepoInterface<SentCodeModel> {
     return this.instance
   }
 
-  get responseType(): ResponseType {
-    return ResponseType.withoutData
-  }
-
   onParse(data: any): SentCodeModel {
     return SentCodeModel.fromMap(data);
   }
