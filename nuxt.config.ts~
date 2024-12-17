@@ -4,6 +4,11 @@ import Aura from "@primevue/themes/aura";
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
+  runtimeConfig: {
+    public: {
+      baseURL: 'https://api.example.com', // Public base URL
+    },
+  },
   app: {
     head: {
       charset: "utf-8",
@@ -37,7 +42,7 @@ export default defineNuxtConfig({
     format: ["webp"],
     dir: "assets/images",
   },
-  css: ["~/assets/styles/main.css"],
+  css: ["~/assets/styles/main.min.css"],
   i18n: {
     strategy: "no_prefix",
     defaultLocale: "en",

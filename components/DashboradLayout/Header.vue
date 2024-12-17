@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import LogoutController from "~/features/LogoutFeature/presentation/controllers/logout_controller";
+import Popover from "primevue/popover";
+import AccordionHeader from "primevue/accordionheader";
+import Accordion from "primevue/accordion";
+import AccordionContent from "primevue/accordioncontent";
+import AccordionPanel from "primevue/accordionpanel";
 
 const user = useUserStore();
+const op = ref();
 
 const router = useRouter();
 
@@ -10,6 +16,20 @@ const logoutController = LogoutController.getInstance();
 const logout = async () => {
   await logoutController.Logout(router);
 };
+
+const toggle = (event) => {
+  op.value.toggle(event);
+}
+
+const { data: categories } = await useAsyncData("categories",
+    async () => {
+      const response = await $fetch<{ data: Category[]; message: string; status: number }>(
+          `${BASE_URL}/categories`,
+          { method: "POST" }
+      );
+      return response.data; // Extract only the `data` part
+    }
+);
 </script>
 
 <template>
@@ -48,25 +68,128 @@ const logout = async () => {
             </span>
             <div class="dropdown-content">
               <ul class="flex flex-col gap-2">
-                <li>
-                  <NuxtLink to="/categories/1">{{ $t("category_1") }}</NuxtLink>
-                </li>
-                <li>
-                  <NuxtLink to="/categories/2">{{ $t("category_2") }}</NuxtLink>
-                </li>
-                <li>
-                  <NuxtLink to="/categories/3">{{ $t("category_3") }}</NuxtLink>
-                </li>
-                <li>
-                  <NuxtLink to="/categories/3">{{ $t("category_3") }}</NuxtLink>
-                </li>
-                <li>
-                  <NuxtLink to="/categories/3">{{ $t("category_3") }}</NuxtLink>
+                <li v-for="category in categories">
+                  <NuxtLink :to="`/categories/${category.id}`">{{ category.name }}</NuxtLink>
                 </li>
               </ul>
             </div>
           </div>
         </div>
+        <div class="dropdown-links">
+          <div class="dropdown-trigger" @click="toggle">
+            <IconsMore />
+          </div>
+          <Popover ref="op">
+            <span class="option-label">
+              {{ $t("links") }}
+            </span>
+            <div class="links-mobile">
+              <NuxtLink class="link" to="/">Home</NuxtLink>
+              <NuxtLink class="link" to="/about-us">About Us</NuxtLink>
+              <NuxtLink class="link" to="/blogs">Blog</NuxtLink>
+              <Accordion>
+                <AccordionPanel value="0">
+                  <AccordionHeader>
+                    <h4 class="accord-title">Categories</h4>
+                  </AccordionHeader>
+                  <AccordionContent>
+                    <ul class="flex flex-col gap-2">
+                      <li v-for="category in categories">
+                        <NuxtLink :to="`/categories/${category.id}`">{{ category.name }}</NuxtLink>
+                      </li>
+                    </ul>
+                  </AccordionContent>
+                </AccordionPanel>
+              </Accordion>
+            </div>
+            <span class="option-label">
+              {{ $t("dashboard") }}
+            </span>
+            <div class="links-mobile">
+              <ul>
+                <li class="dropdown-item">
+                  <NuxtLink to="/dashboard/profile">
+                    <span>{{ $t("profile_settings") }}</span
+                    ><NuxtImg
+                      src="/setting.png"
+                      alt="profile settings"
+                      format="webp"
+                  />
+                  </NuxtLink>
+                </li>
+                <li class="dropdown-item">
+                  <NuxtLink to="/dashboard/add-listing">
+                    <span>{{ $t("add_listing") }}</span
+                    ><NuxtImg
+                      src="/add.png"
+                      alt="add listing settings"
+                      format="webp"
+                  />
+                  </NuxtLink>
+                </li>
+                <li class="dropdown-item">
+                  <NuxtLink to="/bookings">
+                    <span>{{ $t("my_bookings") }}</span
+                    ><NuxtImg src="/task.png" alt="my bookings" format="webp" />
+                  </NuxtLink>
+                </li>
+                <li class="dropdown-item">
+                  <NuxtLink to="/dashboard/listings">
+                    <span>{{ $t("my_listing") }}</span>
+                    <NuxtImg
+                        src="/my-listing.png"
+                        alt="my listing"
+                        format="webp"
+                    />
+                  </NuxtLink>
+                </li>
+                <li class="dropdown-item">
+                  <NuxtLink to="/messages">
+                    <span>{{ $t("messages") }}</span>
+                    <NuxtImg
+                        src="/messages.png"
+                        alt="my messages"
+                        format="webp"
+                    />
+                  </NuxtLink>
+                </li>
+                <li class="dropdown-item">
+                  <NuxtLink to="/bookmarks">
+                    <span>{{ $t("bookmarks") }}</span>
+                    <NuxtImg
+                        src="/heart.svg"
+                        alt="my bookmarks"
+                        format="webp"
+                    />
+                  </NuxtLink>
+                </li>
+                <li class="dropdown-item">
+                  <NuxtLink to="/reviews">
+                    <span>{{ $t("reviews") }}</span>
+                    <NuxtImg src="/like.png" alt="my bookmarks" format="webp" />
+                  </NuxtLink>
+                </li>
+                <li class="dropdown-item">
+                  <NuxtLink to="/booking">
+                    <span>{{ $t("booking") }}</span>
+                    <NuxtImg
+                        src="/stickynote.png"
+                        alt="my booking"
+                        format="webp"
+                    />
+                  </NuxtLink>
+                </li>
+                <li class="dropdown-item">
+                  <button type="button" @click="logout" to="/logout">
+                    <span>{{ $t("logout") }}</span>
+                    <NuxtImg src="/login.svg" alt="logout" format="webp" />
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </Popover>
+        </div>
+
         <div class="user">
           <div class="not-auth" v-if="!user.isAuth">
             <NuxtLink to="/auth/login" class="login-link">

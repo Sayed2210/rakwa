@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type Category from "~/types/categories";
+
+const props = defineProps<{ popularCategories: Category[] }>();
+</script>
 
 <template>
   <section class="categories-section">
@@ -10,8 +14,8 @@
     </h4>
     <div class="container mx-auto px-8">
       <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 w-full">
-        <div class="col-span-1" v-for="i in 5" :key="i">
-          <HomeCategoriesCategoryCard />
+        <div class="col-span-1" v-for="popularCategory in popularCategories" :key="i">
+          <HomeCategoriesCategoryCard :popularCategory="popularCategory" />
         </div>
       </div>
     </div>

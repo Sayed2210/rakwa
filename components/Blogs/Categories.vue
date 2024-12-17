@@ -1,4 +1,16 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { BASE_URL } from "~/base/persention/utils/constant";
+import type Category from "~/types/categories";
+
+const { data: categories } = await useAsyncData("categories", async () => {
+  const response = await $fetch<{
+    data: Category[];
+    message: string;
+    status: number;
+  }>(`${BASE_URL}/blog_categories`, { method: "POST" });
+  return response.data; // Extract only the `data` part
+});
+</script>
 
 <template>
   <section class="blogs-categories">
@@ -6,22 +18,14 @@
       {{ $t("categories") }}
     </h2>
     <ul class="categories-list">
-      <li class="category-item">
-        <NuxtLink to="/blogs/1">
-          {{ $t("Commercial") }}
-          <span>15</span>
-        </NuxtLink>
-      </li>
-      <li class="category-item">
-        <NuxtLink to="/blogs/1">
-          {{ $t("Commercial") }}
-          <span>15</span>
-        </NuxtLink>
-      </li>
-      <li class="category-item">
-        <NuxtLink to="/blogs/1">
-          {{ $t("Commercial") }}
-          <span>15</span>
+      <li
+        class="category-item"
+        v-for="category in categories"
+        :key="category.id"
+      >
+        <NuxtLink to="/blogs">
+          {{ category.name }}
+          <span>{{ category.blogs_count }}</span>
         </NuxtLink>
       </li>
     </ul>

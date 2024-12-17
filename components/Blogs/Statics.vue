@@ -1,18 +1,20 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const props = defineProps<{ author: string; date: string; comments: number }>();
+</script>
 
 <template>
   <div class="flex gap-4 items-center">
     <div class="static flex gap-2 items-center">
       <IconsPerson />
-      <span> Determined-poitras </span>
+      <span> {{ author }} </span>
     </div>
     <div class="static flex gap-2 items-center">
       <IconsCalendar />
-      <span> Jan 24, 22023</span>
+      <span> {{ date }}</span>
     </div>
     <div class="static flex gap-2 items-center">
       <IconsComment />
-      <span> 3 Comments </span>
+      <span> {{ comments }} {{ $t("Comments") }} </span>
     </div>
   </div>
 </template>

@@ -3,82 +3,21 @@ import Accordion from "primevue/accordion";
 import AccordionPanel from "primevue/accordionpanel";
 import AccordionHeader from "primevue/accordionheader";
 import AccordionContent from "primevue/accordioncontent";
+import type Faq from "~/types/faq";
+
+const props = defineProps<{ faqs: Faq[] | null }>();
 </script>
 
 <template>
   <section class="faq">
     <div class="container mx-auto px-8">
-      <Accordion value="0">
-        <AccordionPanel value="0">
+      <Accordion v-for="faq in faqs" :key="faq.id" :value="faq.id">
+        <AccordionPanel :value="faq.id">
           <AccordionHeader>
-            <h4 class="accord-title">What is Rakwa?</h4>
+            <h4 class="accord-title">{{ faq.question }}</h4>
           </AccordionHeader>
           <AccordionContent>
-            <p class="accord-content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </AccordionContent>
-        </AccordionPanel>
-      </Accordion>
-      <Accordion value="0">
-        <AccordionPanel value="0">
-          <AccordionHeader>
-            <h4 class="accord-title">What is Rakwa?</h4>
-          </AccordionHeader>
-          <AccordionContent>
-            <p class="accord-content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </AccordionContent>
-        </AccordionPanel>
-      </Accordion>
-      <Accordion value="0">
-        <AccordionPanel value="0">
-          <AccordionHeader>
-            <h4 class="accord-title">What is Rakwa?</h4>
-          </AccordionHeader>
-          <AccordionContent>
-            <p class="accord-content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </AccordionContent>
-        </AccordionPanel>
-      </Accordion>
-      <Accordion value="0">
-        <AccordionPanel value="0">
-          <AccordionHeader>
-            <h4 class="accord-title">
-              How do I use Rakwa to find businesses or services?
-            </h4>
-          </AccordionHeader>
-          <AccordionContent>
-            <p class="accord-content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            <p class="accord-content" v-html="faq.answer"></p>
           </AccordionContent>
         </AccordionPanel>
       </Accordion>

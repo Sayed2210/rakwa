@@ -28,7 +28,7 @@ import {
   GatewayTimeoutException,
 } from "@/base/core/Constance/exception_constants";
 
-enum ResponseType {
+export enum ResponseType {
   withData,
   withoutData,
 }

@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type Blog from "~/types/blog";
+
+const props = defineProps<{ blogs: Blog[] | null }>();
+</script>
 
 <template>
   <section class="blogs">
@@ -14,8 +18,8 @@
           </div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="col-span-1" v-for="i in 6" :key="i">
-            <BlogsBlogCard />
+          <div class="col-span-1" v-for="blog in blogs" :key="i">
+            <BlogsBlogCard :blog="blog" />
           </div>
         </div>
       </div>

@@ -1,11 +1,15 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type Blog from "~/types/blog";
+
+const props = defineProps<{ blog: Blog }>();
+</script>
 
 <template>
   <div class="blog-card">
     <div class="blog-img">
       <NuxtImg
-        src="/blog-card.png"
-        alt="blog img"
+        :src="blog.image"
+        :alt="blog.title"
         class="blog-img"
         format="webp"
       />
@@ -15,17 +19,17 @@
         <span class="line"></span>
         <div class="info-wrapper">
           <div class="flex items-center gap-4">
-            <h2 class="blog-category">consulting</h2>
+            <h2 class="blog-category">{{ blog.category.name }}</h2>
             <span class="dot"></span>
-            <span class="date">November 7, 2024</span>
+            <span class="date">
+              {{ blog.date }}
+            </span>
           </div>
           <h3 class="blog-title">
-            Our main goal is to "develop yourself as a leader"
+            {{ blog.title }}
           </h3>
           <p class="blog-description">
-            Chicago's next public school budget will depend on $500 million in
-            retirement savings that have not yet been approved by Illinois,
-            school officials said Monday.
+            {{ blog.description }}
           </p>
         </div>
       </div>

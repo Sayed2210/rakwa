@@ -1,6 +1,6 @@
 import { SentCodeApiService } from '~/features/ResetPasswordFeature/Data/api_services/sent_code_api_service'
 import SentCodeModel from '~/features/ResetPasswordFeature/Data/models/user_model'
-import RepoInterface from '~/base/Domain/Repositories/repo_interface'
+import RepoInterface, {ResponseType} from '~/base/Domain/Repositories/repo_interface'
 import type ServicesInterface from '~/base/Data/ApiService/api_service_interface'
 
 class SentCodeRepo extends RepoInterface<SentCodeModel> {
@@ -16,7 +16,7 @@ class SentCodeRepo extends RepoInterface<SentCodeModel> {
     return this.instance
   }
 
-  get responseType(): ResponseType {
+  override get responseType(): ResponseType {
     return ResponseType.withoutData
   }
 

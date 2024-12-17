@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type Blog from "~/types/blog";
+
+const props = defineProps<{ blog: Blog }>();
+</script>
 
 <template>
   <section class="blogs">
@@ -6,17 +10,21 @@
       <div class="col-span-1 md:col-span-2 lg:col-span-3">
         <div class="col-span-1">
           <h1 class="title">
-            {{ $t("Best LearnPress WordPress Theme Collection for 2023") }}
+            {{ blog.title }}
           </h1>
         </div>
         <div class="mt-4">
-          <BlogsStatics />
+          <BlogsStatics
+            :author="blog.author"
+            :date="blog.date"
+            :comments="blog.comments"
+          />
         </div>
         <div class="mt-4">
           <div class="blog-img">
             <NuxtImg
-              src="blog-details.png"
-              alt="blog"
+              :src="blog.image"
+              :alt="blog.title"
               class="blog-img"
               format="webp"
             />
@@ -24,21 +32,10 @@
         </div>
         <div class="mt-4">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-            facilisis faucibus odio arcu duis dui, adipiscing facilisis. Urna,
-            donec turpis egestas volutpat. Quisque nec non amet quis. Varius
-            tellus justo odio parturient mauris curabitur lorem in. Pulvinar sit
-            ultrices mi ut eleifend luctus ut. Id s ed faucibus bibendum augue
-            id cras purus. At eget euismod cursus non. Molestie dignissim sed
-            volutpat feugiat vel enim eu turpis imperdiet. Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit. Cras facilisis faucibus odio arcu
-            duis dui, adipiscing facilisis. Urna, donec turpis egestas volutpat.
-            Quisque nec non amet quis. Varius tellus justo odio parturient
-            mauris curabitur lorem in. Pulvinar sit ultrices mi ut eleifend
-            luctus ut. Id sed faucibus bibendum augue id cras purus.
+            {{ blog.description }}
           </p>
         </div>
-        <BlogsTags />
+        <BlogsTags :tags="blog.tags" />
         <div class="social mt-4">
           <span>{{ $t("follow_us") }} :</span>
           <IconsFaceGray />
@@ -57,9 +54,8 @@
         <BlogsTags />
       </div>
     </div>
-    <BlogsComments />
+    <BlogsComments :blogId="blog.id" />
     <BlogsLeaveComment />
-
   </section>
 </template>
 

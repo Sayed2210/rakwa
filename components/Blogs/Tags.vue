@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type Tag from "~/types/tags";
+
+const props = defineProps<{ tags?: Tag[] }>();
+</script>
 
 <template>
   <section class="blogs-tags">
@@ -6,34 +10,9 @@
       {{ $t("tags") }}
     </h2>
     <ul class="tags-list">
-      <li class="tag-item">
-        <NuxtLink to="/blogs/1">
-          {{ $t("Commercial") }}
-        </NuxtLink>
-      </li>
-      <li class="tag-item">
-        <NuxtLink to="/blogs/1">
-          {{ $t("LLM") }}
-        </NuxtLink>
-      </li>
-      <li class="tag-item">
-        <NuxtLink to="/blogs/1">
-          {{ $t("Commercial") }}
-        </NuxtLink>
-      </li>
-      <li class="tag-item">
-        <NuxtLink to="/blogs/1">
-          {{ $t("Idea") }}
-        </NuxtLink>
-      </li>
-      <li class="tag-item">
-        <NuxtLink to="/blogs/1">
-          {{ $t("LearnPress") }}
-        </NuxtLink>
-      </li>
-      <li class="tag-item">
-        <NuxtLink to="/blogs/1">
-          {{ $t("LearnPress") }}
+      <li class="tag-item" v-for="tag in tags" :key="tag.id">
+        <NuxtLink to="/blogs">
+          {{ tag.title }}
         </NuxtLink>
       </li>
     </ul>

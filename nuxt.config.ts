@@ -4,6 +4,11 @@ import Aura from "@primevue/themes/aura";
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
+  runtimeConfig: {
+    public: {
+      baseURL: 'https://doma.zaidia.net/api', // Public base URL
+    },
+  },
   app: {
     head: {
       charset: "utf-8",
