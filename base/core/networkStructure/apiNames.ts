@@ -38,6 +38,13 @@ class ApiNames {
   public blog = "blog-details";
   public blogComments = "fetch_blog_comments";
   public addBlogComment = "make_comment";
+
+
+  //listing
+  public listings = "my_listings";
+
+  //bookmark
+  public bookmarks = "my_bookmarks";
 }
 
 export { ApiNames };

@@ -9,7 +9,7 @@ class ApiNames {
     return this._instance;
   }
 
-  public baseUrl = "https://doma.zaidia.net/";
+  public baseUrl = "https://doma.zaidia.net/api/";
 
   //auth
   public login = "login";
@@ -38,6 +38,10 @@ class ApiNames {
   public blog = "blog-details";
   public blogComments = "fetch_blog_comments";
   public addBlogComment = "make_comment";
+
+
+  //listing
+  public listings = "my_listings";
 }
 
 export { ApiNames };

@@ -707,7 +707,8 @@
       "image": "https://cdn_icons_png.flaticon.com/512/149/149071.png"
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
       "address": "123 Main St, Anytown, USA",
-      "views": 10
+      "views": 10,
+      "status": 1 // 1: active, 2: pending, 3: inactive
     },
     {
       "id": 2,

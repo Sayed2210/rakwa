@@ -23,10 +23,10 @@ const { data: categories } = await useAsyncData("categories", async () => {
         v-for="category in categories"
         :key="category.id"
       >
-        <NuxtLink to="/blogs">
+        <span>
           {{ category.name }}
           <span>{{ category.blogs_count }}</span>
-        </NuxtLink>
+        </span>
       </li>
     </ul>
   </section>

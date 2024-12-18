@@ -1,11 +1,17 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import ListingModel from "~/features/FetchListingFeature/Data/models/listing_model";
+
+const props = defineProps<{
+  listing: ListingModel | null;
+}>();
+</script>
 
 <template>
   <div class="listing-card">
     <div class="listing-img">
       <NuxtImg
-        src="/place.png"
-        alt="listing image"
+        :src="listing?.image"
+        :alt="listing?.name"
         class="place-img"
         format="webp"
       />
@@ -16,7 +22,7 @@
         <div class="status expired">
           <IconsCloseCircle />
           <span>{{ $t("expired") }} :</span>
-          <span>90</span>
+          <span>{{ listing?.views }}</span>
         </div>
         <div class="actions">
           <div class="dropdown">
@@ -49,12 +55,10 @@
         </div>
       </div>
       <h6 class="listing-title">
-        {{ $t("Avail Insurance Solutions") }}
+        {{ listing?.name }}
       </h6>
-      <p class="listing-description">
-        A cozy escape from the hustle and bustle, our café offers a warm
-        ambiance and freshly brewed coffee that comforts the soul.
-      </p>
+      <p class="listing-description" v-html="listing?.description"></p>
+
       <div class="location flex items-center gap-1">
         <svg
           width="14"
@@ -68,9 +72,9 @@
             fill="#E80306"
           />
         </svg>
-        <NuxtLink to="/place/1">
-          12, alhamd street ,mansoura eljadida
-        </NuxtLink>
+        <span>
+          {{ listing?.address }}
+        </span>
       </div>
     </div>
   </div>
