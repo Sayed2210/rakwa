@@ -119,7 +119,9 @@ const toggleReviews = (toggleReview: boolean) => {
         <ReviewsMyReviewLoaderCard v-for="i in 3" :key="i" />
       </template>
       <template #success>
-        <ReviewsOtherReviewCard />
+        <div class="flex flex-col gap-4">
+          <ReviewsOtherReviewCard :reviews="otherState.data" />
+        </div>
       </template>
     </GlobalDataStatues>
   </section>

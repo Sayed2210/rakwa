@@ -105,7 +105,7 @@ const toggleReviews = (toggleReview: boolean) => {
       </template>
     </GlobalDataStatues>
 
-    <GlobalDataStatues v-else :status="state">
+    <GlobalDataStatues v-else :status="otherState">
       <template #empty>
         <ReviewsNoReviews />
       </template>
@@ -113,10 +113,10 @@ const toggleReviews = (toggleReview: boolean) => {
         <ReviewsNoReviews />
       </template>
       <template #loader>
-        <ReviewsOtherReviewLoaderCard />
+        <ReviewsMyReviewLoaderCard v-for="i in 3" :key="i" />
       </template>
       <template #initial>
-        <ReviewsOtherReviewLoaderCard />
+        <ReviewsMyReviewLoaderCard v-for="i in 3" :key="i" />
       </template>
       <template #success>
         <ReviewsOtherReviewCard />

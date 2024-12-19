@@ -8,6 +8,9 @@ export default {
   email: "Email",
   name: "Name",
   phone: "Phone",
+  Are_you_sure_youre_log_out: "Are you sure you're log out?",
+  Now_youre_about_to_log_out_You_can_log_in_again_with_ease_by_logging_in:
+    "Now you're about to log out. You can log in again with ease by logging in",
   goBack: "Go Back",
   address: "Address",
   Add_your_rating: "Add your rating",
@@ -221,6 +224,7 @@ export default {
   From_guiding_you_to_the_perfect_service_to_answering_your_questions_were_committed_to_supporting_you_every_step_of_the_way_Dont_hesitate_to_reach_out_together_we_can_create_meaningful_connections:
     "From guiding you to the perfect service to answering your questions, we’re committed to supporting you every step of the way. Don’t hesitate to reach out—together, we can create meaningful connections.",
   Meet_the_faces_behind_the_magic: "Meet the faces behind the magic",
-  not_verified_claim_this_listing_now: "not verified..! claim this listing now ?",
+  not_verified_claim_this_listing_now:
+    "not verified..! claim this listing now ?",
   claim_request_sent: "claim request sent",
 };
