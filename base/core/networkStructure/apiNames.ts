@@ -45,6 +45,11 @@ class ApiNames {
 
   //bookmark
   public bookmarks = "my_bookmarks";
+
+  //reviews
+  public reviews = "my_reviews";
+  public otherReviews = "other_reviews";
+  public deleteReview = "delete_review";
 }
 
 export { ApiNames };

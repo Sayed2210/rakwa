@@ -10,21 +10,26 @@ const phone = ref<string>("");
 const password = ref<string>("");
 const confirmPassword = ref<string>("");
 
-const registerController = RegisterController.Instance.Register(
-  new RegisterParams(
+
+const registerController = RegisterController.Instance;
+
+const register = async () => {
+  const params = new RegisterParams(
     firstName.value,
     lastName.value,
     email.value,
     phone.value,
     password.value,
     confirmPassword.value,
-    1,
-  ),
-);
+    1
+  );
+  await registerController.Register(params);
+};
+
 </script>
 
 <template>
-  <form @submit.prevent="registerController" class="login-form">
+  <form @submit.prevent="register" class="login-form">
     <NuxtLink to="/" class="back-link">
       <svg
         width="9"

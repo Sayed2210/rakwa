@@ -22,6 +22,10 @@ const fetchListings = async () => {
     new FetchListingParams(status.value, "", 1, 10),
   );
 };
+
+onMounted(async () => {
+  await fetchListings();
+});
 const toggle = ref<string>("active");
 
 watch(

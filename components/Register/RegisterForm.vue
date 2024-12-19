@@ -10,6 +10,7 @@ const phone = ref<string>("");
 const password = ref<string>("");
 const confirmPassword = ref<string>("");
 
+const router = useRouter();
 
 const registerController = RegisterController.Instance;
 
@@ -21,11 +22,10 @@ const register = async () => {
     phone.value,
     password.value,
     confirmPassword.value,
-    1
+    1,
   );
-  await registerController.Register(params);
+  await registerController.Register(params, router);
 };
-
 </script>
 
 <template>
@@ -51,45 +51,45 @@ const register = async () => {
     <h1 class="main-title">
       {{ $t("welcome_in") }} <span class="rakwa">Rakwa</span> !
     </h1>
-<!--    <div v-if="!userType">-->
-<!--      <p class="mb-4">-->
-<!--        {{-->
-<!--          $t(-->
-<!--            "Dont_worry_happens_to_all_of_us_Enter_your_email_below_to_recover_your_password",-->
-<!--          )-->
-<!--        }}-->
-<!--      </p>-->
-<!--      <div class="user-type flex gap-4 items-center mb-4">-->
-<!--        <div class="user-type-item">-->
-<!--          <input-->
-<!--            type="radio"-->
-<!--            name="user-type"-->
-<!--            id="user-type-1"-->
-<!--            value="user"-->
-<!--            v-model="userType"-->
-<!--          />-->
-<!--          <label for="user-type-1">-->
-<!--            <NuxtImg src="/owner.png" alt="guest" format="webp" />-->
-<!--            <span>{{ $t("owner") }}</span>-->
-<!--          </label>-->
-<!--        </div>-->
-<!--        <div class="user-type-item">-->
-<!--          <input-->
-<!--            type="radio"-->
-<!--            name="user-type"-->
-<!--            id="user-type-2"-->
-<!--            value="business"-->
-<!--            v-model="userType"-->
-<!--          />-->
-<!--          <label for="user-type-2">-->
-<!--            <NuxtImg src="/guest.png" alt="guest" format="webp" />-->
-<!--            <span>{{ $t("guest") }}</span>-->
-<!--          </label>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-    <div >
-<!--      v-else-->
+    <!--    <div v-if="!userType">-->
+    <!--      <p class="mb-4">-->
+    <!--        {{-->
+    <!--          $t(-->
+    <!--            "Dont_worry_happens_to_all_of_us_Enter_your_email_below_to_recover_your_password",-->
+    <!--          )-->
+    <!--        }}-->
+    <!--      </p>-->
+    <!--      <div class="user-type flex gap-4 items-center mb-4">-->
+    <!--        <div class="user-type-item">-->
+    <!--          <input-->
+    <!--            type="radio"-->
+    <!--            name="user-type"-->
+    <!--            id="user-type-1"-->
+    <!--            value="user"-->
+    <!--            v-model="userType"-->
+    <!--          />-->
+    <!--          <label for="user-type-1">-->
+    <!--            <NuxtImg src="/owner.png" alt="guest" format="webp" />-->
+    <!--            <span>{{ $t("owner") }}</span>-->
+    <!--          </label>-->
+    <!--        </div>-->
+    <!--        <div class="user-type-item">-->
+    <!--          <input-->
+    <!--            type="radio"-->
+    <!--            name="user-type"-->
+    <!--            id="user-type-2"-->
+    <!--            value="business"-->
+    <!--            v-model="userType"-->
+    <!--          />-->
+    <!--          <label for="user-type-2">-->
+    <!--            <NuxtImg src="/guest.png" alt="guest" format="webp" />-->
+    <!--            <span>{{ $t("guest") }}</span>-->
+    <!--          </label>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <div>
+      <!--      v-else-->
       <p class="mb-4">
         {{
           $t("Lets_get_you_all_set_up_so_you_can_access_your_personal_account")

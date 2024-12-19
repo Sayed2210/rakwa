@@ -24,7 +24,7 @@ export default class RegisterController extends ControllerInterface<UserModel> {
     return this._instance;
   }
 
-  async Register(params: Params) {
+  async Register(params: Params , router: any) {
     // useLoaderStore().setLoadingWithDialog();
     try {
       const router = useRouter();

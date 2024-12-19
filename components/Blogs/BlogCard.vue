@@ -19,7 +19,7 @@ const props = defineProps<{ blog: Blog }>();
         <span class="line"></span>
         <div class="info-wrapper">
           <div class="flex items-center gap-4">
-            <h2 class="blog-category">{{ blog.category.name }}</h2>
+            <h2 class="blog-category">{{ blog.category?.name }}</h2>
             <span class="dot"></span>
             <span class="date">
               {{ blog.date }}
