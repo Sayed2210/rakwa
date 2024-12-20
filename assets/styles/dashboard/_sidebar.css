@@ -16,6 +16,7 @@
       flex-direction: column;
       gap: 0.5rem;
       a , button{
+        width: 100%;
         padding: 1rem;
         color: var(--text-color);
         cursor: pointer;

@@ -1082,19 +1082,46 @@
 - **Response Message:** `Listings fetched successfully.`
 
 - **Endpoint:** `filter_listings`
-- **Method:** `POST`
-  - **Params:**
+  - **Method:** `POST`
+    - **Params:**
 
-    ```json
-    {
-        "status": "open",
-        "state": "state",
-        "rate_count": 5,
-        "distance": [10, 50],
-        "price": [100, 200],
-        "address": 1,
-    }
-    ```
-
+      ```json
+      {
+          "status": "open",
+          "state": "state",
+          "rate_count": 5,
+          "distance": [10, 50],
+          "price": [100, 200],
+          "address": 1,
+      }
+      ```
+    
+      - **Response:**
+        ```json
+        
+          "listing" : [
+  
+            {
+              "id": 1,
+              "name": "Listing 1",
+              "image": "https://cdn_icons_png.flaticon.com/512/149/149071.png"
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              "address": "123 Main St, Anytown, USA",
+              "views": 10 
+            }
+        ],
+        "similar_listing": [
+            {
+              "id": 1,
+              "name": "Listing 1",
+              "image": "https://cdn_icons_png.flaticon.com/512/149/149071.png"
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              "address": "123 Main St, Anytown, USA",
+              "views": 10 
+            }
+        ]
+        ```
+    - 
+        
 - **Response Status Code:** `200`
 - **Response Message:** `Listings fetched successfully.`

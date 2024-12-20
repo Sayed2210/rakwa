@@ -99,7 +99,7 @@
 @import "dialogs/_main_dialog.css";
 @import "dialogs/_loader_dialogs.css";
 @import "dialogs/_add_rate_dialog.css";
-@import "dialogs/_logout_dialog.css";
+@import "dialogs/logout_dialog.css";
 
 /*fonts*/
 @font-face {

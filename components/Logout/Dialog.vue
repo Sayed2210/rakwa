@@ -1,9 +1,16 @@
 <script setup lang="ts">
-
-
-import Dialog from 'primevue/dialog';
+import Dialog from "primevue/dialog";
+import LogoutController from "~/features/LogoutFeature/presentation/controllers/logout_controller";
 
 const visible = ref(false);
+
+const router = useRouter();
+
+const logoutController = LogoutController.getInstance();
+
+const logout = async () => {
+  await logoutController.Logout(router);
+};
 </script>
 
 <template>
@@ -31,13 +38,36 @@ const visible = ref(false);
     </span>
   </button>
 
-
   <Dialog v-model:visible="visible" modal>
-    <div class="dialog-logout-wrapper">
-      <NuxtImg src="logout.png" alt="logout" format="webp" />
-      <h4>{{$t("Are_you_sure_youre_log_out")}}</h4>
-      <p>{{ $t("Now_youre_about_to_log_out_You_can_log_in_again_with_ease_by_logging_in")}}</p>
-    </div>
+    <template #container>
+      <div class="dialog-logout-wrapper">
+        <NuxtImg src="logout.png" alt="logout" format="webp" />
+        <h4>{{ $t("Are_you_sure_youre_log_out") }}</h4>
+        <p>
+          {{
+            $t(
+              "Now_youre_about_to_log_out_You_can_log_in_again_with_ease_by_logging_in",
+            )
+          }}
+        </p>
+        <div class="actions grid grid-cols-1 md:grid-cols-3 gap-4">
+          <button
+            type="button"
+            class="primary-button-2 col-span-1 md:col-span-2"
+            @click="logout"
+          >
+            {{ $t("logout") }}
+          </button>
+          <button
+            type="button"
+            class="secondary-button col-span-1"
+            @click="visible = false"
+          >
+            {{ $t("cancel") }}
+          </button>
+        </div>
+      </div>
+    </template>
   </Dialog>
 </template>
 

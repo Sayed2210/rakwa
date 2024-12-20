@@ -225,7 +225,7 @@ const { data: categories } = await useAsyncData("categories",
               <span class="name">{{ user.user?.name }}</span>
               <span class="role">{{ user.user?.type }}</span>
             </div>
-            <NuxtImg src="/user-photo.png" alt="user" class="user-photo" />
+            <NuxtImg :src="user.user?.image" alt="user" class="user-photo" />
             <div class="dropdown-content">
               <ul>
                 <li class="dropdown-item">
@@ -248,12 +248,12 @@ const { data: categories } = await useAsyncData("categories",
                     />
                   </NuxtLink>
                 </li>
-                <li class="dropdown-item">
-                  <NuxtLink to="/bookings">
-                    <span>{{ $t("my_bookings") }}</span
-                    ><NuxtImg src="/task.png" alt="my bookings" format="webp" />
-                  </NuxtLink>
-                </li>
+<!--                <li class="dropdown-item">-->
+<!--                  <NuxtLink to="/bookings">-->
+<!--                    <span>{{ $t("my_bookings") }}</span-->
+<!--                    ><NuxtImg src="/task.png" alt="my bookings" format="webp" />-->
+<!--                  </NuxtLink>-->
+<!--                </li>-->
                 <li class="dropdown-item">
                   <NuxtLink to="/dashboard/listings">
                     <span>{{ $t("my_listing") }}</span>
@@ -264,18 +264,18 @@ const { data: categories } = await useAsyncData("categories",
                     />
                   </NuxtLink>
                 </li>
+<!--                <li class="dropdown-item">-->
+<!--                  <NuxtLink to="/messages">-->
+<!--                    <span>{{ $t("messages") }}</span>-->
+<!--                    <NuxtImg-->
+<!--                      src="/messages.png"-->
+<!--                      alt="my messages"-->
+<!--                      format="webp"-->
+<!--                    />-->
+<!--                  </NuxtLink>-->
+<!--                </li>-->
                 <li class="dropdown-item">
-                  <NuxtLink to="/messages">
-                    <span>{{ $t("messages") }}</span>
-                    <NuxtImg
-                      src="/messages.png"
-                      alt="my messages"
-                      format="webp"
-                    />
-                  </NuxtLink>
-                </li>
-                <li class="dropdown-item">
-                  <NuxtLink to="/bookmarks">
+                  <NuxtLink to="dashboard/bookmarks">
                     <span>{{ $t("bookmarks") }}</span>
                     <NuxtImg
                       src="/heart.svg"
@@ -285,21 +285,21 @@ const { data: categories } = await useAsyncData("categories",
                   </NuxtLink>
                 </li>
                 <li class="dropdown-item">
-                  <NuxtLink to="/reviews">
+                  <NuxtLink to="dashboard/reviews">
                     <span>{{ $t("reviews") }}</span>
                     <NuxtImg src="/like.png" alt="my bookmarks" format="webp" />
                   </NuxtLink>
                 </li>
-                <li class="dropdown-item">
-                  <NuxtLink to="/booking">
-                    <span>{{ $t("booking") }}</span>
-                    <NuxtImg
-                      src="/stickynote.png"
-                      alt="my booking"
-                      format="webp"
-                    />
-                  </NuxtLink>
-                </li>
+<!--                <li class="dropdown-item">-->
+<!--                  <NuxtLink to="/booking">-->
+<!--                    <span>{{ $t("booking") }}</span>-->
+<!--                    <NuxtImg-->
+<!--                      src="/stickynote.png"-->
+<!--                      alt="my booking"-->
+<!--                      format="webp"-->
+<!--                    />-->
+<!--                  </NuxtLink>-->
+<!--                </li>-->
                 <li class="dropdown-item">
                   <button type="button" @click="logout" to="/logout">
                     <NuxtImg src="/login.svg" alt="logout" format="webp" />
