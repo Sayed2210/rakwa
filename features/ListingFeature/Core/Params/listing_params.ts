@@ -9,7 +9,7 @@ export default class ListingParams implements Params {
   public basicInformation: BasicInformationParams;
   public Location: LocationParams;
   public gallery: string[];
-  public details: ImagesParams[];
+  public details: string[];
   public social: SocialParams | null;
   public openingHours: OpeningHoursParams[];
   public pricingBookableServices: PricingBookableServices[];
@@ -18,7 +18,7 @@ export default class ListingParams implements Params {
     basicInformation: BasicInformationParams,
     Location: LocationParams,
     gallery: string[],
-    details: ImagesParams[],
+    details: string[],
     social: SocialParams | null,
     openingHours: OpeningHoursParams[],
     pricingBookableServices: PricingBookableServices[],
@@ -38,7 +38,7 @@ export default class ListingParams implements Params {
     // console.log(data["basic_information"]);
     data["location"] = this.Location.toMap();
     data["gallery"] = this.gallery;
-    data["images"] = this.details.map((item: ImagesParams) => item.toMap());
+    data["images"] = this.details;
     data["social"] = this.social?.toMap();
     data["opening_hours"] = this.openingHours.map((item: OpeningHoursParams) =>
       item.toMap(),

@@ -43,9 +43,7 @@ const addListing = async () => {
   const params = listingBuilder
     .setBasicInformation(basicInformation.value)
     .setLocation(location.value)
-    .setDetails(
-      convertedImages.map((base64: string) => new ImagesParams(base64)),
-    )
+    .setDetails(convertedImages)
     .setSocials(
       new SocialParams(
         details.value.isContactWidgetEnabled,

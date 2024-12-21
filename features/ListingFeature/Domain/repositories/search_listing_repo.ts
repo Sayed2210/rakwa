@@ -1,9 +1,9 @@
 import { SearchListingApiService } from "~/features/ListingFeature/Data/api_services/search_listing_api_service";
-import ListingModel from "~/features/ListingFeature/Data/models/listing_index_model";
 import RepoInterface from "~/base/Domain/Repositories/repo_interface";
 import type ServicesInterface from "~/base/Data/ApiService/api_service_interface";
+import SearchListingModel from "~/features/ListingFeature/Data/models/search_listing_model";
 
-class SearchListingRepo extends RepoInterface<ListingModel[]> {
+class SearchListingRepo extends RepoInterface<SearchListingModel[]> {
   private static instance: SearchListingRepo;
   // eslint-disable-next-line ~typescript-eslint/no-empty-function
   private constructor() {
@@ -16,8 +16,8 @@ class SearchListingRepo extends RepoInterface<ListingModel[]> {
     return this.instance;
   }
 
-  onParse(data: any): ListingModel[] {
-    return data.map((item: any) => ListingModel.fromMap(item));
+  onParse(data: any): SearchListingModel[] {
+    return data.map((item: any) => SearchListingModel.fromMap(item));
   }
 
   get serviceInstance(): ServicesInterface {

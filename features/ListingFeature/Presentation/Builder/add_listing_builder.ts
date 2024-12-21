@@ -13,7 +13,7 @@ export default class ListingParamsBuilder {
   private basicInformation: BasicInformationParams | null = null;
   private location: LocationParams | null = null;
   private gallery: string[] = [];
-  private details: ImagesParams | null = null;
+  private details: string[] = [];
   private socials: SocialParams | null = null;
   private openingHours: OpeningHoursParams[] = [];
   private pricingBookableServices: PricingBookableServices[] = [];
@@ -45,7 +45,7 @@ export default class ListingParamsBuilder {
     return this;
   }
 
-  setDetails(details: ImagesParams): this {
+  setDetails(details: string[]): this {
     this.details = details;
     return this;
   }
@@ -79,7 +79,6 @@ export default class ListingParamsBuilder {
       throw new Error("Details are required.");
     }
 
-
     const params = new ListingParams(
       this.basicInformation,
       this.location,
@@ -99,7 +98,7 @@ export default class ListingParamsBuilder {
     this.basicInformation = null;
     this.location = null;
     this.gallery = [];
-    this.details = null;
+    this.details = [];
     this.openingHours = [];
     this.pricingBookableServices = [];
   }

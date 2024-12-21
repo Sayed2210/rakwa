@@ -1,5 +1,4 @@
 import { ControllerInterface } from "~/base/persention/Controller/controller_interface";
-import ListingModel from "~/features/ListingFeature/Data/models/listing_index_model";
 import type { DataState } from "~/base/core/networkStructure/Resources/dataState/data_state";
 import type Params from "~/base/core/Params/params";
 import SearchListingUseCase from "~/features/ListingFeature/Domain/use_case/search_listing_use_case";
@@ -7,8 +6,9 @@ import SearchListingUseCase from "~/features/ListingFeature/Domain/use_case/sear
 import errorImage from "~/assets/images/error.png";
 import successImage from "~/assets/images/success-dialog.png";
 import DialogSelector from "~/base/persention/Dialogs/dialog_selector";
+import SearchListingModel from "~/features/ListingFeature/Data/models/search_listing_model";
 
-export default class SearchListingController extends ControllerInterface<ListingModel[]> {
+export default class SearchListingController extends ControllerInterface<SearchListingModel[]> {
   private static instance: SearchListingController;
   private constructor() {
     super();
@@ -26,7 +26,7 @@ export default class SearchListingController extends ControllerInterface<Listing
     // useLoaderStore().setLoadingWithDialog();
     try {
       const router = useRouter();
-      const dataState: DataState<ListingModel[]> =
+      const dataState: DataState<SearchListingModel[]> =
         await this.SearchListingUseCase.call(params);
       this.setState(dataState);
       if (this.isDataSuccess()) {

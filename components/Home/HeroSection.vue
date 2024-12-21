@@ -1,4 +1,20 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import SearchBuilder from "~/features/ListingFeature/Presentation/Builder/search_builder";
+
+const search = ref<string>("");
+
+const searchBuilder = SearchBuilder.Instance;
+const searchListing = async () => {
+  try {
+    if (search.value) {
+      searchBuilder.setKey(search.value);
+      await navigateTo(`/listing`);
+    }
+  } catch (e) {
+    console.log(e);
+  }
+};
+</script>
 
 <template>
   <section class="hero-section">
@@ -59,7 +75,7 @@
             )
           }}
         </p>
-        <div class="website-input-search">
+        <form @submit.prevent="searchListing" class="website-input-search">
           <IconsAddress />
           <input
             type="text"
@@ -67,11 +83,12 @@
             class="search-input"
             aria-label="search"
             name="search"
+            v-model="search"
           />
           <button class="primary-button" aria-label="search">
             {{ $t("search") }}
           </button>
-        </div>
+        </form>
       </div>
     </div>
     <div class="hero-bg">

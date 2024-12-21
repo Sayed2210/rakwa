@@ -18,7 +18,7 @@ const searchListing = async () => {
 }
 
 onMounted(async () => {
-  await searchListing();
+  awiat searchListing();
 })
 
 // const map = ref(props.showMap);
