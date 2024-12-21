@@ -1,6 +1,6 @@
 import type Params from "~/base/core/Params/params";
 
-export default class PricingBookableServices implements Params {
+  export default class PricingBookableServices implements Params {
   public type: string;
   public price: number;
   public description: string;
