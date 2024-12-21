@@ -22,7 +22,7 @@ export default class AddListingController extends ControllerInterface<ListingMod
     return this.instance;
   }
 
-  async addListing(params: Params) {
+  async addListing(params: Params, router: any) {
     // useLoaderStore().setLoadingWithDialog();
     try {
       const router = useRouter();

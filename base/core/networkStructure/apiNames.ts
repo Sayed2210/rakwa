@@ -28,6 +28,7 @@ class ApiNames {
 
   // home
   public categories = "categories";
+  public categoryTypes = "type_categories";
   public popularCategories = "popular_categories";
   public popularServices = "popular_services";
   public popularServicesByCategory = "popular_services_by_category";

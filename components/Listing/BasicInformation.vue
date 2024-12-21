@@ -2,6 +2,12 @@
 import MultiSelect from "primevue/multiselect";
 import Select from "primevue/select";
 import BasicInformationParams from "~/features/ListingFeature/Core/Params/basic_information_params";
+import FetchCategoriesController from "~/features/FetchCategoriesFeature/presentation/controllers/fetch_categories_controller";
+import CategoryModel from "~/features/FetchCategoriesFeature/Data/models/category_model";
+import FetchCategoriesParams from "~/features/FetchCategoriesFeature/Core/Params/fetch_categories_params";
+import CategoryTypeModel from "~/features/FetchCategoryTypeFeature/Data/models/category_type_model";
+import FetchCategoryTypesController from "~/features/FetchCategoryTypeFeature/presentation/controllers/fetch_category_types_controller";
+import FetchCategoryTypesParams from "~/features/FetchCategoryTypeFeature/Core/Params/fetch_category_types_params";
 
 const selectedCity = ref();
 const cities = ref([
@@ -13,7 +19,16 @@ const cities = ref([
 ]);
 
 const basicInformation = ref<BasicInformationParams>(
-  new BasicInformationParams("", null, [], 0, "", "", 0, 0),
+  new BasicInformationParams(
+    "",
+    null,
+    new CategoryModel(0, "", ""),
+    new CategoryTypeModel(0, "", ""),
+    "",
+    "",
+    0,
+    0,
+  ),
 );
 
 const emit = defineEmits<{
@@ -31,6 +46,42 @@ watch(
   },
   { deep: true },
 );
+
+//fetch categories
+
+const categories = ref<CategoryModel[]>([]);
+const fetchCategoriesController = FetchCategoriesController.getInstance();
+
+const fetchCategories = async () => {
+  categories.value = (
+    await fetchCategoriesController.fetchCategories(
+      new FetchCategoriesParams(1, 10),
+    )
+  ).value.data;
+  console.log(categories.value);
+};
+
+onMounted(async () => {
+  await fetchCategories();
+});
+
+//fetch category types
+
+const categoryTypes = ref<CategoryTypeModel[]>([]);
+
+const fetchCategoryTypesController = FetchCategoryTypesController.getInstance();
+
+const fetchCategoryTypes = async () => {
+  categoryTypes.value = (
+    await fetchCategoryTypesController.fetchCategoryTypes(
+      new FetchCategoryTypesParams(1, 1, 10),
+    )
+  ).value.data;
+};
+
+onMounted(async () => {
+  await fetchCategoryTypes();
+});
 </script>
 
 <template>
@@ -102,14 +153,11 @@ watch(
       <label class="input-label" for="category">
         {{ $t("category") }}
       </label>
-      <MultiSelect
+      <Select
         v-model="basicInformation.categories"
-        display="chip"
-        :options="cities"
-        optionLabel="name"
-        filter
-        placeholder="Select Cities"
-        :maxSelectedLabels="3"
+        :options="categories"
+        optionLabel="title"
+        :placeholder="$t('Select_category')"
       />
     </div>
   </div>
@@ -119,10 +167,10 @@ watch(
         {{ $t("service_category") }}
       </label>
       <Select
-        v-model="selectedCity"
-        :options="cities"
-        optionLabel="name"
-        placeholder="Select a City"
+        v-model="basicInformation.serviceCategory"
+        :options="categoryTypes"
+        optionLabel="title"
+        :placeholder="$t('Select_service_category')"
       />
     </div>
   </div>

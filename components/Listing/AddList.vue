@@ -2,6 +2,7 @@
 import ListingParamsBuilder from "~/features/ListingFeature/Presentation/Builder/add_listing_builder";
 import ImagesParams from "~/features/ListingFeature/Core/Params/details_params";
 import SocialParams from "~/features/ListingFeature/Core/Params/social_params";
+import AddListingController from "~/features/ListingFeature/Presentation/controllers/add_listing_controller";
 
 const basicInformation = ref<any>(null);
 const location = ref<any>(null);
@@ -30,11 +31,12 @@ const handleOpeningPrice = (data: any) => {
   openingPrice.value = data;
 };
 const listingBuilder = ListingParamsBuilder.Instance;
+const addListingController = AddListingController.getInstance();
 
 const addListing = async () => {
   console.log(basicInformation.value);
 
-  const params =listingBuilder
+  const params = await listingBuilder
     .setBasicInformation(basicInformation.value)
     .setLocation(location.value)
     .setDetails(new ImagesParams(images.value))
@@ -51,7 +53,8 @@ const addListing = async () => {
     )
     .setOpeningHours(openingPrice.value)
     .build();
-  console.log(params);
+  await addListingController.addListing(params);
+  // console.log(params);
 };
 </script>
 

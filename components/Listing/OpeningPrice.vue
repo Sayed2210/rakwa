@@ -113,6 +113,7 @@ const minsNewTime = (day: DaysParams, index: number) => {
               showIcon
               fluid
               iconDisplay="input"
+              format="hh:mm"
               timeOnly
               :placeholder="$t('from')"
             >
@@ -131,6 +132,8 @@ const minsNewTime = (day: DaysParams, index: number) => {
               fluid
               iconDisplay="input"
               timeOnly
+              format="hh:mm"
+              hour-format="24"
               :placeholder="$t('to')"
             >
               <template #inputicon="slotProps">

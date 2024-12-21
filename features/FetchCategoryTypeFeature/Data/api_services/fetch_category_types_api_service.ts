@@ -3,15 +3,15 @@ import ServicesInterface from '~/base/Data/ApiService/api_service_interface'
 import { CrudType } from '~/base/core/Params/call_params_interface'
 import type Params from '~/base/core/Params/params'
 
-class AddListingApiService extends ServicesInterface {
-  private static instance: AddListingApiService
+class FetchCategoryTypesApiService extends ServicesInterface {
+  private static instance: FetchCategoryTypesApiService
   // eslint-disable-next-line ~typescript-eslint/no-empty-function
   private constructor() {
     super()
   }
   static getInstance() {
     if (!this.instance) {
-      this.instance = new AddListingApiService()
+      this.instance = new FetchCategoryTypesApiService()
     }
     return this.instance
   }
@@ -19,13 +19,11 @@ class AddListingApiService extends ServicesInterface {
   async applyService(params: Params): Promise<{ data: any; statusCode: number }> {
     console.log(CrudType.POST)
     return await super.call({
-      url: ApiNames.Instance.addListing,
+      url: ApiNames.Instance.categoryTypes,
       type: CrudType.POST,
-      auth: true,
       params: params,
-      showLoadingDialog: true,
     })
   }
 }
 
-export { AddListingApiService }
+export { FetchCategoryTypesApiService }
