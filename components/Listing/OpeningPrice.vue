@@ -74,17 +74,17 @@ const minsNewTime = (day: DaysParams, index: number) => {
 
 <template>
   <div class="col-span-1 md:col-span-2">
-    <div class="input-wrapper">
-      <label class="input-label" for="time_zone">
-        {{ $t("time_zone") }}
-      </label>
-      <Select
-        v-model="openingHours.timeZone"
-        :options="cities"
-        optionLabel="name"
-        placeholder="Select a City"
-      />
-    </div>
+<!--    <div class="input-wrapper">-->
+<!--      <label class="input-label" for="time_zone">-->
+<!--        {{ $t("time_zone") }}-->
+<!--      </label>-->
+<!--      <Select-->
+<!--        v-model="openingHours.timeZone"-->
+<!--        :options="cities"-->
+<!--        optionLabel="name"-->
+<!--        placeholder="Select a City"-->
+<!--      />-->
+<!--    </div>-->
   </div>
   <div class="col-span-1 md:col-span-2">
     <div class="day" v-for="day in openingHours">

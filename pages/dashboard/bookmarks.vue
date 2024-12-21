@@ -24,6 +24,16 @@ const fetchBookmarks = async () => {
 onMounted(async () => {
   await fetchBookmarks();
 });
+
+watch(
+  () => fetchBookmarkController.state.value,
+  (newVal, oldVal) => {
+    state.value = newVal;
+  },
+  {
+    deep: true,
+  },
+);
 </script>
 
 <template>

@@ -2,11 +2,25 @@
 import { useNuxtApp } from "#app";
 import Select from "primevue/select";
 import LocationParams from "~/features/ListingFeature/Core/Params/location_params";
+import CountryModel from "~/features/FetchCountriesFeature/Data/models/country_model";
+import FetchCountriesController from "~/features/FetchCountriesFeature/presentation/controllers/fetch_countries_controller";
+import FetchCountriesParams from "~/features/FetchCountriesFeature/Core/Params/fetch_countries_params";
+import FetchCitiesController from "~/features/FetchCitiesFeature/presentation/controllers/fetch_cities_controller";
+import type CityModel from "~/features/FetchCitiesFeature/Data/models/city_model";
+import FetchCitiesParams from "~/features/FetchCitiesFeature/Core/Params/fetch_cities_params";
 
 const { $googleMaps } = useNuxtApp();
 
 const location = ref<LocationParams>(
-  new LocationParams(-34.3974, 150.644, "", "", "", ""),
+  new LocationParams(
+    -34.3974,
+    150.644,
+    "",
+    "",
+    "",
+    "",
+    new CountryModel(0, "", ""),
+  ),
 );
 
 const searchAddress = ref([]);
@@ -174,6 +188,34 @@ const setLocation = (address: any) => {
 onMounted(() => {
   initMap();
 });
+
+//fetch countries
+const countries = ref<CountryModel[]>([]);
+const fetchCountriesController = FetchCountriesController.getInstance();
+
+const fetchCountries = async () => {
+  countries.value = (
+    await fetchCountriesController.fetchCountries(
+      new FetchCountriesParams(1, 10),
+    )
+  ).value.data;
+};
+
+onMounted(async () => {
+  await fetchCountries();
+});
+
+// fetch cities
+const cities = ref<CityModel[]>([]);
+const fetchCitiesController = FetchCitiesController.getInstance();
+
+const fetchCities = async () => {
+  cities.value = (
+    await fetchCitiesController.fetchCities(
+      new FetchCitiesParams(location.value.country.id, 1, 10),
+    )
+  ).value.data;
+};
 </script>
 
 <template>
@@ -253,7 +295,7 @@ onMounted(() => {
       />
     </div>
   </div>
-  <div class="col-span-1 md:col-span-1">
+  <div class="col-span-1 md:col-span-2">
     <div class="input-wrapper">
       <label class="input-label" for="google_map_place_id">
         {{ $t("google_map_place_id") }}
@@ -302,49 +344,33 @@ onMounted(() => {
   </div>
   <div class="col-span-1 md:col-span-1">
     <div class="input-wrapper">
-      <label class="input-label" for="Region">
-        {{ $t("Region") }}
-        <span class="tooltip">
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 18 18"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M9 16.5C13.125 16.5 16.5 13.125 16.5 9C16.5 4.875 13.125 1.5 9 1.5C4.875 1.5 1.5 4.875 1.5 9C1.5 13.125 4.875 16.5 9 16.5Z"
-              stroke="#E80306"
-              stroke-width="1.2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M9 6V9.75"
-              stroke="#E80306"
-              stroke-width="1.2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M8.99609 12H9.00283"
-              stroke="#E80306"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <span class="tooltip-text">
-            {{ $t("keywords_description") }}
-          </span>
-        </span>
-      </label>
-      <input
-        type="text"
-        class="input"
-        v-model="location.region"
-        :placeholder="$t('Region')"
-      />
+      <div class="input-wrapper">
+        <label class="input-label" for="time_zone">
+          {{ $t("countries") }}
+        </label>
+        <Select
+          v-model="location.country"
+          :options="countries"
+          optionLabel="title"
+          @update:modelValue="fetchCities"
+          :placeholder="$t('Select_a_country')"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="col-span-1 md:col-span-1">
+    <div class="input-wrapper">
+      <div class="input-wrapper">
+        <label class="input-label" for="time_zone">
+          {{ $t("city") }}
+        </label>
+        <Select
+          v-model="location.city"
+          :options="cities"
+          optionLabel="title"
+          :placeholder="$t('Select_a_city')"
+        />
+      </div>
     </div>
   </div>
   <div class="col-span-1 md:col-span-1">

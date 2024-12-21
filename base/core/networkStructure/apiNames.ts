@@ -34,6 +34,12 @@ class ApiNames {
   public popularServicesByCategory = "popular_services_by_category";
   public services = "services";
   public homeBlogs = "home_blogs";
+  
+  //countries
+  public countries = "countries";
+  
+  //cities
+  public cities = "cities";
 
   //blog
   public blog = "blog-details";

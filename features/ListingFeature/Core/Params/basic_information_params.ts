@@ -1,6 +1,7 @@
 import type Params from "~/base/core/Params/params";
 import CategoryModel from "~/features/FetchCategoriesFeature/Data/models/category_model";
 import CategoryTypeModel from "~/features/FetchCategoryTypeFeature/Data/models/category_type_model";
+import {convertToBase64} from "~/base/persention/utils/convert_to_base_64";
 
 export default class BasicInformationParams implements Params {
   public title: string;
@@ -38,7 +39,7 @@ export default class BasicInformationParams implements Params {
   toMap(): { [p: string]: any } {
     const data: { [p: string]: any } = {};
     data["title"] = this.title;
-    if (this.logo && this.logo instanceof File) data["image"] = this.logo;
+    data["image"] = this.logo;
     data["category_id"] = this.categories.id;
     data["category_type_id"] = this.serviceCategory.id;
     data["keywords"] = this.keywords;

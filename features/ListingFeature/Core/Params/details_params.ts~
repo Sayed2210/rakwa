@@ -2,9 +2,9 @@ import type Params from "~/base/core/Params/params";
 import { convertToBase64 } from "~/base/persention/utils/convert_to_base_64";
 
 export default class ImagesParams implements Params {
-  public images: string;
+  public images: File;
 
-  constructor(images: string) {
+  constructor(images: File) {
     this.images = images;
   }
 

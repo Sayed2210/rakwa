@@ -14,6 +14,7 @@ export default {
   goBack: "Go Back",
   address: "Address",
   Add_your_rating: "Add your rating",
+  countries: "Countries",
   city: "City",
   user_info: "User Info",
   change_password: "Change Password",

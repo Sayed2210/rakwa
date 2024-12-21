@@ -8,6 +8,7 @@ import FetchCategoriesParams from "~/features/FetchCategoriesFeature/Core/Params
 import CategoryTypeModel from "~/features/FetchCategoryTypeFeature/Data/models/category_type_model";
 import FetchCategoryTypesController from "~/features/FetchCategoryTypeFeature/presentation/controllers/fetch_category_types_controller";
 import FetchCategoryTypesParams from "~/features/FetchCategoryTypeFeature/Core/Params/fetch_category_types_params";
+import {convertToBase64} from "~/base/persention/utils/convert_to_base_64";
 
 const selectedCity = ref();
 const cities = ref([
@@ -82,11 +83,16 @@ const fetchCategoryTypes = async () => {
 onMounted(async () => {
   await fetchCategoryTypes();
 });
+
+const handleImage = async (image: any) => {
+  basicInformation.value.logo = await convertToBase64(image);
+  console.log(basicInformation.value.logo)
+}
 </script>
 
 <template>
   <div class="col-span-1 md:col-span-2">
-    <GlobalUploadImage @update:image="basicInformation.logo = $event" />
+    <GlobalUploadImage @update:image="handleImage" />
   </div>
   <div class="col-span-1 md:col-span-1">
     <div class="input-wrapper">
