@@ -1,10 +1,38 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+
+const socialMedia = ref({
+  isContactWidgetEnabled: true,
+  facebook: "",
+  twitter: "",
+  instagram: "",
+  linkedin: "",
+  youtube: "",
+  whatsapp: "",
+});
+
+const emit = defineEmits<{
+  (e: "update:socialMedia", socialMedia: any): void;
+}>();
+
+watch(
+  () => socialMedia.value,
+  () => {
+    emit("update:socialMedia", socialMedia.value);
+  },
+  { deep: true },
+);
+</script>
 
 <template>
   <div class="col-span-1 md:col-span-2">
     <div class="input-wrapper-switch">
       <div class="switch">
-        <input type="checkbox" id="Enable_Contact_Widget" />
+        <input
+          type="checkbox"
+          value="true"
+          v-model="socialMedia.isContactWidgetEnabled"
+          id="Enable_Contact_Widget"
+        />
         <label for="Enable_Contact_Widget" class="slider"></label>
       </div>
       <label class="input-label" for="Enable_Contact_Widget"
@@ -80,6 +108,7 @@
         class="input"
         type="text"
         id="whatsapp"
+        v-model="socialMedia.whatsapp"
         placeholder="Enter your link"
       />
     </div>
@@ -107,6 +136,7 @@
         class="input"
         type="text"
         id="twitter"
+        v-model="socialMedia.twitter"
         placeholder="Enter your link"
       />
     </div>
@@ -141,6 +171,7 @@
       <input
         class="input"
         type="text"
+        v-model="socialMedia.linkedin"
         id="linkedin"
         placeholder="Enter your link"
       />
@@ -180,6 +211,7 @@
         class="input"
         type="text"
         id="facebook"
+        v-model="socialMedia.facebook"
         placeholder="Enter your link"
       />
     </div>
@@ -230,6 +262,7 @@
         class="input"
         type="text"
         id="instagram"
+        v-model="socialMedia.instagram"
         placeholder="Enter your link"
       />
     </div>
@@ -256,6 +289,7 @@
       <input
         class="input"
         type="text"
+        v-model="socialMedia.youtube"
         id="youtube"
         placeholder="Enter your link"
       />

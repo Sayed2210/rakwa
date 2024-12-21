@@ -42,6 +42,13 @@ class ApiNames {
 
   //listing
   public listings = "my_listings";
+  public addListing = "add_listing";
+  public updateListing = "update_listing";
+  // public deleteListing = "delete_listing";
+  // public listingDetails = "listing_details";
+  // public listingComments = "fetch_listing_comments";
+  // public addListingComment = "make_listing_comment";
+  // public listingReviews = "fetch_listing_reviews";
 
   //bookmark
   public bookmarks = "my_bookmarks";

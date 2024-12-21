@@ -1,8 +1,57 @@
 <script setup lang="ts">
-import BasicInformation from "~/components/Listing/BasicInformation.vue";
+import ListingParamsBuilder from "~/features/ListingFeature/Presentation/Builder/add_listing_builder";
+import ImagesParams from "~/features/ListingFeature/Core/Params/details_params";
+import SocialParams from "~/features/ListingFeature/Core/Params/social_params";
 
-const handleBasicInformation = (basicInformation: any) => {
-  console.log(basicInformation);
+const basicInformation = ref<any>(null);
+const location = ref<any>(null);
+const images = ref<any>(null);
+const details = ref<any>(null);
+const openingPrice = ref<any>(null);
+
+const handleBasicInformation = (data: any) => {
+  basicInformation.value = data;
+  console.log(basicInformation.value);
+};
+
+const handleLocation = (data: any) => {
+  location.value = data;
+};
+
+const handleImages = (data: any) => {
+  images.value = data;
+};
+
+const handleSocial = (data: any) => {
+  details.value = data;
+};
+
+const handleOpeningPrice = (data: any) => {
+  openingPrice.value = data;
+};
+const listingBuilder = ListingParamsBuilder.Instance;
+
+const addListing = async () => {
+  console.log(basicInformation.value);
+
+  const params =listingBuilder
+    .setBasicInformation(basicInformation.value)
+    .setLocation(location.value)
+    .setDetails(new ImagesParams(images.value))
+    .setSocials(
+      new SocialParams(
+        details.value.isContactWidgetEnabled,
+        details.value.facebook,
+        details.value.twitter,
+        details.value.instagram,
+        details.value.linkedin,
+        details.value.youtube,
+        details.value.whatsapp,
+      ),
+    )
+    .setOpeningHours(openingPrice.value)
+    .build();
+  console.log(params);
 };
 </script>
 
@@ -18,14 +67,14 @@ const handleBasicInformation = (basicInformation: any) => {
     </div>
     <h4 class="listing-section-title">{{ $t("location") }}</h4>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <ListingLocation />
+      <ListingLocation @update:location="handleLocation" />
     </div>
     <h4 class="listing-section-title">{{ $t("Attachments") }}</h4>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div class="col-span-1 md:col-span-2">
-        <ListingGallary />
+        <ListingGallary @update:images="handleImages" />
       </div>
-      <ListingDetails />
+      <ListingDetails @update:socialMedia="handleSocial" />
     </div>
     <div class="listing-section-title">
       <h4>{{ $t("opening_price") }}</h4>
@@ -37,11 +86,15 @@ const handleBasicInformation = (basicInformation: any) => {
       </div>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <ListingOpeningPrice />
+      <ListingOpeningPrice @update:openingHours="handleOpeningPrice" />
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div class="col-span-1 md:col-span-2">
-        <button class="primary-button-2" aria-label="submit">
+        <button
+          class="primary-button-2"
+          @click="addListing"
+          aria-label="submit"
+        >
           {{ $t("add") }}
         </button>
       </div>

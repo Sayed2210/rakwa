@@ -9,8 +9,8 @@ export default class TimeParams {
 
   toMap(): { [p: string]: any } {
     const data: { [p: string]: any } = {};
-    data["from"] = this.from;
-    data["to"] = this.to;
+    data["opening_time"] = this.from;
+    data["closing_time"] = this.to;
     return data;
   }
 }

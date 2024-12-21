@@ -1,10 +1,11 @@
 import type Params from "~/base/core/Params/params";
 import BasicInformationParams from "~/features/ListingFeature/Core/Params/basic_information_params";
 import LocationParams from "~/features/ListingFeature/Core/Params/location_params";
-import DetailsParams from "~/features/ListingFeature/Core/Params/details_params";
+import ImagesParams from "~/features/ListingFeature/Core/Params/details_params";
 import OpeningHoursParams from "~/features/ListingFeature/Core/Params/opening_hours";
 import PricingBookableServices from "~/features/ListingFeature/Core/Params/pricing_bookable_services";
 import ListingParams from "~/features/ListingFeature/Core/Params/listing_params";
+import SocialParams from "~/features/ListingFeature/Core/Params/social_params";
 
 export default class ListingParamsBuilder {
   private static _instance: ListingParamsBuilder | null = null;
@@ -12,7 +13,8 @@ export default class ListingParamsBuilder {
   private basicInformation: BasicInformationParams | null = null;
   private location: LocationParams | null = null;
   private gallery: string[] = [];
-  private details: DetailsParams | null = null;
+  private details: ImagesParams | null = null;
+  private socials: SocialParams | null = null;
   private openingHours: OpeningHoursParams[] = [];
   private pricingBookableServices: PricingBookableServices[] = [];
 
@@ -43,8 +45,13 @@ export default class ListingParamsBuilder {
     return this;
   }
 
-  setDetails(details: DetailsParams): this {
+  setDetails(details: ImagesParams): this {
     this.details = details;
+    return this;
+  }
+
+  setSocials(socials: SocialParams): this {
+    this.socials = socials;
     return this;
   }
 
@@ -72,11 +79,13 @@ export default class ListingParamsBuilder {
       throw new Error("Details are required.");
     }
 
+
     const params = new ListingParams(
       this.basicInformation,
       this.location,
       this.gallery,
       this.details,
+      this.socials,
       this.openingHours,
       this.pricingBookableServices,
     );

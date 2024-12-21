@@ -1,14 +1,16 @@
 import type Params from "~/base/core/Params/params";
 import BasicInformationParams from "./basic_information_params";
 import LocationParams from "./location_params";
-import DetailsParams from "./details_params";
+import ImagesParams from "./details_params";
 import OpeningHoursParams from "./opening_hours";
 import PricingBookableServices from "./pricing_bookable_services";
+import SocialParams from "~/features/ListingFeature/Core/Params/social_params";
 export default class ListingParams implements Params {
   public basicInformation: BasicInformationParams;
   public Location: LocationParams;
   public gallery: string[];
-  public details: DetailsParams;
+  public details: ImagesParams;
+  public social: SocialParams | null;
   public openingHours: OpeningHoursParams[];
   public pricingBookableServices: PricingBookableServices[];
 
@@ -16,7 +18,8 @@ export default class ListingParams implements Params {
     basicInformation: BasicInformationParams,
     Location: LocationParams,
     gallery: string[],
-    details: DetailsParams,
+    details: ImagesParams,
+    social: SocialParams | null,
     openingHours: OpeningHoursParams[],
     pricingBookableServices: PricingBookableServices[],
   ) {
@@ -24,6 +27,7 @@ export default class ListingParams implements Params {
     this.Location = Location;
     this.gallery = gallery;
     this.details = details;
+    this.social = social;
     this.openingHours = openingHours;
     this.pricingBookableServices = pricingBookableServices;
   }
@@ -31,10 +35,11 @@ export default class ListingParams implements Params {
   toMap(): { [p: string]: any } {
     const data: { [p: string]: any } = {};
     data["basic_information"] = this.basicInformation.toMap();
-    console.log(data["basic_information"]);
+    // console.log(data["basic_information"]);
     data["location"] = this.Location.toMap();
     data["gallery"] = this.gallery;
-    data["details"] = this.details.toMap();
+    data["images"] = this.details.toMap();
+    data["social"] = this.social?.toMap();
     data["opening_hours"] = this.openingHours.map((item: OpeningHoursParams) =>
       item.toMap(),
     );

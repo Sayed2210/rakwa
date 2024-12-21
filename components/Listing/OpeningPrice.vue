@@ -11,19 +11,40 @@ const cities = ref([
   { name: "Istanbul", code: "IST" },
 ]);
 
-const openingHours = ref<OpeningHoursParams>(
-  new OpeningHoursParams(
-    [
-      new DaysParams("monday", [new TimeParams("", "")]),
-      new DaysParams("tuesday", [new TimeParams("", "")]),
-      new DaysParams("wednesday", [new TimeParams("", "")]),
-      new DaysParams("thursday", [new TimeParams("", "")]),
-      new DaysParams("friday", [new TimeParams("", "")]),
-      new DaysParams("saturday", [new TimeParams("", "")]),
-    ],
-    "",
-  ),
-);
+const days = ref([
+  {
+    id: 1,
+    day: "monday",
+  },
+  {
+    id: 2,
+    day: "tuesday",
+  },
+  {
+    id: 3,
+    day: "wednesday",
+  },
+  {
+    id: 4,
+    day: "thursday",
+  },
+  {
+    id: 5,
+    day: "friday",
+  },
+  {
+    id: 6,
+    day: "saturday",
+  },
+]);
+const openingHours = ref<OpeningHoursParams[]>([]);
+const createOpeningHours = () => {
+  openingHours.value = days.value.map((day) => {
+    return new OpeningHoursParams(day.day, day.id, [new TimeParams("", "")]);
+  });
+};
+
+createOpeningHours();
 
 const emit = defineEmits<{
   (e: "update:openingHours", openingHours: OpeningHoursParams): void;
@@ -66,7 +87,7 @@ const minsNewTime = (day: DaysParams, index: number) => {
     </div>
   </div>
   <div class="col-span-1 md:col-span-2">
-    <div class="day" v-for="day in openingHours.days">
+    <div class="day" v-for="day in openingHours">
       <div class="day-wrapper">
         <span class="day-of-week">
           {{ day.day }}

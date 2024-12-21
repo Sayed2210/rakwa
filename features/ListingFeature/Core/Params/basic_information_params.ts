@@ -3,7 +3,7 @@ import type Params from "~/base/core/Params/params";
 export default class BasicInformationParams implements Params {
   public title: string;
   public logo: File | null;
-  public categories: number[] = [];
+  public categories: number;
   public serviceCategory: number;
   public keywords: string;
   public description: string;
@@ -13,7 +13,7 @@ export default class BasicInformationParams implements Params {
   constructor(
     title: string,
     logo: File | null,
-    categories: number[] = [],
+    categories: number,
     serviceCategory: number,
     keywords: string,
     description: string,
@@ -33,13 +33,13 @@ export default class BasicInformationParams implements Params {
   toMap(): { [p: string]: any } {
     const data: { [p: string]: any } = {};
     data["title"] = this.title;
-    if (this.logo && this.logo instanceof File) data["logo"] = this.logo;
-    data["categories"] = this.categories;
-    data["service_category"] = this.serviceCategory;
+    if (this.logo && this.logo instanceof File) data["image"] = this.logo;
+    data["category_id"] = this.categories;
+    data["service_id"] = this.serviceCategory;
     data["keywords"] = this.keywords;
     data["description"] = this.description;
-    data["minimum_price_range"] = this.minimumPriceRange;
-    data["maximum_price_range"] = this.maximumPriceRange;
+    data["minimum_price"] = this.minimumPriceRange;
+    data["maximum_price"] = this.maximumPriceRange;
     return data;
   }
 }

@@ -72,6 +72,7 @@
 @import "helpers/_social.css";
 @import "helpers/_pagination.css";
 @import "helpers/_dropdown.css";
+@import "helpers/_search.css";
 
 /*privacy*/
 @import "privacy/_privacy.css";

@@ -23,12 +23,12 @@ export default class LocationParams implements Params {
     toMap(): { [p: string]: any } {
         const
             map: { [p: string]: any } = {}
-        map["latitude"] = this.latitude
-        map["longitude"] = this.longitude
+        map["lat"] = this.latitude
+        map["lng"] = this.longitude
         map["address"] = this.address
         map["friendly_address"] = this.friendlyAddress
         map["region"] = this.region
-        map["google_place_id"] = this.googlePlaceId
+        map["google_map_id"] = this.googlePlaceId
         return map
     }
 }
