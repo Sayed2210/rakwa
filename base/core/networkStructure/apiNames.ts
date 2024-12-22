@@ -53,6 +53,7 @@ class ApiNames {
   public updateListing = "update_listing";
   public deleteListing = "delete_listing";
   public listingDetails = "listing_details";
+  public filterListings = "filter_listings";
   public searchListing = "search_listing";
   // public addListingComment = "make_listing_comment";
   // public listingReviews = "fetch_listing_reviews";
