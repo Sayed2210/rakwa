@@ -114,14 +114,13 @@ onMounted(async () => {
           v-for="country in countries"
           :key="country?.id"
         >
-          <label
-              :for="country?.id">
+          <label :for="country?.id">
             {{ country?.title }}
           </label>
           <input
             type="checkbox"
-            :id="country?.id"
-            :name="country?.id"
+            id="open"
+            name="open"
             class="hidden"
             @change="filterCountry"
             :value="country?.id"
