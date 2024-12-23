@@ -46,7 +46,7 @@ export default class BasicInformationParams implements Params {
     data["description"] = this.description;
     data["minimum_price"] = this.minimumPriceRange;
     data["maximum_price"] = this.maximumPriceRange;
-    data["type"] = this.type ?? 1;
+    data["service_id"] = this.type ?? 1;
     return data;
   }
 }

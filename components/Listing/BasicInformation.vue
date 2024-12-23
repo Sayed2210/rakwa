@@ -86,7 +86,7 @@ onMounted(async () => {
 
 const handleImage = async (image: any) => {
   basicInformation.value.logo = await convertToBase64(image);
-  console.log(basicInformation.value.logo)
+  // console.log(basicInformation.value.logo)
 }
 </script>
 

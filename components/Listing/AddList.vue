@@ -35,10 +35,10 @@ const listingBuilder = ListingParamsBuilder.Instance;
 const addListingController = AddListingController.getInstance();
 
 const addListing = async () => {
-  console.log(basicInformation.value);
+  // console.log(basicInformation.value);
 
   const convertedImages = await Promise.all(
-    images.value.map((image: File) => convertToBase64(image)),
+    images.value?.map((image: File) => convertToBase64(image))??[],
   );
   const params = listingBuilder
     .setBasicInformation(basicInformation.value)

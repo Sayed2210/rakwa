@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import Slider from "primevue/slider";
+import CategoryModel from "~/features/FetchCategoriesFeature/Data/models/category_model";
+import FetchCategoriesController
+  from "~/features/FetchCategoriesFeature/presentation/controllers/fetch_categories_controller";
+import FetchCategoriesParams from "~/features/FetchCategoriesFeature/Core/Params/fetch_categories_params";
 const value = ref(10);
+
+
+
 </script>
 
 <template>
@@ -73,7 +80,7 @@ const value = ref(10);
         <h3 class="filter-title">{{ $t("Rating") }}</h3>
       </div>
       <div class="filter-items">
-        <span class="filter-item">
+        <span class="filter-item" >
           1
           <IconsStar />
         </span>

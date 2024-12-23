@@ -1,5 +1,26 @@
 <script setup lang="ts">
-import Popover from "primevue/popover";
+
+
+import CategoryModel from "~/features/FetchCategoriesFeature/Data/models/category_model";
+import FetchCategoriesController
+  from "~/features/FetchCategoriesFeature/presentation/controllers/fetch_categories_controller";
+import FetchCategoriesParams from "~/features/FetchCategoriesFeature/Core/Params/fetch_categories_params";
+
+const categories = ref<CategoryModel[]>([]);
+const fetchCategoriesController = FetchCategoriesController.getInstance();
+
+const fetchCategories = async () => {
+  categories.value = (
+      await fetchCategoriesController.fetchCategories(
+          new FetchCategoriesParams(1, 10),
+      )
+  ).value.data;
+  console.log(categories.value);
+};
+
+onMounted(async () => {
+  await fetchCategories();
+});
 </script>
 
 <template>
@@ -16,17 +37,17 @@ import Popover from "primevue/popover";
             <IconsArrowDown />
           </span>
         </button>
-        <GlobalDropdown />
+        <GlobalDropdown :categories="categories" />
       </div>
-      <div class="dropdown">
-        <button type="button" class="dropdown-button">
-          {{ $t("sort") }}
-          <span>
-            <IconsSort />
-          </span>
-        </button>
-        <GlobalDropdown />
-      </div>
+<!--      <div class="dropdown">-->
+<!--        <button type="button" class="dropdown-button">-->
+<!--          {{ $t("sort") }}-->
+<!--          <span>-->
+<!--            <IconsSort />-->
+<!--          </span>-->
+<!--        </button>-->
+<!--        <GlobalDropdown />-->
+<!--      </div>-->
     </div>
   </section>
 </template>

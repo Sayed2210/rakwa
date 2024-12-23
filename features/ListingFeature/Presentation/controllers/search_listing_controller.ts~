@@ -9,7 +9,7 @@ import DialogSelector from "~/base/persention/Dialogs/dialog_selector";
 import SearchListingModel from "~/features/ListingFeature/Data/models/search_listing_model";
 import ListingModel from "~/features/FetchListingFeature/Data/models/listing_model";
 
-export default class SearchListingController extends ControllerInterface<SearchListingModel> {
+export default class SearchListingController extends ControllerInterface<ListingModel[]> {
   private static instance: SearchListingController;
   private constructor() {
     super();
@@ -27,7 +27,7 @@ export default class SearchListingController extends ControllerInterface<SearchL
     // useLoaderStore().setLoadingWithDialog();
     try {
       const router = useRouter();
-      const dataState: DataState<SearchListingModel> =
+      const dataState: DataState<ListingModel[]> =
         await this.SearchListingUseCase.call(params);
       console.log(dataState)
       this.setState(dataState);

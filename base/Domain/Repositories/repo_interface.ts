@@ -69,26 +69,22 @@ export default abstract class RepoInterface<T> {
             message: httpResponse.data.message,
           });
         }
+
         if (httpResponse.data.data != null) {
           try {
-            if (httpResponse.data.data.length === 0) {
-              return new DataEmpty<T>(
-                new ErrorModel(
-                  httpResponse.data.message ?? "",
-                  ErrorType.dataEmpty,
-                ),
-              );
-            }
             let pagination: PaginationModel | null = null;
             if (this.hasPagination && httpResponse.data.data.meta) {
+              if (httpResponse.data.data.length === 0) {
+                return new DataEmpty<T>(
+                  new ErrorModel(
+                    httpResponse.data.message ?? "",
+                    ErrorType.dataEmpty,
+                  ),
+                );
+              }
               pagination = PaginationModel.fromMap(httpResponse.data.data.meta);
             }
-            // console.log(
-            //   '0mar a7a data',
-            //   this.onParse(
-            //     this.hasPagination ? httpResponse.data.data.data : httpResponse.data.data,
-            //   ),
-            // )
+            // console.log(httpResponse.data.data.listings)
 
             return new DataSuccess<T>({
               data: this.onParse(
@@ -96,7 +92,9 @@ export default abstract class RepoInterface<T> {
                   ? httpResponse.data.data.data
                   : httpResponse.data.data,
               ),
-              pagination: pagination,
+              pagination: httpResponse.data.data.listings
+                ? httpResponse.data.data.listings.meta
+                : pagination,
               message: httpResponse.data.message,
             });
           } catch (e) {

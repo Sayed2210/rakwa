@@ -37,7 +37,7 @@ const fetchOtherReviews = async () => {
 watch(
   () => fetchMyReviewsController.state.value,
   (newVal, oldVal) => {
-    console.log("State changed:", newVal);
+    // console.log("State changed:", newVal);
     state.value = newVal;
   },
   { deep: true },

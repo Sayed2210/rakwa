@@ -1,3 +1,5 @@
+import address from "~/components/Icons/Address.vue";
+
 export default class ListingModel {
   public id: number;
   public name: string;
@@ -35,12 +37,13 @@ export default class ListingModel {
   }
 
   static fromMap(map: { [key: string]: any }): ListingModel {
+    console.log(map,"map");
     return new ListingModel(
       map["id"],
       map["title"],
       map["image"],
-      map["description"],
       map["address"],
+      map["description"],
       map["views"],
       map["is_bookmark"],
       map["status"],

@@ -7,7 +7,7 @@ const props = defineProps<{ categories: CategoryModel[] }>();
 <template>
   <div class="dropdown-content">
     <ul>
-      <li class="dropdown-item" v-for="category in categories"> {{ category.title }}</li>
+      <li class="dropdown-item" v-for="category in categories"> {{ category.name }}</li>
 
     </ul>
   </div>
