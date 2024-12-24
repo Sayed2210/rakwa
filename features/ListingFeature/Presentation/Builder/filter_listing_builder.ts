@@ -3,9 +3,9 @@ import FilterListingParams from "~/features/ListingFeature/Core/Params/filter_pa
 export default class FilterListingParamsBuilder {
   private static _instance: FilterListingParamsBuilder | null = null;
 
-
   private status: number | null = null;
   private countryId: number | null = null;
+  private cityId: number | null = null;
   private rate: number | null = null;
   private distance: number | null = null;
   private priceRange: number[] | null = null;
@@ -32,6 +32,10 @@ export default class FilterListingParamsBuilder {
   public setCountryId(countryId: number): this {
     this.countryId = countryId;
     return this;
+  }
+  public setCityId(cityId: number) {
+    this.cityId = cityId;
+    return;
   }
   public setRate(rate: number): this {
     this.rate = rate;
@@ -63,6 +67,7 @@ export default class FilterListingParamsBuilder {
     return new FilterListingParams(
       this.status!,
       this.countryId!,
+      this.cityId!,
       this.rate!,
       this.distance!,
       this.priceRange!,
@@ -71,5 +76,4 @@ export default class FilterListingParamsBuilder {
       this.limit!,
     );
   }
-
 }

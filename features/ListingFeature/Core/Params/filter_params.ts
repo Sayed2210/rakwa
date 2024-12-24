@@ -1,9 +1,9 @@
 import type Params from "~/base/core/Params/params";
 
-
 export default class FilterListingParams implements Params {
   public status: number;
   public countryId: number;
+  public cityId: number;
   public rate: number;
   public distance: number;
   public priceRange: number[];
@@ -14,6 +14,7 @@ export default class FilterListingParams implements Params {
   constructor(
     status: number,
     countryId: number,
+    cityId: number,
     rate: number,
     distance: number,
     priceRange: number[],
@@ -23,6 +24,7 @@ export default class FilterListingParams implements Params {
   ) {
     this.status = status;
     this.countryId = countryId;
+    this.cityId = cityId;
     this.rate = rate;
     this.distance = distance;
     this.priceRange = priceRange;
@@ -35,6 +37,7 @@ export default class FilterListingParams implements Params {
     const data: { [p: string]: any } = {};
     data["status"] = this.status;
     data["country_id"] = this.countryId;
+    data["city_id"] = this.cityId;
     data["rate"] = this.rate;
     data["distance"] = this.distance;
     data["price_range"] = this.priceRange;

@@ -1,19 +1,21 @@
 <script setup lang="ts">
 import SearchBuilder from "~/features/ListingFeature/Presentation/Builder/search_builder";
 import SearchListingController from "~/features/ListingFeature/Presentation/controllers/search_listing_controller";
+import { SearchStrategy } from "~/features/ListingFeature/Presentation/strategies/search_strategy";
 
 const props = defineProps<{ showMap?: boolean }>();
 
 const searchBuilder = SearchBuilder.Instance;
 
 const searchListingController = SearchListingController.getInstance();
+searchListingController.setStrategy(new SearchStrategy());
 
 const state = ref(searchListingController.state.value);
 
 const searchListing = async () => {
   try {
     const params = searchBuilder.build();
-    await searchListingController.SearchListing(params);
+    await searchListingController.executeStrategy(params);
   } catch (e) {
     console.log(e);
   }
