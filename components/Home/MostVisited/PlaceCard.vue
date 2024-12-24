@@ -1,11 +1,17 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { Listing } from "~/types/listing";
+
+const prop = defineProps<{
+  listing: Listing;
+}>();
+</script>
 
 <template>
   <div class="place-card">
     <div class="place-img">
       <NuxtImg
-        src="/place.png"
-        alt="place image"
+        :src="listing?.image"
+        :alt="listing?.title"
         class="place-img"
         format="webp"
       />
@@ -33,7 +39,7 @@
         </svg>
         <span>{{ $t("sponsor") }}</span>
       </span>
-      <div class="fav">
+      <div class="fav" v-if="listing?.is_bookmark">
         <svg
           width="29"
           height="25"
@@ -53,16 +59,13 @@
         {{ $t("restaurant") }}
       </p>
       <h2 class="place-title">
-        {{ $t("Avail Insurance Solutions") }}
+        {{ listing?.title }}
       </h2>
       <div class="rate flex items-center gap-1">
-        <GlobalRate :rateCount="4" />
-        <span>(136 {{ $t("rate") }})</span>
+        <GlobalRate :rateCount="listing.rate" />
+        <span>({{ listing.rate_count }} {{ $t("rate") }})</span>
       </div>
-      <p class="place-description">
-        A cozy escape from the hustle and bustle, our café offers a warm
-        ambiance and freshly brewed coffee that comforts the soul.
-      </p>
+      <p class="place-description" v-html="listing?.description"></p>
       <div class="location flex items-center gap-1">
         <svg
           width="14"
@@ -77,7 +80,7 @@
           />
         </svg>
         <NuxtLink to="/place/1">
-          12, alhamd street ,mansoura eljadida
+          {{ listing?.address }}
         </NuxtLink>
       </div>
     </div>

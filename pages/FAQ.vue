@@ -14,7 +14,7 @@ const { data: faqs } = await useAsyncData("faq", async () => {
     data: Faq[];
     message: string;
     status: number;
-  }>(`${BASE_URL}/faqs`);
+  }>(`${BASE_URL}/faq`);
   return response.data; // Extract only the `data` part
 });
 </script>
