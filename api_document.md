@@ -949,7 +949,7 @@
               "closing_time": "17:00"
             }
           ]
-        },
+        }
       ]
     }
     ```
@@ -964,8 +964,8 @@
 
     ```json
     {
-        listing_id: 1,
-    "basic_information": {
+      "listing_id": 1,
+      "basic_information": {
         "image": "https://cdn_icons_png.flaticon.com/512/149/149071.png",
         "title": "Listing 1",
         "keywords": "keyword1, keyword2, keyword3",
@@ -1036,7 +1036,7 @@
               "closing_time": "17:00"
             }
           ]
-        },
+        }
       ]
     }
     ```
@@ -1055,8 +1055,9 @@
     "keyword": "keyword1"
   }
   ```
-  
+
 - **Response:**
+
   ```json
   [
     {
@@ -1082,32 +1083,35 @@
 - **Response Message:** `Listings fetched successfully.`
 
 - **Endpoint:** `filter_listings`
+
   - **Method:** `POST`
+
     - **Params:**
 
       ```json
       {
-          "status": "open",
-          "state": "state",
-          "rate_count": 5,
-          "distance": [10, 50],
-          "price": [100, 200],
-          "address": 1,
+        "status": "open",
+        "state": "state",
+        "rate_count": 5,
+        "distance": [10, 50],
+        "price": [100, 200],
+        "address": 1
       }
       ```
-    
+
       - **Response:**
+
         ```json
-        
+
           "listing" : [
-  
+
             {
               "id": 1,
               "name": "Listing 1",
               "image": "https://cdn_icons_png.flaticon.com/512/149/149071.png"
               "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
               "address": "123 Main St, Anytown, USA",
-              "views": 10 
+              "views": 10
             }
         ],
         "similar_listing": [
@@ -1117,11 +1121,77 @@
               "image": "https://cdn_icons_png.flaticon.com/512/149/149071.png"
               "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
               "address": "123 Main St, Anytown, USA",
-              "views": 10 
+              "views": 10
             }
         ]
         ```
-    - 
-        
+
+    -
+
 - **Response Status Code:** `200`
 - **Response Message:** `Listings fetched successfully.`
+
+- **Endpoint:** `add_rate`
+- **Method:** `POST`
+- **Params:**
+
+  ```json
+  {
+    "listing_id": 1,
+    "rate": 4,
+    "comment": "Great listing!",
+    "images": ["images", "images"]
+  }
+  ```
+
+- **Response:**
+
+- **Response Status Code:** `200`
+- **Response Message:** `Rate added successfully.`
+
+- **Endpoint:** `add_rate`
+- **Method:** `POST`
+- **Params:**
+
+  ```json
+  {
+    "listing_id": 1,
+    "full_name": "Elsayed",
+    "email": "Elsayed",
+    "phone": "1234567890",
+    "comment": "Great listing!",
+    "images": ["images", "images"]
+  }
+  ```
+  
+- **Response Status Code:** `200`
+- **Response Message:** `add claim successfully.`
+
+
+- **Endpoint:** `upvote_rate`
+- **Method:** `POST`
+- **Params:**
+
+  ```json
+  {
+    "listing_id": 2,
+    "rate_id": 1
+  }
+
+- **Response Status Code:** `200`
+- **Response Message:** `upvoted rate successfully.`
+
+
+
+- **Endpoint:** `downvote_rate`
+- **Method:** `POST`
+- **Params:**
+
+  ```json
+  {
+    "listing_id": 2,
+    "rate_id": 1
+  }
+
+- **Response Status Code:** `200`
+- **Response Message:** `downvote rate successfully.`
