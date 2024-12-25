@@ -18,7 +18,7 @@ export default class ListingDetailsModel {
   public openingHours: OpeningHoursModel[];
 
   public reviews: ReviewModel[]; // Adjust this type as needed
-
+  public myReview: ReviewModel | null;
   public owner: UserModel | null;
   public claimStatus: number;
   constructor(
@@ -31,6 +31,7 @@ export default class ListingDetailsModel {
     reviews: ReviewModel[],
     owner: UserModel | null,
     claimStatus: number = 0,
+    myReview: ReviewModel | null,
   ) {
     this.id = id;
     this.BasicInformation = BasicInformation;
@@ -41,6 +42,7 @@ export default class ListingDetailsModel {
     this.reviews = reviews;
     this.owner = owner;
     this.claimStatus = claimStatus;
+    this.myReview = myReview;
   }
 
   static fromMap(map: { [key: string]: any }): ListingDetailsModel {
@@ -56,6 +58,7 @@ export default class ListingDetailsModel {
       map["reviews"].map((review: any) => ReviewModel.fromMap(review)),
       map["owner"] ? UserModel.fromMap(map["owner"]) : null,
       map["claim_status"],
+      map["my_review"] ? ReviewModel.fromMap(map["my_review"]) : null,
     );
   }
 }

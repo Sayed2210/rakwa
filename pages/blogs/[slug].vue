@@ -29,7 +29,7 @@ useSeoMeta({
   <section class="blogs">
     <div class="container mx-auto px-8">
       <GlobalBreadcrumb />
-      <BlogsDetails />
+      <BlogsDetails :blog="blog" />
     </div>
   </section>
 </template>
