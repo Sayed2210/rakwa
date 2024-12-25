@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 import ImageModel from "~/features/ListingFeature/Data/models/image_model";
 
 const props = defineProps<{ images: ImageModel[] }>();
@@ -13,14 +14,14 @@ const hoveredImage = ref<string | null>(null);
     >
       <NuxtImg
         alt="listing image"
-        :src="image.image"
+        :src="image"
         :class="[
           image === images[0] && !hoveredImage ? 'main-img' : '',
           { 'main-img': image === hoveredImage },
         ]"
         format="webp"
         loading="lazy"
-        @mouseover="hoveredImage = image.image"
+        @mouseover="hoveredImage = image"
         @mouseleave="hoveredImage = null"
       />
       <span class="gallery-icon" v-if="image === images[images.length - 1]">

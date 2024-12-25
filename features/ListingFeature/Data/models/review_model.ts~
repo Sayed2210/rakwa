@@ -1,0 +1,7 @@
+export default class ReviewModel {
+    public id: number;
+    public clientName: string;
+    public clientImage: string;
+    public rate: number;
+
+}

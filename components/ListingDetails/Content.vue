@@ -1,17 +1,22 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+
+import ListingDetailsModel from "~/features/ListingFeature/Data/models/listing_details_model";
+
+const props = defineProps<{ listing: ListingDetailsModel }>();
+</script>
 
 <template>
   <div class="container mx-auto px-8">
     <div class="grid mt-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       <div class="col-span-1 md:col-span-2">
-<!--        <ListingDetailsGallery />-->
-        <ListingDetailsInfo />
+        <ListingDetailsGallery :images="listing.images" />
+        <ListingDetailsInfo :listing="listing" />
         <listingDetailsReviews />
 
 
       </div>
       <div class="col-span-1">
-        <ListingDetailsPriceRange />
+        <ListingDetailsPriceRange :listing="listing" />
       </div>
     </div>
   </div>

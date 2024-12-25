@@ -6,7 +6,7 @@
     <div class="rating">
       <div class="add-rate">
         <h4>{{ $t("Add_your_rating") }}</h4>
-        <ListingDetailsAddRatingDialog />
+        <ListingDetailsAddRateDialog />
       </div>
       <div class="rates">
         <div class="rate-count" >

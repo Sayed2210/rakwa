@@ -1,0 +1,41 @@
+import facebook from "~/components/Icons/Facebook.vue";
+import instagram from "~/components/Icons/Instagram.vue";
+import youtube from "~/components/Icons/Youtube.vue";
+import linkedin from "~/components/Icons/Linkedin.vue";
+import twitter from "~/components/Icons/Twitter.vue";
+
+export default class SocialParams {
+  public facebook?: string;
+  public instagram?: string;
+  public youtube?: string;
+  public linkedin?: string;
+  public twitter?: string;
+  public whatsapp?: string;
+
+  constructor(
+    facebook: string,
+    instagram: string,
+    youtube: string,
+    linkedin: string,
+    twitter: string,
+    whatsapp: string,
+  ) {
+    this.facebook = facebook;
+    this.instagram = instagram;
+    this.youtube = youtube;
+    this.linkedin = linkedin;
+    this.twitter = twitter;
+    this.whatsapp = whatsapp;
+  }
+
+  static fromMap(data: any): SocialParams {
+    return new SocialParams(
+      data.facebook,
+      data.instagram,
+      data.youtube,
+      data.linkedin,
+      data.twitter,
+      data.whatsapp_number,
+    );
+  }
+}

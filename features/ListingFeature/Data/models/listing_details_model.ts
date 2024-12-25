@@ -1,111 +1,61 @@
-import CategoryTypeModel from "~/features/FetchCategoryTypeFeature/Data/models/category_type_model";
-import type CategoryModel from "~/features/FetchCategoriesFeature/Data/models/category_model";
-import type CountryModel from "~/features/FetchCountriesFeature/Data/models/country_model";
-import type CityModel from "~/features/FetchCitiesFeature/Data/models/city_model";
+import ImageModel from "~/features/ListingFeature/Data/models/image_model";
+import SocialModel from "~/features/ListingFeature/Data/models/social_model";
+import OpeningHoursModel from "~/features/ListingFeature/Data/models/opening_hours_model";
+import ReviewModel from "~/features/ListingFeature/Data/models/review_model";
+import LocationModel from "~/features/ListingFeature/Data/models/location_model";
+import BasicInformationModel from "~/features/ListingFeature/Data/models/basic_information_model";
+import UserModel from "~/features/LoginFeature/Data/models/user_model";
 
 export default class ListingDetailsModel {
   public id: number;
-  public title: string;
-  public description: string;
-  public image: string;
-  public keywords: string;
-  public category: CategoryModel;
-  public type: CategoryTypeModel;
-  public typeCategory: { id: number; title: string };
-  public minPrice: number;
-  public maxPrice: number;
-  public totalRate: number;
+  public BasicInformation: BasicInformationModel;
 
-  public location: {
-    address: string;
-    lat: number;
-    long: number;
-    googleMapId: string;
-    country: CountryModel;
-    city: CityModel;
-  };
+  public location: LocationModel;
 
-  public social: {
-    isContactWidget: boolean;
-    whatsapp: string;
-    facebook: string;
-    twitter: string;
-    instagram: string;
-    linkedin: string | null;
-    youtube: string;
-  };
+  public social: SocialModel;
 
-  public images: { id: number; image: string }[];
-  public openingHours: {
-    id: number;
-    day: { id: number; title: string };
-    openingTime: string;
-    closingTime: string;
-  }[];
+  public images: ImageModel[];
+  public openingHours: OpeningHoursModel[];
 
-  public reviews: any[]; // Adjust this type as needed
+  public reviews: ReviewModel[]; // Adjust this type as needed
 
-  constructor(data: any) {
-    const basicInfo = data.basic_information || {};
-    const locationInfo = data.location_information || {};
-    const social = data.sosial || {};
-    const images = data.images || [];
-    const openingHours = data.opening_hours || [];
-    const reviews = data.reviews || [];
-
-    // Basic Information
-    this.id = basicInfo.id || 0;
-    this.title = basicInfo.title || "";
-    this.description = basicInfo.description || "";
-    this.image = basicInfo.image || "";
-    this.keywords = basicInfo.keywords || "";
-    this.category = basicInfo.category || { id: 0, name: "" };
-    this.type = basicInfo.type || { id: 0, name: "" };
-    this.typeCategory = basicInfo.type_category || { id: 0, title: "" };
-    this.minPrice = basicInfo.min_price || 0;
-    this.maxPrice = basicInfo.max_price || 0;
-    this.totalRate = basicInfo.total_rate || 0;
-
-    // Location Information
-    this.location = {
-      address: locationInfo.address || "",
-      lat: locationInfo.lat || 0,
-      long: locationInfo.long || 0,
-      googleMapId: locationInfo.google_map_id || "",
-      country: locationInfo.country || { id: 0, title: "" },
-      city: locationInfo.city || { id: 0, title: "" },
-    };
-
-    // Social Information
-    this.social = {
-      isContactWidget: Boolean(social.is_contact_widget),
-      whatsapp: social.whatsapp_number || "",
-      facebook: social.facebook_link || "",
-      twitter: social.twitter_link || "",
-      instagram: social.instagram_link || "",
-      linkedin: social.linkedin_link || null,
-      youtube: social.youtube_link || "",
-    };
-
-    // Images
-    this.images = images.map((img: any) => ({
-      id: img.id || 0,
-      image: img.image || "",
-    }));
-
-    // Opening Hours
-    this.openingHours = openingHours.map((hour: any) => ({
-      id: hour.id || 0,
-      day: hour.day || { id: 0, title: "" },
-      openingTime: hour.opening_hours?.opening_time || "",
-      closingTime: hour.opening_hours?.closing_time || "",
-    }));
-
-    // Reviews
+  public owner: UserModel | null;
+  public claimStatus: number;
+  constructor(
+    id: number,
+    BasicInformation: BasicInformationModel,
+    location: LocationModel,
+    social: SocialModel,
+    images: ImageModel[],
+    openingHours: OpeningHoursModel[],
+    reviews: ReviewModel[],
+    owner: UserModel | null,
+    claimStatus: number = 0,
+  ) {
+    this.id = id;
+    this.BasicInformation = BasicInformation;
+    this.location = location;
+    this.social = social;
+    this.images = images;
+    this.openingHours = openingHours;
     this.reviews = reviews;
+    this.owner = owner;
+    this.claimStatus = claimStatus;
   }
 
-  static fromResponse(response: any): ListingDetailsModel {
-    return new ListingDetailsModel(response.data);
+  static fromMap(map: { [key: string]: any }): ListingDetailsModel {
+    return new ListingDetailsModel(
+      map["id"],
+      BasicInformationModel.fromMap(map["basic_information"]),
+      LocationModel.fromMap(map["location_information"]),
+      SocialModel.fromMap(map["sosial"]),
+      map["images"].map((image: any) => ImageModel.fromMap(image)),
+      map["opening_hours"].map((openingHour: any) =>
+        OpeningHoursModel.fromMap(openingHour),
+      ),
+      map["reviews"].map((review: any) => ReviewModel.fromMap(review)),
+      map["owner"] ? UserModel.fromMap(map["owner"]) : null,
+      map["claim_status"],
+    );
   }
 }

@@ -67,7 +67,6 @@ class ApiNames {
   public deleteReview = "delete_review";
 
   public addClaim = "add_claim";
-  public addRate = "add_rate";
 }
 
 export { ApiNames };

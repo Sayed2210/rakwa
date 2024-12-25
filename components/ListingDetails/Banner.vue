@@ -1,7 +1,16 @@
 <script setup lang="ts">
 import getLastSegment from "~/base/persention/utils/get_path_from_route";
+import ListingDetailsModel from "~/features/ListingFeature/Data/models/listing_details_model";
+import type BasicInformationModel from "~/features/ListingFeature/Data/models/basic_information_model";
 
 const route = useRoute();
+
+const props = defineProps<{
+  basicInformation: BasicInformationModel;
+  address: string;
+}>();
+
+// https://lottiefiles.com/animations/liquid-blobby-loader-9qh1sEzaDJ
 </script>
 
 <template>
@@ -34,18 +43,15 @@ const route = useRoute();
       </div>
       <div class="list-info">
         <div class="list-title">
-          <h3>Avail Insurance Solutions</h3>
+          <h3>{{ basicInformation?.title }}</h3>
           <IconsDot />
           <span> online</span>
         </div>
         <div class="rate flex items-center gap-1">
-          <GlobalRate :rateCount="4" />
-          <span>(136 {{ $t("rate") }})</span>
+          <GlobalRate :rateCount="basicInformation.rate" />
+          <span>({{ basicInformation.rateCount }} {{ $t("rate") }})</span>
         </div>
-        <p class="list-description">
-          A cozy escape from the hustle and bustle, our café offers a warm
-          ambiance and freshly brewed coffee that comforts the soul.
-        </p>
+        <p class="list-description" v-html="basicInformation?.description"></p>
         <div class="location flex items-center gap-1">
           <svg
             width="14"
@@ -59,9 +65,9 @@ const route = useRoute();
               fill="#E80306"
             />
           </svg>
-          <NuxtLink to="/list-search-card/1">
-            12, alhamd street ,mansoura eljadida
-          </NuxtLink>
+          <span>
+            {{ address }}
+          </span>
         </div>
       </div>
     </div>

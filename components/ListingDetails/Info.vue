@@ -2,11 +2,10 @@
 
 import LocationParams from "~/features/ListingFeature/Core/Params/location_params";
 import {useNuxtApp} from "#app";
+import type BasicInformationModel from "~/features/ListingFeature/Data/models/basic_information_model";
+import ListingDetailsModel from "~/features/ListingFeature/Data/models/listing_details_model";
 const { $googleMaps } = useNuxtApp();
 
-const location = ref<LocationParams>(
-    new LocationParams(-34.3974, 150.644, "", "", "", ""),
-);
 
 
 const initMap = async () => {
@@ -15,12 +14,12 @@ const initMap = async () => {
     const map = new google.maps.Map(
         document.getElementById("map") as HTMLElement,
         {
-          center: { lat: location.value.latitude, lng: location.value.longitude },
+          center: { lat: props.listing.location.lat, lng: props.listing.location.lat },
           zoom: 14,
         },
     );
     const marker = new google.maps.Marker({
-      position: { lat: location.value.latitude, lng: location.value.longitude },
+      position: { lat: props.listing.location.lat, lng: props.listing.location.lat },
       map,
       draggable: true, // Makes the marker draggable
       icon: {
@@ -29,18 +28,23 @@ const initMap = async () => {
       },
     });
 
-    marker.addListener("dragend", (event: Event) => {
-      location.value.latitude = event.latLng.lat();
-      location.value.longitude = event.latLng.lng();
-      console.log(location.value.latitude, location.value.longitude);
-
-
-      // fetchAddress(location.value.latitude, location.value.longitude);
-    });
+    // marker.addListener("dragend", (event: Event) => {
+    //   location.value.latitude = event.latLng.lat();
+    //   location.value.longitude = event.latLng.lng();
+    //   console.log(location.value.latitude, location.value.longitude);
+    //
+    //
+    //   // fetchAddress(location.value.latitude, location.value.longitude);
+    // });
   } catch (error) {
     console.error("Error loading Google Maps:", error);
   }
 };
+
+
+const props = defineProps<{
+  listing: ListingDetailsModel;
+}>();
 
 onMounted(() => {
   initMap();
@@ -52,30 +56,22 @@ onMounted(() => {
   <section class="listing-info">
     <div class="listing-description">
       <h3>{{ $t("description") }}</h3>
-      <p>
-        Experience the authentic taste of the Mediterranean at Cedar Valley
-        Mediterranean Grill. Known for our fresh ingredients and traditional
-        recipes, we serve a variety of dishes, including succulent shawarma,
-        creamy hummus, and perfectly grilled kebabs. Our cozy, family-friendly
-        atmosphere is perfect for any occasion, whether you're enjoying a casual
-        lunch or celebrating a special event. We also offer vegetarian and halal
-        options to cater to diverse preferences.
+      <p v-html="listing.BasicInformation?.description">
+
       </p>
     </div>
     <div class="listing-categories">
       <h3>{{ $t("categories") }}</h3>
       <div class="categories">
 
-      <span> restaurant </span>
-      <span> restaurant </span>
-      <span> Food </span>
+      <span> {{ listing.BasicInformation?.category?.title }} </span>
       </div>
     </div>
     <div class="listing-service-type">
       <h3>{{ $t("service_type") }}</h3>
       <div class="type">
         <IconsTickCircle />
-        {{ $t("delivery") }}
+        {{ listing.BasicInformation?.type?.title }}
       </div>
     </div>
     <div class="listing-features">
@@ -104,31 +100,31 @@ onMounted(() => {
       <h3>{{ $t("social_links") }}</h3>
       <div class="flex items-center gap-4">
 
-      <div class="social-link">
+      <a :href="listing?.social?.facebook" target="blank" class="social-link" >
         <IconsFacebook />
-      </div>
-      <div class="social-link">
+      </a>
+      <a :href="listing?.social?.instagram" target="blank" class="social-link">
         <IconsInstagram />
-      </div>
-      <div class="social-link">
+      </a>
+      <a :href="listing?.social?.twitter" target="blank" class="social-link">
         <IconsTwitter />
-      </div>
-      <div class="social-link">
+      </a>
+      <a :href="listing?.social?.youtube" target="blank" class="social-link">
         <IconsYoutube />
-      </div>
-      <div class="social-link">
+      </a>
+      <a :href="listing?.social?.linkedin" target="blank" class="social-link">
         <IconsLinkedin />
-      </div>
-      <div class="social-link">
+      </a>
+      <a :href="listing?.social?.whatsapp" target="blank" class="social-link">
         <IconsWhatsApp />
-      </div>
+      </a>
       </div>
 
 
     </div>
       <div class="listing-location">
         <h3>{{ $t("location") }}</h3>
-        <p class="location">1 شارع سعد زغلول، Al Inshaa WA Al Munirah, El Sayeda Zeinab, Cairo Governorate </p>
+        <p class="location"> {{ listing?.location?.address }} </p>
         <div id="map" class="rounded-xl" style="width: 100%; height: 290px"></div>
       </div>
   </section>

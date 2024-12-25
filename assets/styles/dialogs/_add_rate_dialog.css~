@@ -25,7 +25,8 @@
     gap: 1rem;
     margin-bottom: 1rem;
     input[type="radio"]:checked + label {
-      border-color: var(--main-color);
+      
+
     }
     label {
       width: 140px;
