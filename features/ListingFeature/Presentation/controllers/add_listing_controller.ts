@@ -8,7 +8,9 @@ import errorImage from "~/assets/images/error.png";
 import successImage from "~/assets/images/success-dialog.png";
 import DialogSelector from "~/base/persention/Dialogs/dialog_selector";
 
-export default class AddListingController extends ControllerInterface<ListingModel[]> {
+export default class AddListingController extends ControllerInterface<
+  ListingModel[]
+> {
   private static instance: AddListingController;
   private constructor() {
     super();
@@ -22,7 +24,7 @@ export default class AddListingController extends ControllerInterface<ListingMod
     return this.instance;
   }
 
-  async addListing(params: Params) {
+  async addListing(params: Params, router: any) {
     // useLoaderStore().setLoadingWithDialog();
     try {
       const router = useRouter();
@@ -36,7 +38,7 @@ export default class AddListingController extends ControllerInterface<ListingMod
           imageElement: successImage,
           messageContent: null,
         });
-        // await router.push("/");
+        await router.push("/dasboard/listings");
         // const userStore = useUserStore();
         // if (this.state.value.data) {
         //   console.log(this.state.value.data)

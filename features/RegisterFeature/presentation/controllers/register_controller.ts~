@@ -7,7 +7,6 @@ import { useRouter } from "vue-router";
 import errorImage from "~/assets/images/error.png";
 import DialogSelector from "~/base/persention/Dialogs/dialog_selector";
 import successImage from "assets/images/success-dialog.png";
-import {useUserStore} from "~/stores/user";
 
 // import { useLoaderStore } from "~/stores/dialogs/loader";
 
@@ -40,12 +39,6 @@ export default class RegisterController extends ControllerInterface<UserModel> {
           messageContent: null,
         });
         await router.push("/");
-        const userStore = useUserStore();
-        if (this.state.value.data) {
-          console.log(this.state.value.data)
-          userStore.setUser(this.state.value.data);
-        }
-
         // useLoaderStore().endLoadingWithDialog();
       } else {
         throw new Error(this.state.value.error?.title);

@@ -7,7 +7,7 @@ const prop = defineProps<{
 </script>
 
 <template>
-  <div class="place-card">
+  <NuxtLink :to="`/listing/${listing.id}`" class="place-card">
     <div class="place-img">
       <NuxtImg
         :src="listing?.image"
@@ -84,7 +84,7 @@ const prop = defineProps<{
         </NuxtLink>
       </div>
     </div>
-  </div>
+  </NuxtLink>
 </template>
 
 <style scoped></style>

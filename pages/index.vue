@@ -56,7 +56,7 @@ const { data: listing } = await useAsyncData("listing", async () => {
   <section class="content">
     <HomeHeroSection />
     <HomeCategoriesSection :popularCategories="popularCategories ?? []" />
-    <HomeMostVisitedSection />
+    <HomeMostVisitedSection :listing="listing ?? []" />
     <HomeOffersBanner />
     <HomeBlogsSection :blogs="blogs ?? []" />
   </section>
