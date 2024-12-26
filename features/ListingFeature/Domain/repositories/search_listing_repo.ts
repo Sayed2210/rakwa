@@ -31,7 +31,7 @@ class SearchListingRepo extends RepoInterface<SearchListingModel> {
     if (data) {
       console.log(data.listings);
       if (!data.listings) {
-        data.similar_listings.data.forEach((item: any) =>
+        data.similar_listings.forEach((item: any) =>
           similarListings.push(item),
         );
       } else {

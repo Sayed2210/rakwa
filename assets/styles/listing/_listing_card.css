@@ -23,6 +23,7 @@
   }
   .listing-info {
     padding: 1rem;
+    width: 100%;
     .listing-header {
       display: flex;
       align-items: center;

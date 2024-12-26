@@ -7,7 +7,7 @@ export class SearchStrategy implements SearchFilterStrategy {
   private searchListingUseCase = new SearchListingUseCase();
 
   async execute(params: Params): Promise<DataState<any>> {
-    console.log("stagy")
+    // console.log("stagy")
 
     return await this.searchListingUseCase.call(params);
   }
