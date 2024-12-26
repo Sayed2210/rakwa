@@ -7,6 +7,7 @@ import ListingModel from "~/features/FetchListingFeature/Data/models/listing_mod
 
 export default class SearchListingUseCase implements UseCase<SearchListingModel, Params> {
   async call(params: Params): Promise<DataState<SearchListingModel>> {
+    console.log("params")
     return SearchListingRepo.getInstance().call(params)
   }
 }

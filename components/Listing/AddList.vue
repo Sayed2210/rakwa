@@ -10,10 +10,11 @@ const location = ref<any>(null);
 const images = ref<any>(null);
 const details = ref<any>(null);
 const openingPrice = ref<any>(null);
+const router = useRouter();
 
 const handleBasicInformation = (data: any) => {
   basicInformation.value = data;
-  console.log(basicInformation.value);
+  // console.log(basicInformation.value);
 };
 
 const handleLocation = (data: any) => {
@@ -57,7 +58,7 @@ const addListing = async () => {
     )
     .setOpeningHours(openingPrice.value)
     .build();
-  await addListingController.addListing(params);
+  await addListingController.addListing(params, router);
   // console.log(params);
 };
 </script>

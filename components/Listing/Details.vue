@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const socialMedia = ref({
   isContactWidgetEnabled: true,
   facebook: "",
@@ -24,7 +23,7 @@ watch(
 </script>
 
 <template>
-  <div class="col-span-1 md:col-span-2">
+  <div class="col-span-1 md:col-span-2 flex justify-end">
     <div class="input-wrapper-switch">
       <div class="switch">
         <input

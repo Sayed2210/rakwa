@@ -133,7 +133,7 @@ const minsNewTime = (day: DaysParams, index: number) => {
               iconDisplay="input"
               timeOnly
               format="hh:mm"
-              hour-format="24"
+              hour-format="12"
               :placeholder="$t('to')"
             >
               <template #inputicon="slotProps">

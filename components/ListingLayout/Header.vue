@@ -18,7 +18,7 @@ const logout = async () => {
 
 const toggle = (event) => {
   op.value.toggle(event);
-}
+};
 </script>
 
 <template>
@@ -56,19 +56,29 @@ const toggle = (event) => {
                   <AccordionContent>
                     <ul class="flex flex-col gap-2">
                       <li>
-                        <NuxtLink to="/categories/1">{{ $t("category_1") }}</NuxtLink>
+                        <NuxtLink to="/categories/1">{{
+                          $t("category_1")
+                        }}</NuxtLink>
                       </li>
                       <li>
-                        <NuxtLink to="/categories/2">{{ $t("category_2") }}</NuxtLink>
+                        <NuxtLink to="/categories/2">{{
+                          $t("category_2")
+                        }}</NuxtLink>
                       </li>
                       <li>
-                        <NuxtLink to="/categories/3">{{ $t("category_3") }}</NuxtLink>
+                        <NuxtLink to="/categories/3">{{
+                          $t("category_3")
+                        }}</NuxtLink>
                       </li>
                       <li>
-                        <NuxtLink to="/categories/3">{{ $t("category_3") }}</NuxtLink>
+                        <NuxtLink to="/categories/3">{{
+                          $t("category_3")
+                        }}</NuxtLink>
                       </li>
                       <li>
-                        <NuxtLink to="/categories/3">{{ $t("category_3") }}</NuxtLink>
+                        <NuxtLink to="/categories/3">{{
+                          $t("category_3")
+                        }}</NuxtLink>
                       </li>
                     </ul>
                   </AccordionContent>
@@ -82,80 +92,39 @@ const toggle = (event) => {
               <ul>
                 <li class="dropdown-item">
                   <NuxtLink to="/dashboard/profile">
-                    <span>{{ $t("profile_settings") }}</span
-                    ><NuxtImg
-                      src="/setting.png"
-                      alt="profile settings"
-                      format="webp"
-                  />
+                    <span>{{ $t("profile_settings") }}</span>
+                    <IconsProfile />
                   </NuxtLink>
                 </li>
                 <li class="dropdown-item">
                   <NuxtLink to="/dashboard/add-listing">
                     <span>{{ $t("add_listing") }}</span
-                    ><NuxtImg
-                      src="/add.png"
-                      alt="add listing settings"
-                      format="webp"
-                  />
-                  </NuxtLink>
-                </li>
-                <li class="dropdown-item">
-                  <NuxtLink to="/bookings">
-                    <span>{{ $t("my_bookings") }}</span
-                    ><NuxtImg src="/task.png" alt="my bookings" format="webp" />
+                    >
+                    <iconsAddListing />
                   </NuxtLink>
                 </li>
                 <li class="dropdown-item">
                   <NuxtLink to="/dashboard/listings">
                     <span>{{ $t("my_listing") }}</span>
-                    <NuxtImg
-                        src="/my-listing.png"
-                        alt="my listing"
-                        format="webp"
-                    />
-                  </NuxtLink>
-                </li>
-                <li class="dropdown-item">
-                  <NuxtLink to="/messages">
-                    <span>{{ $t("messages") }}</span>
-                    <NuxtImg
-                        src="/messages.png"
-                        alt="my messages"
-                        format="webp"
-                    />
+                    <IconsMyListing />
                   </NuxtLink>
                 </li>
                 <li class="dropdown-item">
                   <NuxtLink to="/bookmarks">
                     <span>{{ $t("bookmarks") }}</span>
-                    <NuxtImg
-                        src="/heart.svg"
-                        alt="my bookmarks"
-                        format="webp"
-                    />
+                    <IconsBookmark />
                   </NuxtLink>
                 </li>
                 <li class="dropdown-item">
                   <NuxtLink to="/reviews">
                     <span>{{ $t("reviews") }}</span>
-                    <NuxtImg src="/like.png" alt="my bookmarks" format="webp" />
-                  </NuxtLink>
-                </li>
-                <li class="dropdown-item">
-                  <NuxtLink to="/booking">
-                    <span>{{ $t("booking") }}</span>
-                    <NuxtImg
-                        src="/stickynote.png"
-                        alt="my booking"
-                        format="webp"
-                    />
+                    <IconsReviews />
                   </NuxtLink>
                 </li>
                 <li class="dropdown-item">
                   <button type="button" @click="logout" to="/logout">
+                    <IconsLogin />
                     <span>{{ $t("logout") }}</span>
-                    <NuxtImg src="/login.svg" alt="logout" format="webp" />
                   </button>
                 </li>
               </ul>
@@ -187,88 +156,73 @@ const toggle = (event) => {
                 fill="black"
               />
             </svg>
-              <div class="info">
-                <span class="name">{{ user.user?.name }}</span>
-                <span class="role">{{ user.user?.type }}</span>
-              </div>
+            <div class="info">
+              <span class="name">{{ user.user?.name }}</span>
+              <span class="role">{{ user.user?.type }}</span>
+            </div>
             <NuxtImg src="/user-photo.png" alt="user" class="user-photo" />
             <div class="dropdown-content">
               <ul>
                 <li class="dropdown-item">
                   <NuxtLink to="/dashboard/profile">
-                    <span>{{ $t("profile_settings") }}</span
-                    ><NuxtImg
-                      src="/setting.png"
-                      alt="profile settings"
-                      format="webp"
-                    />
+                    <span>{{ $t("profile_settings") }}</span>
+                    <IconsProfile />
                   </NuxtLink>
                 </li>
                 <li class="dropdown-item">
                   <NuxtLink to="/dashboard/add-listing">
                     <span>{{ $t("add_listing") }}</span
-                    ><NuxtImg
-                      src="/add.png"
-                      alt="add listing settings"
-                      format="webp"
-                    />
+                    >
+                    <iconsAddListing />
                   </NuxtLink>
                 </li>
-                <li class="dropdown-item">
-                  <NuxtLink to="/bookings">
-                    <span>{{ $t("my_bookings") }}</span
-                    ><NuxtImg src="/task.png" alt="my bookings" format="webp" />
-                  </NuxtLink>
-                </li>
+<!--                <li class="dropdown-item">-->
+<!--                  <NuxtLink to="/bookings">-->
+<!--                    <span>{{ $t("my_bookings") }}</span-->
+<!--                    ><NuxtImg src="/task.png" alt="my bookings" format="webp" />-->
+<!--                  </NuxtLink>-->
+<!--                </li>-->
                 <li class="dropdown-item">
                   <NuxtLink to="/dashboard/listings">
                     <span>{{ $t("my_listing") }}</span>
-                    <NuxtImg
-                      src="/my-listing.png"
-                      alt="my listing"
-                      format="webp"
-                    />
+                    <IconsMyListing />
                   </NuxtLink>
                 </li>
-                <li class="dropdown-item">
-                  <NuxtLink to="/messages">
-                    <span>{{ $t("messages") }}</span>
-                    <NuxtImg
-                      src="/messages.png"
-                      alt="my messages"
-                      format="webp"
-                    />
-                  </NuxtLink>
-                </li>
+<!--                <li class="dropdown-item">-->
+<!--                  <NuxtLink to="/messages">-->
+<!--                    <span>{{ $t("messages") }}</span>-->
+<!--                    <NuxtImg-->
+<!--                      src="/messages.png"-->
+<!--                      alt="my messages"-->
+<!--                      format="webp"-->
+<!--                    />-->
+<!--                  </NuxtLink>-->
+<!--                </li>-->
                 <li class="dropdown-item">
                   <NuxtLink to="/bookmarks">
                     <span>{{ $t("bookmarks") }}</span>
-                    <NuxtImg
-                      src="/heart.svg"
-                      alt="my bookmarks"
-                      format="webp"
-                    />
+                    <IconsBookmark />
                   </NuxtLink>
                 </li>
                 <li class="dropdown-item">
                   <NuxtLink to="/reviews">
                     <span>{{ $t("reviews") }}</span>
-                    <NuxtImg src="/like.png" alt="my bookmarks" format="webp" />
+                    <IconsReviews />
                   </NuxtLink>
                 </li>
-                <li class="dropdown-item">
-                  <NuxtLink to="/booking">
-                    <span>{{ $t("booking") }}</span>
-                    <NuxtImg
-                      src="/stickynote.png"
-                      alt="my booking"
-                      format="webp"
-                    />
-                  </NuxtLink>
-                </li>
+<!--                <li class="dropdown-item">-->
+<!--                  <NuxtLink to="/booking">-->
+<!--                    <span>{{ $t("booking") }}</span>-->
+<!--                    <NuxtImg-->
+<!--                      src="/stickynote.png"-->
+<!--                      alt="my booking"-->
+<!--                      format="webp"-->
+<!--                    />-->
+<!--                  </NuxtLink>-->
+<!--                </li>-->
                 <li class="dropdown-item">
                   <button type="button" @click="logout" to="/logout">
-                    <NuxtImg src="/login.svg" alt="logout" format="webp" />
+                    <IconsLogin />
                     <span>{{ $t("logout") }}</span>
                   </button>
                 </li>

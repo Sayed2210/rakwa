@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   runtimeConfig: {
     public: {
-      baseURL: 'https://doma.zaidia.net/api', // Public base URL
+      baseURL: "https://doma.zaidia.net/api", // Public base URL
     },
   },
   app: {
@@ -40,7 +40,7 @@ export default defineNuxtConfig({
   },
   image: {
     format: ["webp"],
-    dir: "assets/images",
+    dir: "public/images",
   },
   css: ["~/assets/styles/main.min.css"],
   i18n: {

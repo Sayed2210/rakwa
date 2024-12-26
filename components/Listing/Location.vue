@@ -66,8 +66,8 @@ const initMap = async () => {
           if (status === "OK" && results.length > 0) {
             const address = results[0].formatted_address; // Full address
             const placeId = results[0].place_id; // Google Place ID
-            console.log("Address:", address);
-            console.log("Place ID:", placeId);
+            // console.log("Address:", address);
+            // console.log("Place ID:", placeId);
             location.value.address = address;
             location.value.googlePlaceId = placeId;
             // getPlaceDetails(placeId);
@@ -91,34 +91,34 @@ const initMap = async () => {
   }
 };
 
-const getPlaceDetails = async (placeId: string) => {
-  try {
-    const google = await $googleMaps.load(); // Load Google Maps API from the plugin
-
-    const service = new google.maps.places.PlacesService(
-      document.createElement("div"), // Dummy element required by PlacesService
-    );
-
-    return new Promise((resolve, reject) => {
-      service.getDetails(
-        {
-          placeId,
-          fields: ["name", "formatted_address", "rating", "reviews"], // Specify fields
-        },
-        (place, status) => {
-          if (status === google.maps.places.PlacesServiceStatus.OK) {
-            resolve(place);
-          } else {
-            reject(`Failed to fetch place details: ${status}`);
-          }
-        },
-      );
-    });
-  } catch (error) {
-    console.error("Error fetching place details:", error);
-    throw error;
-  }
-};
+// const getPlaceDetails = async (placeId: string) => {
+//   try {
+//     const google = await $googleMaps.load(); // Load Google Maps API from the plugin
+//
+//     const service = new google.maps.places.PlacesService(
+//       document.createElement("div"), // Dummy element required by PlacesService
+//     );
+//
+//     return new Promise((resolve, reject) => {
+//       service.getDetails(
+//         {
+//           placeId,
+//           fields: ["name", "formatted_address", "rating", "reviews"], // Specify fields
+//         },
+//         (place, status) => {
+//           if (status === google.maps.places.PlacesServiceStatus.OK) {
+//             resolve(place);
+//           } else {
+//             reject(`Failed to fetch place details: ${status}`);
+//           }
+//         },
+//       );
+//     });
+//   } catch (error) {
+//     console.error("Error fetching place details:", error);
+//     throw error;
+//   }
+// };
 
 const getLatLngFromPlaceId = async (placeId: string) => {
   const google = await $googleMaps.load();
@@ -173,6 +173,7 @@ const searchGoogleAddress = async () => {
   }
 };
 
+
 // // Example Place ID
 // const placeId = "ChIJN1t_tDeuEmsRUsoyG83frY4"; // Replace with a valid Place ID
 // getPlaceDetails(placeId);
@@ -183,7 +184,13 @@ const setLocation = (address: any) => {
   location.value.latitude = address.lat;
   location.value.longitude = address.lng;
   showSearchAddress.value = false;
+
+  initMap();
+
 };
+
+
+
 
 onMounted(() => {
   initMap();

@@ -32,13 +32,14 @@ export default class AddListingController extends ControllerInterface<
         await this.AddListingUseCase.call(params);
       this.setState(dataState);
       if (this.isDataSuccess()) {
+        console.log(this.state.value.data);
         DialogSelector.instance.successDialog.openDialog({
           dialogName: "dialog",
           titleContent: "AddListing Success",
           imageElement: successImage,
           messageContent: null,
         });
-        await router.push("/dasboard/listings");
+        await router.push("/dashboard/listings");
         // const userStore = useUserStore();
         // if (this.state.value.data) {
         //   console.log(this.state.value.data)

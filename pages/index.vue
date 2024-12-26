@@ -42,7 +42,7 @@ const { data: blogs } = await useAsyncData("blogs", async () => {
   return response.data; // Extract only the `data` part
 });
 
-const { data: listing } = await useAsyncData("listing", async () => {
+const { data: listings } = await useAsyncData("listing", async () => {
   const response = await $fetch<{
     data: Listing[];
     message: string;
@@ -56,7 +56,7 @@ const { data: listing } = await useAsyncData("listing", async () => {
   <section class="content">
     <HomeHeroSection />
     <HomeCategoriesSection :popularCategories="popularCategories ?? []" />
-    <HomeMostVisitedSection :listing="listing ?? []" />
+    <HomeMostVisitedSection :listings="listings ?? []" />
     <HomeOffersBanner />
     <HomeBlogsSection :blogs="blogs ?? []" />
   </section>
