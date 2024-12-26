@@ -40,7 +40,6 @@ export default defineNuxtConfig({
   },
   image: {
     format: ["webp"],
-    dir: "public/images",
   },
   css: ["~/assets/styles/main.min.css"],
   i18n: {
