@@ -6,7 +6,7 @@ export default class BasicInformationModel {
   public id: number;
   public title: string;
   public description: string;
-  public image: ImageModel[];
+  public image: string;
   public keywords: string;
   public category: CategoryModel;
   public type: { id: number; title: string };
@@ -17,12 +17,13 @@ export default class BasicInformationModel {
   public status: number;
   public rate: number;
   public rateCount: number;
+  public claimStatus: number;
 
   constructor(
     id: number,
     title: string,
     description: string,
-    image: ImageModel[],
+    image: string,
     keywords: string,
     category: CategoryModel,
     type: {
@@ -36,6 +37,7 @@ export default class BasicInformationModel {
     status: number,
     rate: number,
     rateCount: number,
+    claimStatus: number,
   ) {
     this.id = id;
     this.title = title;
@@ -51,6 +53,7 @@ export default class BasicInformationModel {
     this.status = status;
     this.rate = rate;
     this.rateCount = rateCount;
+    this.claimStatus = claimStatus;
   }
 
   static fromMap(map: { [key: string]: any }): BasicInformationModel {
@@ -62,13 +65,14 @@ export default class BasicInformationModel {
       map["keywords"],
       CategoryModel.fromMap(map["category"]),
       map["type"],
-      CategoryTypeModel.fromMap(map["type_category"]),
+      CategoryTypeModel.fromMap(map["type_category"]) ?? {},
       map["min_price"],
       map["max_price"],
       map["total_rate"],
       map["status"],
       map["rate"],
       map["rate_count"],
+      map["claim_status"],
     );
   }
 }

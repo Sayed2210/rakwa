@@ -10,6 +10,6 @@ export default class CategoryTypeModel {
   }
 
   static fromMap(map: { [key: string]: any }): CategoryTypeModel {
-    return new CategoryTypeModel(map["id"], map["name"], map["image"]);
+    return new CategoryTypeModel(map["id"], map["title"], map["image"]);
   }
 }

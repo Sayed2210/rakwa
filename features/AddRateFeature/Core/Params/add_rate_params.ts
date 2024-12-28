@@ -26,7 +26,7 @@ export default class AddRateParams implements Params {
 
     data["listing_id"] = this.listingId;
     data["rate"] = this.rate;
-    data["notes"] = this.notes;
+    data["comment"] = this.notes;
     data["images"] = this.images;
     return data;
   }

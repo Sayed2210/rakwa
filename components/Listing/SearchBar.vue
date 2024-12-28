@@ -14,7 +14,7 @@ const fetchCategories = async () => {
       await fetchCategoriesController.fetchCategories(
           new FetchCategoriesParams(1, 10),
       )
-  ).value.data;
+  ).value.data!;
   console.log(categories.value);
 };
 

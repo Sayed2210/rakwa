@@ -15,7 +15,7 @@ const props = defineProps<{ popularCategory: Category }>();
       />
     </div>
     <h6 class="category-title">{{ popularCategory.name }}</h6>
-    <p class="category-count">5 place</p>
+    <p class="category-count">{{ popularCategory.place_count }} place</p>
   </div>
 </template>
 

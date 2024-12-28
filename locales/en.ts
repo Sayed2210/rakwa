@@ -16,6 +16,7 @@ export default {
   add_claim: "Add Claim",
   my_bookings: "My Bookings",
   Select_category: "Select category",
+  show_details: "Show Details",
   Select_a_city: "Select a city",
   Select_a_country: "Select a country",
   Select_service_category: "Select service category",

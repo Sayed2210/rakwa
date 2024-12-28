@@ -16,6 +16,10 @@ class FetchOtherReviewsRepo extends RepoInterface<OtherReviewModel[]> {
     return this.instance;
   }
 
+  // override get hasPagination(): boolean {
+  //   return true;
+  // }
+
   onParse(data: any): OtherReviewModel[] {
     return data.map((item: any) => OtherReviewModel.fromMap(item));
   }

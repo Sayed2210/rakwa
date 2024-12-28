@@ -7,7 +7,7 @@ const route = useRoute();
 <template>
   <div class="dashboard-banner">
     <div class="container mx-auto px-8">
-      <div>
+      <div class="breadcrumb">
         <h1>
           {{ $t("home") }}
         </h1>

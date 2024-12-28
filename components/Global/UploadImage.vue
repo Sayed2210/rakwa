@@ -1,14 +1,37 @@
 <script setup lang="ts">
+import UpdateListingImageController from "~/features/ListingFeature/Presentation/controllers/update_listing_image_controller";
+import UpdateListingImageParams from "~/features/ListingFeature/Core/Params/update_listing_image_params";
+import { convertToBase64 } from "~/base/persention/utils/convert_to_base_64";
+
 const props = defineProps<{ initialImage?: string }>();
 const emit = defineEmits<{ (e: "update:image", file: File | null): void }>();
 
-const imgUrl = ref<string>(props.initialImage || "");
+const imgUrl = ref<string>(props.initialImage);
 const image = ref<File | null>(null);
+
+watch(
+  () => props.initialImage,
+  (newValue) => {
+    if (newValue) {
+      console.log(newValue);
+      imgUrl.value = newValue;
+      image.value = null;
+    }
+  },
+);
 
 function onFileChange(event: Event) {
   const file = (event.target as HTMLInputElement).files?.[0] || null;
 
   if (file) {
+    if (useRoute().params.id) {
+      UpdateListingImageController.getInstance().updateListingImage(
+        new UpdateListingImageParams(
+          useRoute().params.id as string,
+          convertToBase64(file),
+        ),
+      );
+    }
     imgUrl.value = URL.createObjectURL(file); // Generate preview URL
     image.value = file; // Store file to be sent
     emit("update:image", file); // Emit event to parent with selected file

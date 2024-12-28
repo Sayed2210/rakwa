@@ -3,48 +3,52 @@ import Select from "primevue/select";
 import OpeningHoursParams from "~/features/ListingFeature/Core/Params/opening_hours";
 import TimeParams from "~/features/ListingFeature/Core/Params/time_params";
 import DaysParams from "~/features/ListingFeature/Core/Params/days_params";
+import type OpeningHoursModel from "~/features/ListingFeature/Data/models/opening_hours_model";
 
-const cities = ref([
-  { name: "New York", code: "NY" },
-  { name: "Rome", code: "RM" },
-  { name: "London", code: "LDN" },
-  { name: "Istanbul", code: "IST" },
-]);
+const props = defineProps<{ openingHours?: OpeningHoursModel[] }>();
 
 const days = ref([
-  {
-    id: 1,
-    day: "monday",
-  },
-  {
-    id: 2,
-    day: "tuesday",
-  },
-  {
-    id: 3,
-    day: "wednesday",
-  },
-  {
-    id: 4,
-    day: "thursday",
-  },
-  {
-    id: 5,
-    day: "friday",
-  },
-  {
-    id: 6,
-    day: "saturday",
-  },
+  { id: 1, day: "monday" },
+  { id: 2, day: "tuesday" },
+  { id: 3, day: "wednesday" },
+  { id: 4, day: "thursday" },
+  { id: 5, day: "friday" },
+  { id: 6, day: "saturday" },
+  { id: 7, day: "sunday" },
 ]);
+
 const openingHours = ref<OpeningHoursParams[]>([]);
+
 const createOpeningHours = () => {
   openingHours.value = days.value.map((day) => {
+    // Find the corresponding day in props.openingHours
+    const foundDay = props.openingHours?.find(
+        (openingHour) => openingHour.day.id === day.id
+    );
+
+    if (foundDay) {
+      // Populate the day with provided data
+      return new OpeningHoursParams(
+          day.day,
+          day.id,
+          [
+            new TimeParams(
+                foundDay.openingHour.openingTime,
+                foundDay.openingHour.closingTime
+            ),
+          ]
+      );
+    }
+
+    // Default to empty values if not provided
     return new OpeningHoursParams(day.day, day.id, [new TimeParams("", "")]);
   });
 };
 
-createOpeningHours();
+// Initialize on mounted
+onMounted(() => {
+  createOpeningHours();
+});
 
 const emit = defineEmits<{
   (e: "update:openingHours", openingHours: OpeningHoursParams): void;
@@ -114,6 +118,7 @@ const minsNewTime = (day: DaysParams, index: number) => {
               fluid
               iconDisplay="input"
               format="hh:mm"
+              hour-format="12"
               timeOnly
               :placeholder="$t('from')"
             >

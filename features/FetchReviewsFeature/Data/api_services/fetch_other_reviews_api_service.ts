@@ -20,7 +20,7 @@ class FetchOtherReviewsApiService extends ServicesInterface {
     // console.log(CrudType.POST)
     return await super.call({
       url: ApiNames.Instance.otherReviews,
-      type: CrudType.GET,
+      type: CrudType.POST,
       auth: true,
       params: params,
     })

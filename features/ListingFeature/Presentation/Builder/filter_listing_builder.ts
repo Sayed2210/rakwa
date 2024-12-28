@@ -10,8 +10,9 @@ export default class FilterListingParamsBuilder {
   private distance: number | null = null;
   private priceRange: number[] | null = null;
   private address: string | null = null;
-  private page: number | null = null;
-  private limit: number | null = null;
+  private categoryId: number | null = null;
+  private page: number | null = 1;
+  private limit: number | null = 12;
 
   // Private constructor to prevent instantiation
   private constructor() {}
@@ -62,6 +63,24 @@ export default class FilterListingParamsBuilder {
     return this;
   }
 
+  public setCategoryID(categoryId: number): this {
+    this.categoryId = categoryId;
+    return this;
+  }
+
+  public reset(): void {
+    this.status = null;
+    this.countryId = null;
+    this.cityId = null;
+    this.rate = null;
+    this.distance = null;
+    this.priceRange = null;
+    this.address = null;
+    this.page = 1;
+    this.limit = 12;
+    this.categoryId = null;
+  }
+
   // Build method to construct the FilterListingParams object
   public build(): FilterListingParams {
     return new FilterListingParams(
@@ -72,6 +91,7 @@ export default class FilterListingParamsBuilder {
       this.distance!,
       this.priceRange!,
       this.address!,
+      this.categoryId!,
       this.page!,
       this.limit!,
     );

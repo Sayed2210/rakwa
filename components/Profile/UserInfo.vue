@@ -51,16 +51,16 @@ onMounted(() => {
     lastName.value = user.name;
     name.value = user.name;
     email.value = user.email;
-    phone.value = user.phone;
-    type.value = user.type;
-    aboutMe.value = user.aboutMe;
-    sendNotifications.value = user.sendNotifications;
-    facebook.value = user.facebook;
-    x.value = user.x;
-    instagram.value = user.instagram;
-    youtube.value = user.youtube;
-    linkedin.value = user.linkedin;
-    whatsapp.value = user.whatsapp;
+    phone.value = user.phone!;
+    type.value = user.type!;
+    aboutMe.value = user.aboutMe!;
+    sendNotifications.value = user.sendNotifications!;
+    facebook.value = user.facebook!;
+    x.value = user.x!;
+    instagram.value = user.instagram!;
+    youtube.value = user.youtube!;
+    linkedin.value = user.linkedin!;
+    whatsapp.value = user.whatsapp!;
   }
 
 })

@@ -6,6 +6,9 @@ import AddRateUseCase from "~/features/AddRateFeature/Domain/use_case/add_rate_u
 import errorImage from "~/assets/images/error.png";
 import successImage from "~/assets/images/rate-success.png";
 import DialogSelector from "~/base/persention/Dialogs/dialog_selector";
+import ShowListingDetailsController
+  from "~/features/ListingFeature/Presentation/controllers/show_listing_details_controller";
+import ShowListingDetailsParams from "~/features/ListingFeature/Core/Params/show_listing_details_params";
 
 export default class AddRateController extends ControllerInterface<CommentModel> {
   private static instance: AddRateController;
@@ -34,6 +37,9 @@ export default class AddRateController extends ControllerInterface<CommentModel>
           imageElement: successImage,
           messageContent: null,
         });
+        ShowListingDetailsController.getInstance().showListingDetails(
+            new ShowListingDetailsParams(this.state?.value?.data?.id.toString()!),
+        );
       } else {
         throw new Error(this.state.value.error?.title);
       }

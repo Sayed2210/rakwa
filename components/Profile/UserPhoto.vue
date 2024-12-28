@@ -1,28 +1,55 @@
 <script setup lang="ts">
+import { convertToBase64 } from "~/base/persention/utils/convert_to_base_64";
+import UpdateProfileImageParams from "~/features/UpdateProfileImageFeature/Core/Params/update_profile_image_params";
+import UpdateProfileImageController
+  from "~/features/UpdateProfileImageFeature/presentation/controllers/update_profile_image_controller";
+import RemoveProfileImageController
+  from "~/features/RemoveProfileImageFeature/presentation/controllers/remove_profile_image_controller";
+
 const image = ref<string>("");
 
+const updateProfileImageController = UpdateProfileImageController.getInstance();
+const removeProfileImageController = RemoveProfileImageController.getInstance();
 const user = useUserStore().user;
 
 onMounted(() => {
   if (user) {
     image.value = user.image;
   }
-})
+});
+
+const onFileChange = async (event: Event) => {
+  const file = (event.target as HTMLInputElement).files?.[0] || null;
+
+  if (file) {
+    image.value = URL.createObjectURL(file); // Generate preview URL
+    const fileBase64 = await convertToBase64(file) as string;
+    await updateProfileImageController.updateProfileImage(
+      new UpdateProfileImageParams(fileBase64),
+    );
+  }
+};
+
+
+
+const removePhoto = async () => {
+  await removeProfileImageController.removeProfileImage();
+  image.value = "";
+}
+
+
+
+
 </script>
 
 <template>
   <div class="user-photo">
     <div class="img">
-      <NuxtImg
-        :src="image"
-        alt="user"
-        class="user img"
-        format="webp"
-      />
+      <NuxtImg :src="image" alt="user" class="user img" format="webp" />
     </div>
     <div class="upload">
       <div class="actions">
-        <button class="primary-button-2" aria-label="submit">
+        <label for="image" class="primary-button-2" aria-label="submit">
           <svg
             width="14"
             height="13"
@@ -47,8 +74,9 @@ onMounted(() => {
             </defs>
           </svg>
           {{ $t("add_photo") }}
-        </button>
-        <button class="secondary-button" aria-label="submit">
+        </label>
+        <input type="file" id="image" class="hidden" @change="onFileChange" />
+        <button type="button" @click="removePhoto" class="secondary-button" aria-label="submit">
           {{ $t("remove_photo") }}
         </button>
       </div>

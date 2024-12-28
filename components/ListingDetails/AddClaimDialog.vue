@@ -16,8 +16,8 @@ const addClaim = async () => {
   await addClaimController.addClaim(
     new AddClaimParams(
       route.params.id as string,
-      email.value,
       name.value,
+      email.value,
       note.value,
       phone.value,
       images.value,

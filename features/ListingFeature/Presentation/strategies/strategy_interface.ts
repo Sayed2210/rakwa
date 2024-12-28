@@ -4,3 +4,5 @@ import type {DataState} from "~/base/core/networkStructure/Resources/dataState/d
 export interface SearchFilterStrategy {
     execute(params: Params): Promise<DataState<any>>;
 }
+
+

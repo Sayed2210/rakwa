@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type ReviewModel from "~/features/ListingFeature/Data/models/review_model";
 
-const props = defineProps<{ myReview: ReviewModel }>();
+const props = defineProps<{ myReview: ReviewModel | null }>();
 const user = useUserStore();
 </script>
 

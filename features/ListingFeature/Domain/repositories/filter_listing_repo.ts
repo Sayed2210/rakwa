@@ -24,7 +24,7 @@ class FilterListingRepo extends RepoInterface<SearchListingModel> {
     if (data) {
       console.log(data.listings);
       if (!data.listings) {
-        data.similar_listing.forEach((item: any) =>
+        data.similar_listings.forEach((item: any) =>
             similarListings.push(item),
         );
       } else {

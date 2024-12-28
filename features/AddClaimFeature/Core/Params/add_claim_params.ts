@@ -33,7 +33,7 @@ export default class AddClaimParams implements Params {
     data["full_name"] = this.fullName;
     data["email"] = this.email;
     data["phone"] = this.phone;
-    data["notes"] = this.notes;
+    data["comment"] = this.notes;
     data["images"] = this.images;
     return data;
   }

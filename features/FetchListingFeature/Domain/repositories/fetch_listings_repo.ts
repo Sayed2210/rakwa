@@ -16,6 +16,10 @@ class FetchListingRepo extends RepoInterface<ListingModel[]> {
     return this.instance;
   }
 
+  // override get hasPagination(): boolean {
+  //   return true;
+  // }
+
   onParse(data: any): ListingModel[] {
     return data.map((item: any) => ListingModel.fromMap(item));
   }

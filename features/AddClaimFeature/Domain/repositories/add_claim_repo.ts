@@ -18,9 +18,7 @@ class AddClaimRepo extends RepoInterface<CommentModel> {
   }
 
 
-  override get responseType(): ResponseType {
-    return ResponseType.withoutData; // Or any value you want to return
-  }
+
   onParse(data: any): CommentModel {
     return CommentModel.fromMap(data);
   }

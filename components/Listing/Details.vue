@@ -1,12 +1,15 @@
 <script setup lang="ts">
+
+const props = defineProps<{ socialMedia?: any }>();
+
 const socialMedia = ref({
   isContactWidgetEnabled: true,
-  facebook: "",
-  twitter: "",
-  instagram: "",
-  linkedin: "",
-  youtube: "",
-  whatsapp: "",
+  facebook: props.socialMedia?.facebook ?? "",
+  twitter: props.socialMedia?.twitter ?? "",
+  instagram: props.socialMedia?.instagram ?? "",
+  linkedin: props.socialMedia?.linkedin ?? "",
+  youtube: props.socialMedia?.youtube ?? "",
+  whatsapp: props.socialMedia?.whatsapp ?? "",
 });
 
 const emit = defineEmits<{

@@ -4,6 +4,8 @@ import AccordionPanel from "primevue/accordionpanel";
 import AccordionHeader from "primevue/accordionheader";
 import AccordionContent from "primevue/accordioncontent";
 import type ListingDetailsModel from "~/features/ListingFeature/Data/models/listing_details_model";
+import AddToBookmarkController from "~/features/ListingFeature/Presentation/controllers/add_to_bookmark_controller";
+import AddToBookmarkParams from "~/features/ListingFeature/Core/Params/add_to_bookmark_params";
 
 const props = defineProps<{ listing: ListingDetailsModel }>();
 
@@ -21,6 +23,14 @@ watch(
 );
 
 const user = useUserStore();
+
+const addToBookmarkController = AddToBookmarkController.getInstance();
+
+const addToBookmark = async () => {
+  await addToBookmarkController.addToBookmark(
+    new AddToBookmarkParams(useRoute().params.id as string),
+  );
+};
 </script>
 
 <template>
@@ -76,6 +86,12 @@ const user = useUserStore();
       </span>
       {{ $t("claim_request_sent") }}
     </div>
+    <div class="verified" v-if="listing.claimStatus == 2">
+      <span>
+        <IconsClockYellow />
+      </span>
+      {{ $t("verified") }}
+    </div>
     <div class="user">
       <div class="user-avatar">
         <NuxtImg src="/user-photo.png" alt="user" format="webp" />
@@ -96,7 +112,7 @@ const user = useUserStore();
       </div>
     </div>
     <div class="action">
-      <button type="button" class="heart">
+      <button type="button" @click="addToBookmark" class="heart">
         <IconsHeart />
       </button>
       <ListingDetailsAddClaimDialog v-if="user.isAuth" />

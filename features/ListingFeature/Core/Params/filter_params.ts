@@ -8,6 +8,7 @@ export default class FilterListingParams implements Params {
   public distance: number;
   public priceRange: number[];
   public address: string;
+  public categoryId: number;
   public page?: number;
   public limit?: number;
 
@@ -19,6 +20,7 @@ export default class FilterListingParams implements Params {
     distance: number,
     priceRange: number[],
     address: string,
+    categoryId: number,
     page: number,
     limit: number,
   ) {
@@ -29,6 +31,7 @@ export default class FilterListingParams implements Params {
     this.distance = distance;
     this.priceRange = priceRange;
     this.address = address;
+    this.categoryId = categoryId;
     this.page = page;
     this.limit = limit;
   }
@@ -42,6 +45,7 @@ export default class FilterListingParams implements Params {
     data["distance"] = this.distance;
     data["price_range"] = this.priceRange;
     data["address"] = this.address;
+    data["category_id"] = this.categoryId;
     data["page"] = this.page;
     data["limit"] = this.limit;
     return data;

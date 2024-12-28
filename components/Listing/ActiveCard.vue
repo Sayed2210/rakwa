@@ -31,23 +31,21 @@ const props = defineProps<{
           <div class="dropdown-content">
             <ul>
               <li class="dropdown-item">
-                <NuxtLink to="/dashboard/profile">
-                  <span>{{ $t("edit") }}</span
-                  ><NuxtImg
-                    src="/setting.png"
-                    alt="profile settings"
-                    format="webp"
-                  />
+                <NuxtLink :to="`/dashboard/edit-listing/${listing?.id}`">
+                  <span>{{ $t("edit") }}</span>
+                  <IconsProfile />
+                </NuxtLink>
+              </li>
+              <li class="dropdown-item">
+                <NuxtLink :to="`/listing/${listing?.id}`">
+                  <span>{{ $t("show_details") }}</span>
+                  <IconsMyListing />
                 </NuxtLink>
               </li>
               <li class="dropdown-item">
                 <NuxtLink to="/dashboard/add-listing">
-                  <span>{{ $t("add_listing") }}</span
-                  ><NuxtImg
-                    src="/add.png"
-                    alt="add listing settings"
-                    format="webp"
-                  />
+                  <span>{{ $t("add_listing") }}</span>
+                  <iconsAddListing />
                 </NuxtLink>
               </li>
             </ul>

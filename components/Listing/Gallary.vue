@@ -1,11 +1,17 @@
 <script setup lang="ts">
-const props = defineProps<{ initialImages?: string[] }>();
+import ImageModel from "~/features/ListingFeature/Data/models/image_model";
+import DeleteListingImageController
+  from "~/features/ListingFeature/Presentation/controllers/delete_listing_image_controller";
+import DeleteListingImageParams from "~/features/ListingFeature/Core/Params/delete_listing_image_params";
+
+const props = defineProps<{ initialImages?: ImageModel[] }>();
 const emit = defineEmits<{ (e: "update:images", files: File[]): void }>();
 
 // Reactive variables to store image previews and file objects
-const imagePreviews = ref<string[]>(props.initialImages || []);
+const imagePreviews = ref<ImageModel[]>(props.initialImages || []);
 const imageFiles = ref<File[]>([]);
 
+const deleteListingImageController = DeleteListingImageController.getInstance();
 // Handle file changes
 function onFileChange(event: Event) {
   const files = (event.target as HTMLInputElement).files;
@@ -13,7 +19,9 @@ function onFileChange(event: Event) {
   if (files) {
     Array.from(files).forEach((file) => {
       const preview = URL.createObjectURL(file);
-      imagePreviews.value.push(preview);
+      imagePreviews.value.push(
+        new ImageModel(0, preview)
+      );
       imageFiles.value.push(file);
     });
     emit("update:images", imageFiles.value); // Emit updated file list
@@ -22,9 +30,26 @@ function onFileChange(event: Event) {
 
 // Remove an image
 function removeImage(index: number) {
-  imagePreviews.value.splice(index, 1);
-  imageFiles.value.splice(index, 1);
-  emit("update:images", imageFiles.value); // Emit updated file list
+  const imageToRemove = imagePreviews.value[index];
+
+  // Check if the image has an ID
+  if (imageToRemove.id) {
+    // Remove image by ID
+    deleteListingImageController.DeleteListingImage(
+        new DeleteListingImageParams(
+            useRoute().params.id as string,
+            imageToRemove.id
+        )
+    )
+    imagePreviews.value = imagePreviews.value.filter((img) => img.id !== imageToRemove.id);
+  } else {
+    // If no ID, remove by index
+    imagePreviews.value.splice(index, 1);
+    imageFiles.value.splice(index, 1);
+  }
+
+  // Emit updated file list
+  emit("update:images", imageFiles.value);
 }
 </script>
 
@@ -64,7 +89,7 @@ function removeImage(index: number) {
         v-for="(img, index) in imagePreviews"
         :key="index"
       >
-        <img :src="img" alt="Previewed Image" />
+        <img :src="img.image" alt="Previewed Image" />
         <button class="remove-btn" type="button" @click="removeImage(index)">
           <svg
             width="24"

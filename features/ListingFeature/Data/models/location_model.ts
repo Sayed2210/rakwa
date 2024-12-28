@@ -4,7 +4,7 @@ import type CityModel from "~/features/FetchCitiesFeature/Data/models/city_model
 export default class LocationModel {
   address: string;
   lat: number;
-  long: number;
+  lng: number;
   googleMapId: string;
   country: CountryModel;
   city: CityModel;
@@ -12,14 +12,14 @@ export default class LocationModel {
   constructor(
     address: string,
     lat: number,
-    long: number,
+    lng: number,
     googleMapId: string,
     country: CountryModel,
     city: CityModel,
   ) {
     this.address = address;
     this.lat = lat;
-    this.long = long;
+    this.lng = lng;
     this.googleMapId = googleMapId;
     this.country = country;
     this.city = city;
@@ -29,7 +29,7 @@ export default class LocationModel {
     return new LocationModel(
       map["address"],
       map["lat"],
-      map["lng"],
+      map["long"],
       map["google_map_id"],
       map["country"],
       map["city"],

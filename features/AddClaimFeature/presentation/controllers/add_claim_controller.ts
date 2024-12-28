@@ -9,6 +9,8 @@ import DialogSelector from "~/base/persention/Dialogs/dialog_selector";
 import FetchCommentsController from "~/features/FetchCommentsFeature/presentation/controllers/fetch_comments_controller";
 import AddClaimParams from "~/features/AddClaimFeature/Core/Params/add_claim_params";
 import FetchCommentParams from "~/features/FetchCommentsFeature/Core/Params/fetch_comment_params";
+import ShowListingDetailsController from "~/features/ListingFeature/Presentation/controllers/show_listing_details_controller";
+import ShowListingDetailsParams from "~/features/ListingFeature/Core/Params/show_listing_details_params";
 
 export default class AddClaimController extends ControllerInterface<CommentModel> {
   private static instance: AddClaimController;
@@ -37,6 +39,9 @@ export default class AddClaimController extends ControllerInterface<CommentModel
           imageElement: successImage,
           messageContent: null,
         });
+        ShowListingDetailsController.getInstance().showListingDetails(
+          new ShowListingDetailsParams(this.state?.value?.data?.id.toString()!),
+        );
       } else {
         throw new Error(this.state.value.error?.title);
       }

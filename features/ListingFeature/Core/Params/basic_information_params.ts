@@ -41,7 +41,7 @@ export default class BasicInformationParams implements Params {
     data["title"] = this.title;
     data["image"] = this.logo;
     data["category_id"] = this.categories.id;
-    data["category_type_id"] = this.serviceCategory.id;
+    data["type_category_id"] = this.serviceCategory.id;
     data["keywords"] = this.keywords;
     data["description"] = this.description;
     data["minimum_price"] = this.minimumPriceRange;

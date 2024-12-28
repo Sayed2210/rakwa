@@ -39,25 +39,25 @@ const addListing = async () => {
   // console.log(basicInformation.value);
 
   const convertedImages = await Promise.all(
-    images.value?.map((image: File) => convertToBase64(image))??[],
+      images.value?.map((image: File) => convertToBase64(image))??[],
   );
   const params = listingBuilder
-    .setBasicInformation(basicInformation.value)
-    .setLocation(location.value)
-    .setDetails(convertedImages)
-    .setSocials(
-      new SocialParams(
-        details.value.isContactWidgetEnabled,
-        details.value.facebook,
-        details.value.twitter,
-        details.value.instagram,
-        details.value.linkedin,
-        details.value.youtube,
-        details.value.whatsapp,
-      ),
-    )
-    .setOpeningHours(openingPrice.value)
-    .build();
+      .setBasicInformation(basicInformation.value)
+      .setLocation(location.value)
+      .setDetails(convertedImages)
+      .setSocials(
+          new SocialParams(
+              details.value.isContactWidgetEnabled,
+              details.value.facebook,
+              details.value.twitter,
+              details.value.instagram,
+              details.value.linkedin,
+              details.value.youtube,
+              details.value.whatsapp,
+          ),
+      )
+      .setOpeningHours(openingPrice.value)
+      .build();
   await addListingController.addListing(params, router);
   // console.log(params);
 };
@@ -70,7 +70,7 @@ const addListing = async () => {
     </h4>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <ListingBasicInformation
-        @update:basicInformation="handleBasicInformation"
+          @update:basicInformation="handleBasicInformation"
       />
     </div>
     <h4 class="listing-section-title">{{ $t("location") }}</h4>
@@ -99,9 +99,9 @@ const addListing = async () => {
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div class="col-span-1 md:col-span-2">
         <button
-          class="primary-button-2"
-          @click="addListing"
-          aria-label="submit"
+            class="primary-button-2"
+            @click="addListing"
+            aria-label="submit"
         >
           {{ $t("add") }}
         </button>

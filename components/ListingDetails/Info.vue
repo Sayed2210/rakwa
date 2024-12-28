@@ -74,28 +74,28 @@ onMounted(() => {
         {{ listing.BasicInformation?.type?.title }}
       </div>
     </div>
-    <div class="listing-features">
-      <h3>{{ $t("features") }}</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2">
-        <div class="feature">
-          <IconsCheck />
-          outdoor seating
-        </div>
-        <div class="feature">
-          <IconsCheck />
-          outdoor seating
-        </div>
-        <div class="feature">
-          <IconsCheck />
-          outdoor seating
-        </div>
-        <div class="feature">
-          <IconsCheck />
-          outdoor seating
-        </div>
-      </div>
+<!--    <div class="listing-features">-->
+<!--      <h3>{{ $t("features") }}</h3>-->
+<!--      <div class="grid grid-cols-1 md:grid-cols-2">-->
+<!--        <div class="feature">-->
+<!--          <IconsCheck />-->
+<!--          outdoor seating-->
+<!--        </div>-->
+<!--        <div class="feature">-->
+<!--          <IconsCheck />-->
+<!--          outdoor seating-->
+<!--        </div>-->
+<!--        <div class="feature">-->
+<!--          <IconsCheck />-->
+<!--          outdoor seating-->
+<!--        </div>-->
+<!--        <div class="feature">-->
+<!--          <IconsCheck />-->
+<!--          outdoor seating-->
+<!--        </div>-->
+<!--      </div>-->
 
-    </div>
+<!--    </div>-->
     <div class="listing-social-links">
       <h3>{{ $t("social_links") }}</h3>
       <div class="flex items-center gap-4">

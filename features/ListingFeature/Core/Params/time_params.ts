@@ -1,16 +1,18 @@
-export default class TimeParams {
-  public from: Date;
-  public to: Date;
+import {extractAndAddHours} from "~/base/persention/utils/extract_time";
 
-  constructor(from: Date, to: Date) {
+export default class TimeParams {
+  public from: string;
+  public to: string;
+
+  constructor(from: string, to: string) {
     this.from = from;
     this.to = to;
   }
 
   toMap(): { [p: string]: any } {
     const data: { [p: string]: any } = {};
-    data["opening_time"] = this.from;
-    data["closing_time"] = this.to;
+    data["opening_time"] = extractAndAddHours(this.from);
+    data["closing_time"] = extractAndAddHours(this.to);
     return data;
   }
 }

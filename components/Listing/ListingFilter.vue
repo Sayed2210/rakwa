@@ -18,6 +18,30 @@ const distance = ref(3);
 const priceRange = ref<[]>([200, 1600]);
 const address = ref<string>("");
 
+//applied filters
+const appliedFilters = ref<{ key: string; value: string | number }[]>([]);
+
+const removeAppliedFilter = (key: string) => {
+  appliedFilters.value = appliedFilters.value.filter(
+    (filter) => filter.key !== key,
+  );
+};
+const updateAppliedFilters = (key: string, value: string | number | null) => {
+  const index = appliedFilters.value.findIndex((filter) => filter.key === key);
+
+  if (value === null) {
+    // Remove the filter if value is null
+    if (index !== -1) appliedFilters.value.splice(index, 1);
+  } else {
+    // Update or add the filter
+    if (index !== -1) {
+      appliedFilters.value[index].value = value;
+    } else {
+      appliedFilters.value.push({ key, value });
+    }
+  }
+};
+
 const filterListingParamsBuilder = FilterListingParamsBuilder.Instance;
 const searchListingController = SearchListingController.getInstance();
 searchListingController.setStrategy(new FilterStrategy());
@@ -25,13 +49,14 @@ searchListingController.setStrategy(new FilterStrategy());
 const filterStatus = (e: Event) => {
   const status = (e.target as HTMLInputElement).value;
   filterListingParamsBuilder.setStatus(parseInt(status));
+
   searchListingController.executeStrategy(filterListingParamsBuilder.build());
 };
 
 const filterCountry = async (e: Event) => {
   const country = (e.target as HTMLInputElement).value;
   filterListingParamsBuilder.setCountryId(parseInt(country));
-  fetchCities(parseInt(country));
+  await fetchCities(parseInt(country));
   await searchListingController.executeStrategy(
     filterListingParamsBuilder.build(),
   );
@@ -45,7 +70,9 @@ const filterCity = async (e: Event) => {
   );
 };
 
-const filterRate = (rate: number) => {
+const filterRate = (e: Event) => {
+  console.log((e.target as HTMLInputElement).value);
+  const rate = (e.target as HTMLInputElement).value;
   filterListingParamsBuilder.setRate(rate);
   searchListingController.executeStrategy(filterListingParamsBuilder.build());
 };
@@ -120,61 +147,54 @@ const fetchCities = async (id: number) => {
       <h2 class="filter-title">{{ $t("Filters") }}</h2>
     </div>
     <div class="applied-filter">
-      <div class="flex items-center justify-between">
-        <h3 class="filter-title">{{ $t("Applied_Filters") }}</h3>
-        <button type="button" class="clear-filter">
-          {{ $t("Clear_Filters") }}
-        </button>
-      </div>
-      <div class="filtered-items">
-        <span class="filtered-item">
-          England
-          <button class="remove" type="button" aria-label="remove">
-            <IconsRemove />
-          </button>
-        </span>
-        <span class="filtered-item">
-          England
-          <button class="remove" type="button" aria-label="remove">
-            <IconsRemove />
-          </button>
-        </span>
-        <span class="filtered-item">
-          England
-          <button class="remove" type="button" aria-label="remove">
-            <IconsRemove />
-          </button>
-        </span>
-        <span class="filtered-item">
-          England
-          <button class="remove" type="button" aria-label="remove">
-            <IconsRemove />
-          </button>
-        </span>
-      </div>
+<!--      <div class="flex items-center justify-between">-->
+<!--        <h3 class="filter-title">{{ $t("Applied_Filters") }}</h3>-->
+<!--        <button type="button" class="clear-filter">-->
+<!--          {{ $t("Clear_Filters") }}-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="filtered-items">-->
+<!--        <span class="filtered-item" v-for="filter in appliedFilters">-->
+<!--          {{ filter.key }}: {{ filter.value }}-->
+<!--          <button-->
+<!--            class="remove"-->
+<!--            type="button"-->
+<!--            @click="removeAppliedFilter(filter)"-->
+<!--            aria-label="remove"-->
+<!--          >-->
+<!--            <IconsRemove />-->
+<!--          </button>-->
+<!--        </span>-->
+<!--      </div>-->
     </div>
     <div class="applied-filter">
       <div class="flex items-center justify-between">
         <h3 class="filter-title">{{ $t("Current_status") }}</h3>
       </div>
       <div class="filter-items">
-        <label for="open" class="filter-item"> {{ $t("Open") }} </label>
-        <input
-          type="checkbox"
-          @change="filterStatus"
-          id="open"
-          name="open"
-          class="hidden"
-          :value="1"
-        />
-        <label for="close" class="filter-item"> {{ $t("Close") }}</label>
-        <input
-          type="checkbox"
-          id="close"
-          name="close"
-          class="hidden"
-          :value="0"
-        />
+        <div class="filter-item">
+          <input
+            type="radio"
+            @change="filterStatus"
+            id="open"
+            name="status"
+            class="hidden"
+            :value="1"
+          />
+          <label for="open" class="filter-item"> {{ $t("Open") }} </label>
+        </div>
+        <div class="filter-item">
+          <input
+            type="radio"
+            @change="filterStatus"
+            id="close"
+            name="status"
+            class="hidden"
+            :value="2"
+          />
+          <label for="close" class="filter-item"> {{ $t("Closed") }} </label>
+        </div>
+
       </div>
     </div>
     <div>
@@ -187,17 +207,17 @@ const fetchCities = async (id: number) => {
           v-for="country in countries"
           :key="country?.id"
         >
-          <label :for="`country${country?.id}`">
-            {{ country?.title }}
-          </label>
           <input
-            type="checkbox"
+            type="radio"
             :id="`country${country?.id}`"
-            :name="`country${country?.id}`"
+            name="country"
             class="hidden"
             @change="filterCountry"
             :value="country?.id"
           />
+          <label :for="`country${country?.id}`">
+            {{ country?.title }}
+          </label>
         </span>
       </div>
       <!--      <button type="button" class="clear-filter mt-4">-->
@@ -211,17 +231,17 @@ const fetchCities = async (id: number) => {
       </div>
       <div class="filter-items">
         <span class="filter-item" v-for="city in cities" :key="city?.id">
-          <label :for="`country${city?.id}`">
-            {{ city?.title }}
-          </label>
           <input
-            type="checkbox"
-            :id="`country${city?.id}`"
-            :name="`country${city?.id}`"
-            class="hidden"
+            type="radio"
+            :id="`city${city?.id}`"
+            name="city"
             @change="filterCity"
             :value="city?.id"
+            class="hidden"
           />
+          <label :for="`city${city?.id}`">
+            {{ city?.title }}
+          </label>
         </span>
       </div>
       <!--      <button type="button" class="clear-filter mt-4">-->
@@ -234,22 +254,65 @@ const fetchCities = async (id: number) => {
         <h3 class="filter-title">{{ $t("Rating") }}</h3>
       </div>
       <div class="filter-items">
-        <span class="filter-item" @click="filterRate(1)">
-          1
-          <IconsStar />
+        <span class="filter-item">
+          <input
+            type="radio"
+            id="1"
+            name="rate"
+            class="hidden"
+            :value="1"
+            @change="filterRate"
+          />
+          <label for="1"> 1 <IconsStar /> </label>
+
+
+
         </span>
-        <span class="filter-item" @click="filterRate(2)">
-          2 <IconsStar />
+        <span class="filter-item">
+          <input
+            type="radio"
+            @change="filterRate"
+            id="2"
+            name="rate"
+            class="hidden"
+            :value="2"
+          />
+          <label for="2"> 2 <IconsStar /> </label>
         </span>
-        <span class="filter-item" @click="filterRate(3)">
-          3 <IconsStar />
+        <span class="filter-item">
+          <input
+            type="radio"
+            @change="filterRate"
+            id="3"
+            name="rate"
+            class="hidden"
+            :value="3"
+          />
+          <label for="3"> 3 <IconsStar /> </label>
         </span>
-        <span class="filter-item" @click="filterRate(4)">
-          4 <IconsStar />
+        <span class="filter-item">
+          <input
+            type="radio"
+            @change="filterRate"
+            id="4"
+            name="rate"
+            class="hidden"
+            :value="4"
+          />
+          <label for="4"> 4 <IconsStar /> </label>
         </span>
-        <span class="filter-item" @click="filterRate(5)">
-          5 <IconsStar />
+        <span class="filter-item">
+          <input
+            type="radio"
+            @change="filterRate"
+            id="5"
+            name="rate"
+            class="hidden"
+            :value="5"
+          />
+          <label for="5"> 5 <IconsStar /> </label>
         </span>
+
       </div>
     </div>
     <div class="range-filter">
@@ -259,7 +322,7 @@ const fetchCities = async (id: number) => {
 
       <div class="input-wrapper-switch">
         <div class="switch">
-          <input type="checkbox" v-model="withDistance" id="distance" />
+          <input type="radio" v-model="withDistance" id="distance" />
           <label for="distance" class="slider"></label>
         </div>
       </div>
@@ -283,7 +346,7 @@ const fetchCities = async (id: number) => {
 
       <div class="input-wrapper-switch">
         <div class="switch">
-          <input type="checkbox" id="price_range" v-model="withPrice" />
+          <input type="radio" id="price_range" v-model="withPrice" />
           <label for="price_range" class="slider"></label>
         </div>
       </div>

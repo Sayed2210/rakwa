@@ -6,21 +6,45 @@ import CountryModel from "~/features/FetchCountriesFeature/Data/models/country_m
 import FetchCountriesController from "~/features/FetchCountriesFeature/presentation/controllers/fetch_countries_controller";
 import FetchCountriesParams from "~/features/FetchCountriesFeature/Core/Params/fetch_countries_params";
 import FetchCitiesController from "~/features/FetchCitiesFeature/presentation/controllers/fetch_cities_controller";
-import type CityModel from "~/features/FetchCitiesFeature/Data/models/city_model";
+import CityModel from "~/features/FetchCitiesFeature/Data/models/city_model";
 import FetchCitiesParams from "~/features/FetchCitiesFeature/Core/Params/fetch_cities_params";
+import type LocationModel from "~/features/ListingFeature/Data/models/location_model";
 
 const { $googleMaps } = useNuxtApp();
 
+const props = defineProps<{ location?: LocationModel | null }>();
+
+// Initialize `location` based on props
 const location = ref<LocationParams>(
-  new LocationParams(
-    -34.3974,
-    150.644,
-    "",
-    "",
-    "",
-    "",
-    new CountryModel(0, "", ""),
-  ),
+  props.location
+    ? new LocationParams(
+        props.location.lat ?? -34.3974,
+        props.location.lng ?? 150.644,
+        props.location.address ?? "",
+         "",
+        "",
+          props.location.googleMapId ?? "",
+        new CountryModel(
+          props.location.country?.id ?? 0,
+          props.location.country?.title ?? "",
+          "",
+        ),
+        new CityModel(
+          props.location.city?.id ?? 0,
+          props.location.city?.title ?? "",
+          "",
+        ),
+      )
+    : new LocationParams(
+        -34.3974,
+        150.644,
+        "",
+        "",
+        "",
+        "",
+        new CountryModel(0, "", ""),
+        new CityModel(0, "", ""),
+      ),
 );
 
 const searchAddress = ref([]);
@@ -173,7 +197,6 @@ const searchGoogleAddress = async () => {
   }
 };
 
-
 // // Example Place ID
 // const placeId = "ChIJN1t_tDeuEmsRUsoyG83frY4"; // Replace with a valid Place ID
 // getPlaceDetails(placeId);
@@ -184,13 +207,8 @@ const setLocation = (address: any) => {
   location.value.latitude = address.lat;
   location.value.longitude = address.lng;
   showSearchAddress.value = false;
-
   initMap();
-
 };
-
-
-
 
 onMounted(() => {
   initMap();
@@ -205,7 +223,7 @@ const fetchCountries = async () => {
     await fetchCountriesController.fetchCountries(
       new FetchCountriesParams(1, 10),
     )
-  ).value.data;
+  ).value.data!;
 };
 
 onMounted(async () => {
@@ -221,8 +239,26 @@ const fetchCities = async () => {
     await fetchCitiesController.fetchCities(
       new FetchCitiesParams(location.value.country.id, 1, 10),
     )
-  ).value.data;
+  ).value.data!;
 };
+
+const { getLocation } = useGeolocation();
+
+onMounted(async () => {
+  if(useRoute().params.id){
+    const { latitude: lat, longitude: lng } = await getLocation();
+
+    location.value.latitude = lat;
+    location.value.longitude = lng;
+    initMap();
+  }
+
+
+});
+
+onMounted(async () => {
+  await fetchCities();
+});
 </script>
 
 <template>

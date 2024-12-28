@@ -36,10 +36,10 @@ export default class ListingParams implements Params {
     const data: { [p: string]: any } = {};
     data["basic_information"] = this.basicInformation.toMap();
     // console.log(data["basic_information"]);
-    data["location"] = this.Location.toMap();
+    data["location_information"] = this.Location.toMap();
     data["gallery"] = this.gallery;
     data["images"] = this.details;
-    data["social"] = this.social?.toMap();
+    data["sosial"] = this.social?.toMap();
     data["opening_hours"] = this.openingHours.map((item: OpeningHoursParams) =>
       item.toMap(),
     );

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type ReviewModel from "~/features/ListingFeature/Data/models/review_model";
+import {formatDate} from "~/base/persention/utils/get_date";
 
 const props = defineProps<{ reviews: ReviewModel[]; myReview: ReviewModel }>();
 </script>
@@ -11,8 +12,8 @@ const props = defineProps<{ reviews: ReviewModel[]; myReview: ReviewModel }>();
         <div class="flex">
           <div class="client-img">
             <NuxtImg
-              :src="myRate.clientImage"
-              :alt="myRate.clientName"
+              :src="myReview.clientImage?? ''"
+              :alt="myReview.clientName ?? ''"
               class="client-opinion-card-img"
               format="webp"
             />
@@ -36,8 +37,8 @@ const props = defineProps<{ reviews: ReviewModel[]; myReview: ReviewModel }>();
       <div class="flex">
         <div class="client-img">
           <NuxtImg
-            :src="myRate.clientImage"
-            :alt="myRate.clientName"
+            :src="rate.clientImage"
+            :alt="rate.clientName"
             class="client-opinion-card-img"
             format="webp"
           />
@@ -46,7 +47,7 @@ const props = defineProps<{ reviews: ReviewModel[]; myReview: ReviewModel }>();
           <h4 class="user-name">{{ rate.clientName }}</h4>
           <div class="rate-count flex gap-2">
             <GlobalRate :rateCount="4" />
-            <span class="rate-date"> {{ rate.createdAt }} </span>
+            <span class="rate-date"> {{ formatDate(rate.createdAt) }} </span>
           </div>
         </div>
       </div>

@@ -15,11 +15,14 @@ class ApiNames {
   public login = "login";
   public register = "register";
   public logout = "logout";
+  public updateProfileImage = "update_profile_image";
+  public removeProfileImage = "remove_profile_image";
 
   //reset password
   public forgotPassword = "reset_password";
   public resetPassword = "verify_code";
   public setNewPassword = "set_password";
+
 
   //user
   public profile = "profile";
@@ -53,8 +56,12 @@ class ApiNames {
   public updateListing = "update_listing";
   public deleteListing = "delete_listing";
   public listingDetails = "listing_details";
+  public viewListing = "view_listing";
   public filterListings = "filter_listings";
   public searchListing = "search_listing";
+  public addBookmark = "book_listing"
+  public deleteListingImage = "delete_listing_image";
+  public updateListingImage = "update_listing_image";
   // public addListingComment = "make_listing_comment";
   // public listingReviews = "fetch_listing_reviews";
 

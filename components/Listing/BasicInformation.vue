@@ -8,28 +8,46 @@ import FetchCategoriesParams from "~/features/FetchCategoriesFeature/Core/Params
 import CategoryTypeModel from "~/features/FetchCategoryTypeFeature/Data/models/category_type_model";
 import FetchCategoryTypesController from "~/features/FetchCategoryTypeFeature/presentation/controllers/fetch_category_types_controller";
 import FetchCategoryTypesParams from "~/features/FetchCategoryTypeFeature/Core/Params/fetch_category_types_params";
-import {convertToBase64} from "~/base/persention/utils/convert_to_base_64";
+import { convertToBase64 } from "~/base/persention/utils/convert_to_base_64";
+import type BasicInformationModel from "~/features/ListingFeature/Data/models/basic_information_model";
 
-const selectedCity = ref();
-const cities = ref([
-  { name: "New York", code: "NY" },
-  { name: "Rome", code: "RM" },
-  { name: "London", code: "LDN" },
-  { name: "Istanbul", code: "IST" },
-  { name: "Paris", code: "PRS" },
-]);
 
+const props = defineProps<{
+  basicInformation?: BasicInformationModel | null;
+}>();
+
+// console.log(props.basicInformation)
+
+// Initialize `basicInformation` from props
 const basicInformation = ref<BasicInformationParams>(
-  new BasicInformationParams(
-    "",
-    null,
-    new CategoryModel(0, "", ""),
-    new CategoryTypeModel(0, "", ""),
-    "",
-    "",
-    0,
-    0,
-  ),
+    props.basicInformation
+        ? new BasicInformationParams(
+            props.basicInformation.title,
+            props.basicInformation.image,
+            new CategoryModel(
+                props.basicInformation.category.id,
+                props.basicInformation.category.title,
+                ""
+            ),
+            new CategoryTypeModel(
+                props.basicInformation.typeCategory.id,
+                props.basicInformation.typeCategory.title,
+            ),
+            props.basicInformation.keywords,
+            props.basicInformation.description,
+            props.basicInformation.minPrice,
+            props.basicInformation.maxPrice
+        )
+        : new BasicInformationParams(
+            "",
+            null,
+            new CategoryModel(0, "", ""),
+            new CategoryTypeModel(0, "", ""),
+            "",
+            "",
+            0,
+            0
+        )
 );
 
 const emit = defineEmits<{
@@ -59,7 +77,7 @@ const fetchCategories = async () => {
       new FetchCategoriesParams(1, 10),
     )
   ).value.data;
-  console.log(categories.value);
+  // console.log(categories.value);
 };
 
 onMounted(async () => {
@@ -87,12 +105,17 @@ onMounted(async () => {
 const handleImage = async (image: any) => {
   basicInformation.value.logo = await convertToBase64(image);
   // console.log(basicInformation.value.logo)
-}
+};
+
+
+
+
+
 </script>
 
 <template>
   <div class="col-span-1 md:col-span-2">
-    <GlobalUploadImage @update:image="handleImage" />
+    <GlobalUploadImage :initialImage="basicInformation.logo!" @update:image="handleImage" />
   </div>
   <div class="col-span-1 md:col-span-1">
     <div class="input-wrapper">
