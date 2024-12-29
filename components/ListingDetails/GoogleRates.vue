@@ -68,13 +68,12 @@ watch(
         </button>
     </div>
     <div class="rates" v-for="rate in reviews.reviews" :key="rate.id">
-      <div class="flex">
+      <div class="flex gap-2">
         <div class="client-img">
-          <NuxtImg
-            src="/google.png"
+          <img
+            :src="rate.profile_photo_url"
             :alt="rate.author_name"
             class="client-opinion-card-img"
-            format="webp"
           />
         </div>
         <div>

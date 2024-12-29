@@ -62,7 +62,7 @@ const props = defineProps<{
         {{ listing?.name }}
       </h6>
       <div class="rate flex items-center gap-1">
-        <GlobalRate :rateCount="listing?.rate" />
+        <GlobalRate :rateCount="listing?.rate.toFixed()" />
         <span>({{ listing.rateCount }} {{ $t("rate") }})</span>
       </div>
       <p class="list-search-card-description">

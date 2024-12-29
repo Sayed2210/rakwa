@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import type ReviewModel from "~/features/ListingFeature/Data/models/review_model";
-import {formatDate} from "~/base/persention/utils/get_date";
+import { formatDate } from "~/base/persention/utils/get_date";
 
 const props = defineProps<{ reviews: ReviewModel[]; myReview: ReviewModel }>();
 </script>
 
 <template>
-  <section class="rate-wrapper" >
+  <section class="rate-wrapper">
     <div class="my-rate" v-if="myReview?.id">
       <div class="rate-content">
         <div class="flex">
           <div class="client-img">
             <NuxtImg
-              :src="myReview.clientImage?? ''"
+              :src="myReview.clientImage ?? ''"
               :alt="myReview.clientName ?? ''"
               class="client-opinion-card-img"
               format="webp"
@@ -30,6 +30,15 @@ const props = defineProps<{ reviews: ReviewModel[]; myReview: ReviewModel }>();
         <p class="rate-text">
           {{ myReview.comment }}
         </p>
+        <div class="images">
+          <div class="image" v-for="i in myReview.images">
+            <NuxtImg
+                :src="i.image"
+                class="client-opinion-card-img"
+                format="webp"
+            />
+          </div>
+        </div>
       </div>
     </div>
 
@@ -55,6 +64,15 @@ const props = defineProps<{ reviews: ReviewModel[]; myReview: ReviewModel }>();
         <p class="rate-text">
           {{ rate.comment }}
         </p>
+      </div>
+      <div class="images">
+        <div class="image" v-for="i in rate.images">
+          <NuxtImg
+            :src="i.image"
+            class="client-opinion-card-img"
+            format="webp"
+          />
+        </div>
       </div>
     </div>
   </section>

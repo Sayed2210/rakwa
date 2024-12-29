@@ -1,13 +1,24 @@
 <script setup lang="ts">
 import type { Listing } from "~/types/listing";
+import AddToBookmarkController from "~/features/ListingFeature/Presentation/controllers/add_to_bookmark_controller";
+import AddToBookmarkParams from "~/features/ListingFeature/Core/Params/add_to_bookmark_params";
 
 const prop = defineProps<{
   listing: Listing;
 }>();
+
+const addToBookmarkController = AddToBookmarkController.getInstance();
+
+const addToBookmark = async (id: number) => {
+  console.log(id);
+  await addToBookmarkController.addToBookmark(
+      new AddToBookmarkParams(id),
+  );
+};
 </script>
 
 <template>
-  <NuxtLink :to="`/listing/${listing.id}`" class="place-card">
+  <NuxtLink class="place-card">
     <div class="place-img">
       <NuxtImg
         :src="listing?.image"
@@ -39,7 +50,7 @@ const prop = defineProps<{
         </svg>
         <span>{{ $t("sponsor") }}</span>
       </span>
-      <div class="fav" v-if="listing?.is_bookmark">
+      <div class="fav" v-if="!listing?.is_bookmark">
         <svg
           width="29"
           height="25"
@@ -53,8 +64,22 @@ const prop = defineProps<{
           />
         </svg>
       </div>
+      <div class="fav" @click="addToBookmark(listing?.id)" v-else>
+        <svg
+          width="29"
+          height="25"
+          viewBox="0 0 29 25"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20.6526 0.165527C18.1442 0.165527 15.899 1.38509 14.4993 3.25602C13.0996 1.38509 10.8545 0.165527 8.34606 0.165527C4.09144 0.165527 0.640625 3.6302 0.640625 7.91254C0.640625 9.56172 0.90394 11.0862 1.36128 12.4998C3.55095 19.4291 10.3001 23.5729 13.6401 24.7093C14.1113 24.8756 14.8874 24.8756 15.3586 24.7093C18.6985 23.5729 25.4477 19.4291 27.6374 12.4998C28.0947 11.0862 28.358 9.56172 28.358 7.91254C28.358 3.6302 24.9072 0.165527 20.6526 0.165527Z"
+            fill="#EE2527"
+          />
+        </svg>
+      </div>
     </div>
-    <div class="place-info">
+    <NuxtLink class="place-info" :to="`/listing/${listing.id}`">
       <p class="place-type">
         {{ $t("restaurant") }}
       </p>
@@ -62,7 +87,7 @@ const prop = defineProps<{
         {{ listing?.title }}
       </h2>
       <div class="rate flex items-center gap-1">
-        <GlobalRate :rateCount="listing.rate" />
+        <GlobalRate :rateCount="listing?.rate.toFixed()" />
         <span>({{ listing.rate_count }} {{ $t("rate") }})</span>
       </div>
       <p class="place-description" v-html="listing?.description"></p>
@@ -83,7 +108,7 @@ const prop = defineProps<{
           {{ listing?.address }}
         </NuxtLink>
       </div>
-    </div>
+    </NuxtLink>
   </NuxtLink>
 </template>
 

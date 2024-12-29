@@ -5,6 +5,7 @@ import AccordionHeader from "primevue/accordionheader";
 import Accordion from "primevue/accordion";
 import AccordionContent from "primevue/accordioncontent";
 import AccordionPanel from "primevue/accordionpanel";
+import FilterListingParamsBuilder from "~/features/ListingFeature/Presentation/Builder/filter_listing_builder";
 
 const user = useUserStore();
 const op = ref();
@@ -30,6 +31,14 @@ const { data: categories } = await useAsyncData("categories",
       return response.data; // Extract only the `data` part
     }
 );
+
+const filterListingParamsBuilder = FilterListingParamsBuilder.Instance;
+const setCategory = (id: number) => {
+  filterListingParamsBuilder.setCategoryID(id);
+  navigateTo("/listing");
+};
+
+
 </script>
 
 <template>
@@ -69,7 +78,7 @@ const { data: categories } = await useAsyncData("categories",
             <div class="dropdown-content">
               <ul class="flex flex-col gap-2">
                 <li v-for="category in categories">
-                  <NuxtLink :to="`/categories/${category.id}`">{{ category.name }}</NuxtLink>
+                  <button @click="setCategory(category.id)">{{ category.name }}</button>
                 </li>
               </ul>
             </div>
@@ -95,7 +104,7 @@ const { data: categories } = await useAsyncData("categories",
                   <AccordionContent>
                     <ul class="flex flex-col gap-2">
                       <li v-for="category in categories">
-                        <NuxtLink :to="`/categories/${category.id}`">{{ category.name }}</NuxtLink>
+                        <button @click="setCategory(category.id)">{{ category.name }}</button>
                       </li>
                     </ul>
                   </AccordionContent>

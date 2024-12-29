@@ -21,8 +21,9 @@ class AddToBookmarkApiService extends ServicesInterface {
     return await super.call({
       url: ApiNames.Instance.addBookmark,
       type: CrudType.POST,
-      auth: false,
+      auth: true,
       params: params,
+      showLoadingDialog: true,
     })
   }
 }

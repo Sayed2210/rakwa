@@ -2,20 +2,29 @@
 import SearchBuilder from "~/features/ListingFeature/Presentation/Builder/search_builder";
 import SearchListingController from "~/features/ListingFeature/Presentation/controllers/search_listing_controller";
 import { SearchStrategy } from "~/features/ListingFeature/Presentation/strategies/search_strategy";
+import FilterListingParamsBuilder from "~/features/ListingFeature/Presentation/Builder/filter_listing_builder";
+import { FilterStrategy } from "~/features/ListingFeature/Presentation/strategies/filter_strategy";
 
 const props = defineProps<{ showMap?: boolean }>();
 
 const searchBuilder = SearchBuilder.Instance;
 
 const searchListingController = SearchListingController.getInstance();
-searchListingController.setStrategy(new SearchStrategy());
+const filterListingParamsBuilder = FilterListingParamsBuilder.Instance;
 
 const state = ref(searchListingController.state.value);
 
 const searchListing = async () => {
   try {
-    const params = searchBuilder.build();
-    await searchListingController.executeStrategy(params);
+    if (filterListingParamsBuilder.categoryId) {
+      searchListingController.setStrategy(new FilterStrategy());
+      await searchListingController.executeStrategy(
+        filterListingParamsBuilder.build(),
+      );
+    } else {
+      const params = searchBuilder.build();
+      await searchListingController.executeStrategy(params);
+    }
   } catch (e) {
     console.log(e);
   }

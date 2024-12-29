@@ -10,7 +10,7 @@ const props = defineProps<{ listing: ListingDetailsModel }>();
       <div class="col-span-1 md:col-span-2">
         <ListingDetailsGallery :images="listing.images" />
         <ListingDetailsInfo :listing="listing" />
-        <listingDetailsReviews :myReview="listing.myReview" />
+        <listingDetailsReviews :myReview="listing.myReview" :rate="listing.BasicInformation.rateCount" />
         <ListingDetailsRates
           :reviews="listing.reviews"
           :myReview="listing.myReview!"

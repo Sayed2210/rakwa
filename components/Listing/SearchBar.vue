@@ -21,6 +21,8 @@ const fetchCategories = async () => {
 onMounted(async () => {
   await fetchCategories();
 });
+
+
 </script>
 
 <template>

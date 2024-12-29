@@ -30,7 +30,7 @@ export default class ReviewModel {
   static fromMap(map: { [key: string]: any }): ReviewModel {
     return new ReviewModel(
       map["id"],
-      map.listing?.name,
+      map.listing?.,
       map["client_image"],
       map["rate"],
       map["created_at"],

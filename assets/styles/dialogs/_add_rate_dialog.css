@@ -20,16 +20,18 @@
   }
   .rates {
     display: flex;
-    align-items: stretch;
+    flex-direction: row;
     justify-content: space-between;
     gap: 1rem;
+    .rate {
+      width: 140px;
+      height: 120px;
+    }
     margin-bottom: 1rem;
     input[type="radio"]:checked + label {
       border-color: var(--main-color);
     }
     label {
-      width: 140px;
-      height: 120px;
       border: 1px solid var(--border-color);
       border-radius: 0.5rem;
       cursor: pointer;

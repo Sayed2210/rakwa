@@ -98,17 +98,17 @@ const addToBookmark = async () => {
       </div>
       <div class="user-info">
         <div class="verified-type">owner</div>
-        <div class="user-name">{{ listingDate?.owner?.name }}</div>
+        <div class="user-name">{{ listingDate?.BasicInformation.owner?.name }}</div>
       </div>
     </div>
     <div class="contact">
       <div class="wrapper">
         <IconsEmail />
-        <span>{{ listingDate?.owner?.email }}</span>
+        <span>{{ listingDate?.BasicInformation.owner?.email }}</span>
       </div>
       <div class="wrapper">
         <IconsPhone />
-        <span>{{ listingDate?.owner?.phone }}</span>
+        <span>{{ listingDate?.BasicInformation.owner?.phone }}</span>
       </div>
     </div>
     <div class="action">

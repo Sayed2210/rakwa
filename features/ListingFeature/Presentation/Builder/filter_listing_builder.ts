@@ -10,7 +10,7 @@ export default class FilterListingParamsBuilder {
   private distance: number | null = null;
   private priceRange: number[] | null = null;
   private address: string | null = null;
-  private categoryId: number | null = null;
+  public categoryId: number | null = null;
   private page: number | null = 1;
   private limit: number | null = 12;
 

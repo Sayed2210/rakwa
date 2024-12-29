@@ -11,7 +11,7 @@ const props = defineProps({
   <div class="rate flex gap-1 items-center">
     <!-- Render filled stars based on rateCount (up to 5) -->
     <svg
-      v-for="i in Math.min(props.rateCount, 5)"
+      v-for="i in Math.min(rateCount, 5)"
       :key="'filled-' + i"
       width="16"
       height="16"
@@ -27,7 +27,7 @@ const props = defineProps({
 
     <!-- Render empty stars based on remaining count to reach 5 stars -->
     <svg
-      v-for="i in 5 - Math.min(props.rateCount, 5)"
+      v-for="i in 5 - Math.min(rateCount, 5)"
       :key="'empty-' + i"
       width="16"
       height="16"

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type ReviewModel from "~/features/ListingFeature/Data/models/review_model";
 
-const props = defineProps<{ myReview: ReviewModel | null }>();
+const props = defineProps<{ myReview: ReviewModel | null, rate: number }>();
 const user = useUserStore();
 </script>
 
@@ -15,8 +15,8 @@ const user = useUserStore();
       </div>
       <div class="rates">
         <div class="rate-count">
-          <span class="rate-number">4.8</span>
-          <GlobalRate :rateCount="4" />
+          <span class="rate-number">{{ rate }}</span>
+          <GlobalRate :rateCount="rate.toFixed()!" />
           <span class="rate-description">
             {{ $t("We_have") }} 232 {{ $t("reviews_from_our_customers") }}
           </span>

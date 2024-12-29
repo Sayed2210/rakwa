@@ -101,6 +101,6 @@
   border-color: var(--main-color);
 }
 
-.filter-item input[type="radio"]:checked + label svg path {
+.filter-item input[type="checkbox"]:checked + label svg path {
   fill: #ffffff;
 }

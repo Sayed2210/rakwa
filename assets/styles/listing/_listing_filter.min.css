@@ -1,1 +1,1 @@
-.listing-filter{border:1px solid var(--border-color-2);border-radius:.5rem}
+.listing-filter{border:1px solid var(--border-color-2);border-radius:.5rem}.filter-item input[type=radio]:checked+label{background-color:var(--main-color);color:#fff;border-color:var(--main-color)}.filter-item input[type=radio]:checked+label svg path{fill:#fff}

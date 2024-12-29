@@ -19,7 +19,6 @@ export default class ViewListingDetailsModel {
 
   public reviews: ReviewModel[]; // Adjust this type as needed
   public myReview: ReviewModel | null;
-  public owner: UserModel | null;
   public claimStatus: number;
   constructor(
     id: number,
@@ -29,7 +28,6 @@ export default class ViewListingDetailsModel {
     images: ImageModel[],
     openingHours: OpeningHoursModel[],
     reviews: ReviewModel[],
-    owner: UserModel | null,
     claimStatus: number = 0,
     myReview: ReviewModel | null,
   ) {
@@ -40,7 +38,6 @@ export default class ViewListingDetailsModel {
     this.images = images;
     this.openingHours = openingHours;
     this.reviews = reviews;
-    this.owner = owner;
     this.claimStatus = claimStatus;
     this.myReview = myReview;
   }
@@ -56,7 +53,6 @@ export default class ViewListingDetailsModel {
         OpeningHoursModel.fromMap(openingHour),
       ),
       map["reviews"].map((review: any) => ReviewModel.fromMap(review)),
-      map["owner"] ? UserModel.fromMap(map["owner"]) : null,
       map["claim_status"],
       map["my_review"] ? ReviewModel.fromMap(map["my_review"]) : null,
     );

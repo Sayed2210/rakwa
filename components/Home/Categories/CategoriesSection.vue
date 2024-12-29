@@ -2,6 +2,8 @@
 import type Category from "~/types/categories";
 
 const props = defineProps<{ popularCategories: Category[] }>();
+
+
 </script>
 
 <template>
