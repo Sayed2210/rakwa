@@ -1,17 +1,9 @@
 <script setup lang="ts">
 import OtherReviewModel from "~/features/FetchReviewsFeature/Data/models/other_review_model";
-import ReportReviewsController from "~/features/ReportReviewFeature/presentation/controllers/report_review_controller";
-import ReportReviewParams from "~/features/ReportReviewFeature/Core/Params/report_review_params";
 
 const props = defineProps<{
   reviews: OtherReviewModel[] | [];
 }>();
-
-const reportReviewsController = ReportReviewsController.getInstance();
-
-const reportReview = (id: number) => {
-  reportReviewsController.reportReview(new ReportReviewParams(id));
-};
 </script>
 
 <template>
@@ -40,7 +32,7 @@ const reportReview = (id: number) => {
         {{ review.comment }}
       </p>
       <div class="actions">
-        <button type="button" @click="reportReview(review.id)" class="primary-button" aria-label="delete">
+        <button class="primary-button" aria-label="delete">
           {{ $t("report") }}
         </button>
         <!--        <button class="secondary-button" aria-label="edit">-->

@@ -10,7 +10,10 @@
         )
       }}
     </h5>
-    <NuxtLink class="start-now" to="/categories/1">{{ $t("start_now") }}</NuxtLink>
+    <button
+        class="start-now"
+        type="button"
+    >{{ $t("start_now") }}</button>
   </section>
 </template>
 

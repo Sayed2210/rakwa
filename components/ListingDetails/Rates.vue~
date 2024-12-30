@@ -84,12 +84,7 @@ const voteReview = async (id: number, type: number) => {
       </div>
       <div class="votes">
         <div class="vote">
-          <button
-            @click="voteReview(rate.id, 1)"
-            type="button"
-            aria-label="upvote"
-            class="vote-btn"
-          >
+          <button type="button" aria-label="upvote" class="vote-btn">
             <IconsUpvote />
           </button>
 
@@ -98,12 +93,7 @@ const voteReview = async (id: number, type: number) => {
           </span>
         </div>
         <div class="vote">
-          <button
-            @click="voteReview(rate.id, 2)"
-            type="button"
-            aria-label="upvote"
-            class="vote-btn"
-          >
+          <button type="button" aria-label="upvote" class="vote-btn">
             <IconsDownVote />
           </button>
 

@@ -141,13 +141,13 @@ const setCategory = (id: number) => {
                   </NuxtLink>
                 </li>
                 <li class="dropdown-item">
-                  <NuxtLink to="/bookmarks">
+                  <NuxtLink to="/dashboard/bookmarks">
                     <span>{{ $t("bookmarks") }}</span>
                     <IconsBookmark />
                   </NuxtLink>
                 </li>
                 <li class="dropdown-item">
-                  <NuxtLink to="/reviews">
+                  <NuxtLink to="/dashboard/reviews">
                     <span>{{ $t("reviews") }}</span>
                     <IconsReviews />
                   </NuxtLink>
@@ -213,13 +213,13 @@ const setCategory = (id: number) => {
                   </NuxtLink>
                 </li>
                 <li class="dropdown-item">
-                  <NuxtLink to="/bookmarks">
+                  <NuxtLink to="/dashboard/bookmarks">
                     <span>{{ $t("bookmarks") }}</span>
                     <IconsBookmark />
                   </NuxtLink>
                 </li>
                 <li class="dropdown-item">
-                  <NuxtLink to="/reviews">
+                  <NuxtLink to="/dashboard/reviews">
                     <span>{{ $t("reviews") }}</span>
                     <IconsReviews />
                   </NuxtLink>

@@ -14,7 +14,7 @@ const props = defineProps<{ blog: Blog }>();
         format="webp"
       />
     </div>
-    <div class="blog-info">
+    <NuxtLink :to="`/blogs/${blog.slug}`" class="blog-info">
       <div class="flex items-start gap-4">
         <span class="line"></span>
         <div class="info-wrapper">
@@ -33,7 +33,7 @@ const props = defineProps<{ blog: Blog }>();
           </p>
         </div>
       </div>
-    </div>
+    </NuxtLink>
   </div>
 </template>
 
