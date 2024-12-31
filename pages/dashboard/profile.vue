@@ -21,7 +21,7 @@ useHead({
   ],
 });
 
-const toggle = ref<boolean>(false);
+const toggle = ref<boolean>(true);
 </script>
 
 <template>

@@ -5,6 +5,7 @@ import AccordionHeader from "primevue/accordionheader";
 import Accordion from "primevue/accordion";
 import AccordionContent from "primevue/accordioncontent";
 import AccordionPanel from "primevue/accordionpanel";
+import {setDefaultImage} from "~/base/persention/utils/set_default_image";
 
 const user = useUserStore();
 const router = useRouter();
@@ -160,7 +161,7 @@ const toggle = (event) => {
               <span class="name">{{ user.user?.name }}</span>
               <span class="role">{{ user.user?.type }}</span>
             </div>
-            <NuxtImg src="/user-photo.png" alt="user" class="user-photo" />
+            <img @error="setDefaultImage($event)" :src="user.user?.image" alt="user" class="user-photo" />
             <div class="dropdown-content">
               <ul>
                 <li class="dropdown-item">

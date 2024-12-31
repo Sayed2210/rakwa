@@ -21,7 +21,7 @@ class UpdateListingImageApiService extends ServicesInterface {
     return await super.call({
       url: ApiNames.Instance.updateListingImage,
       type: CrudType.POST,
-      auth: false,
+      auth: true,
       params: params,
     })
   }

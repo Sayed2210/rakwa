@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type ReviewModel from "~/features/ListingFeature/Data/models/review_model";
 
-const props = defineProps<{ myReview: ReviewModel | null, rate: number }>();
+const props = defineProps<{ rate: number }>();
 const user = useUserStore();
 </script>
 
@@ -11,7 +11,7 @@ const user = useUserStore();
     <div class="rating">
       <div class="add-rate">
         <h4>{{ $t("Add_your_rating") }}</h4>
-        <ListingDetailsAddRateDialog v-if="!myReview?.id && user.isAuth" />
+        <ListingDetailsAddRateDialog v-if="user.isAuth" />
       </div>
       <div class="rates">
         <div class="rate-count">

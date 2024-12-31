@@ -21,7 +21,7 @@ watch(
   () => {
     emit("update:socialMedia", socialMedia.value);
   },
-  { deep: true },
+  { deep: true, immediate: true },
 );
 </script>
 

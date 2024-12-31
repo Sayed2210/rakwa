@@ -51,7 +51,7 @@ export default abstract class ServicesInterface {
       // TODO : Fire Loader
     }
     try {
-      console.log(params)
+      console.log(params?.toMap())
       switch (type) {
         case CrudType.FormData:
           // console.log(params?.toMap())

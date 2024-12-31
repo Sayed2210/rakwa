@@ -1,50 +1,51 @@
 <script setup lang="ts">
-import { useNuxtApp } from "#app";
+import {useNuxtApp} from "#app";
 import Select from "primevue/select";
 import LocationParams from "~/features/ListingFeature/Core/Params/location_params";
 import CountryModel from "~/features/FetchCountriesFeature/Data/models/country_model";
-import FetchCountriesController from "~/features/FetchCountriesFeature/presentation/controllers/fetch_countries_controller";
+import FetchCountriesController
+  from "~/features/FetchCountriesFeature/presentation/controllers/fetch_countries_controller";
 import FetchCountriesParams from "~/features/FetchCountriesFeature/Core/Params/fetch_countries_params";
 import FetchCitiesController from "~/features/FetchCitiesFeature/presentation/controllers/fetch_cities_controller";
 import CityModel from "~/features/FetchCitiesFeature/Data/models/city_model";
 import FetchCitiesParams from "~/features/FetchCitiesFeature/Core/Params/fetch_cities_params";
 import type LocationModel from "~/features/ListingFeature/Data/models/location_model";
 
-const { $googleMaps } = useNuxtApp();
+const {$googleMaps} = useNuxtApp();
 
 const props = defineProps<{ location?: LocationModel | null }>();
 
 // Initialize `location` based on props
 const location = ref<LocationParams>(
-  props.location
-    ? new LocationParams(
-        props.location.lat ?? -34.3974,
-        props.location.lng ?? 150.644,
-        props.location.address ?? "",
-         "",
-        "",
-          props.location.googleMapId ?? "",
-        new CountryModel(
-          props.location.country?.id ?? 0,
-          props.location.country?.title ?? "",
-          "",
+    props.location
+        ? new LocationParams(
+            props.location.lat ?? -34.3974,
+            props.location.lng ?? 150.644,
+            props.location.address ?? "",
+            "",
+            "",
+            props.location.googleMapId ?? "",
+            new CountryModel(
+                props.location.country?.id ?? 0,
+                props.location.country?.title ?? "",
+                "",
+            ),
+            new CityModel(
+                props.location.city?.id ?? 0,
+                props.location.city?.title ?? "",
+                "",
+            ),
+        )
+        : new LocationParams(
+            -34.3974,
+            150.644,
+            "",
+            "",
+            "",
+            "",
+            new CountryModel(0, "", ""),
+            new CityModel(0, "", ""),
         ),
-        new CityModel(
-          props.location.city?.id ?? 0,
-          props.location.city?.title ?? "",
-          "",
-        ),
-      )
-    : new LocationParams(
-        -34.3974,
-        150.644,
-        "",
-        "",
-        "",
-        "",
-        new CountryModel(0, "", ""),
-        new CityModel(0, "", ""),
-      ),
 );
 
 const searchAddress = ref([]);
@@ -55,26 +56,26 @@ const emit = defineEmits<{
 }>();
 
 watch(
-  () => location.value,
-  () => {
-    // console.log(basicInformation.value);
-    emit("update:location", location.value);
-  },
-  { deep: true },
+    () => location.value,
+    () => {
+      // console.log(basicInformation.value);
+      emit("update:location", location.value);
+    },
+    { deep: true, immediate: true },
 );
 
 const initMap = async () => {
   try {
     const google = await $googleMaps.load();
     const map = new google.maps.Map(
-      document.getElementById("map") as HTMLElement,
-      {
-        center: { lat: location.value.latitude, lng: location.value.longitude },
-        zoom: 8,
-      },
+        document.getElementById("map") as HTMLElement,
+        {
+          center: {lat: location.value.latitude, lng: location.value.longitude},
+          zoom: 8,
+        },
     );
     const marker = new google.maps.Marker({
-      position: { lat: location.value.latitude, lng: location.value.longitude },
+      position: {lat: location.value.latitude, lng: location.value.longitude},
       map,
       draggable: true, // Makes the marker draggable
       icon: {
@@ -85,20 +86,20 @@ const initMap = async () => {
     const fetchAddress = async (latitude: number, longitude: number) => {
       const geocoder = new google.maps.Geocoder();
       geocoder.geocode(
-        { location: { lat: latitude, lng: longitude } },
-        (results, status) => {
-          if (status === "OK" && results.length > 0) {
-            const address = results[0].formatted_address; // Full address
-            const placeId = results[0].place_id; // Google Place ID
-            // console.log("Address:", address);
-            // console.log("Place ID:", placeId);
-            location.value.address = address;
-            location.value.googlePlaceId = placeId;
-            // getPlaceDetails(placeId);
-          } else {
-            console.error("Geocoder failed due to:", status);
-          }
-        },
+          {location: {lat: latitude, lng: longitude}},
+          (results, status) => {
+            if (status === "OK" && results.length > 0) {
+              const address = results[0].formatted_address; // Full address
+              const placeId = results[0].place_id; // Google Place ID
+              // console.log("Address:", address);
+              // console.log("Place ID:", placeId);
+              location.value.address = address;
+              location.value.googlePlaceId = placeId;
+              // getPlaceDetails(placeId);
+            } else {
+              console.error("Geocoder failed due to:", status);
+            }
+          },
       );
     };
 
@@ -147,11 +148,11 @@ const initMap = async () => {
 const getLatLngFromPlaceId = async (placeId: string) => {
   const google = await $googleMaps.load();
   const service = new google.maps.places.PlacesService(
-    document.createElement("div"),
+      document.createElement("div"),
   );
 
   return new Promise((resolve, reject) => {
-    service.getDetails({ placeId, fields: ["geometry"] }, (place, status) => {
+    service.getDetails({placeId, fields: ["geometry"]}, (place, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
         const location = place.geometry?.location;
         resolve({
@@ -220,9 +221,9 @@ const fetchCountriesController = FetchCountriesController.getInstance();
 
 const fetchCountries = async () => {
   countries.value = (
-    await fetchCountriesController.fetchCountries(
-      new FetchCountriesParams(1, 10),
-    )
+      await fetchCountriesController.fetchCountries(
+          new FetchCountriesParams(1, 10),
+      )
   ).value.data!;
 };
 
@@ -236,25 +237,23 @@ const fetchCitiesController = FetchCitiesController.getInstance();
 
 const fetchCities = async () => {
   cities.value = (
-    await fetchCitiesController.fetchCities(
-      new FetchCitiesParams(location.value.country.id, 1, 10),
-    )
+      await fetchCitiesController.fetchCities(
+          new FetchCitiesParams(location.value.country.id, 1, 10),
+      )
   ).value.data!;
 };
 
-const { getLocation } = useGeolocation();
+const {getLocation} = useGeolocation();
 
 onMounted(async () => {
-  if(useRoute().params.id){
-    const { latitude: lat, longitude: lng } = await getLocation();
+  if (!props.location){
+    const {latitude: lat, longitude: lng} = await getLocation();
+  location.value.latitude = lat;
+  location.value.longitude = lng;
+  initMap();
+}
+})
 
-    location.value.latitude = lat;
-    location.value.longitude = lng;
-    initMap();
-  }
-
-
-});
 
 onMounted(async () => {
   await fetchCities();

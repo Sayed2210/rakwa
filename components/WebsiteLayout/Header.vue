@@ -8,6 +8,7 @@ import AccordionContent from "primevue/accordioncontent";
 import type Category from "~/types/categories";
 import {BASE_URL} from "~/base/persention/utils/constant";
 import FilterListingParamsBuilder from "~/features/ListingFeature/Presentation/Builder/filter_listing_builder";
+import {setDefaultImage} from "~/base/persention/utils/set_default_image";
 
 
 
@@ -190,7 +191,7 @@ const setCategory = (id: number) => {
               <span class="name">{{ user.user?.name }}</span>
               <span class="role">{{ user.user?.type }}</span>
             </div>
-            <NuxtImg :src="user.user?.image" alt="user" class="user-photo" />
+            <img @error="setDefaultImage($event)" :src="user.user?.image" alt="user" class="user-photo" />
             <div class="dropdown-content">
               <ul>
                 <li class="dropdown-item">

@@ -1,5 +1,5 @@
 import { UpdateProfileApiService } from '~/features/UpdateProfileFeature/Data/api_services/update_profile_api_service'
-import UserModel from '~/features/UpdateProfileFeature/Data/models/user_model'
+import UserModel from "~/features/LoginFeature/Data/models/user_model";
 import RepoInterface from '~/base/Domain/Repositories/repo_interface'
 import type ServicesInterface from '~/base/Data/ApiService/api_service_interface'
 

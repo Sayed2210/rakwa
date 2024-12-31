@@ -3,7 +3,7 @@
     width: 600px;
     height: 800px;
 
-
+    
   }
 
   .swiper-pagination {
@@ -25,11 +25,7 @@
     }
   }
 }
-.login-img {
-  width: 100%;
-  object-fit: contain;
-  object-position: center;
-}
+
 /*class="swiper-pagination-bullet swiper-pagination-bullet-active-prev"*/
 /*swiper-pagination-bullet swiper-pagination-bullet-active-next"*/
 

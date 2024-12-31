@@ -20,6 +20,7 @@ watch(
   () => showListingDetailsController.state.value,
   (newVal, oldVal) => {
     if (newVal) {
+      console.log(newVal);
       state.value = newVal;
     }
   },

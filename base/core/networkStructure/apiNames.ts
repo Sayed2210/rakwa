@@ -72,6 +72,8 @@ class ApiNames {
   public reviews = "my_reviews";
   public otherReviews = "other_reviews";
   public deleteReview = "delete_review";
+  public reportReview = "report_review";
+  public voteReview = "vote";
 
   public addClaim = "add_claim";
   public addRate = "add_rate";

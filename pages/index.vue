@@ -50,6 +50,12 @@ const { data: listings } = await useAsyncData("listing", async () => {
   }>(`${BASE_URL}/most_visited_places`, { method: "POST" });
   return response.data; // Extract only the `data` part
 });
+
+const { getLocation } = useGeolocation();
+
+onMounted(async () => {
+  await getLocation();
+})
 </script>
 
 <template>

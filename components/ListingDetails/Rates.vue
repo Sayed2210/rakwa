@@ -4,19 +4,23 @@ import { formatDate } from "~/base/persention/utils/get_date";
 import VoteReviewsController from "~/features/VoteReviewFeature/presentation/controllers/report_review_controller";
 import VoteReviewParams from "~/features/VoteReviewFeature/Core/Params/vote_review_params";
 
-const props = defineProps<{ reviews: ReviewModel[]; myReview: ReviewModel }>();
 
 const voteReviewsController = VoteReviewsController.getInstance();
 
 const voteReview = async (id: number, type: number) => {
-  await voteReviewsController.voteReview(new VoteReviewParams.Params(id, type));
+  await voteReviewsController.voteReview(new VoteReviewParams(id, type));
 };
+
+
+const props = defineProps<{ reviews: ReviewModel[]; myReviews: ReviewModel[] }>();
+
 </script>
 
 <template>
   <section class="rate-wrapper">
-    <div class="my-rate" v-if="myReview?.id">
-      <div class="rate-content">
+    <div class="my-rate-wrapper">
+    <div class="my-rate">
+      <div class="rate-content" v-for="myReview in myReviews" :key="myReview.id">
         <div class="flex">
           <div class="client-img">
             <NuxtImg
@@ -48,6 +52,7 @@ const voteReview = async (id: number, type: number) => {
           </div>
         </div>
       </div>
+    </div>
     </div>
 
     <div class="rates" v-for="rate in reviews" :key="rate.id">
@@ -94,7 +99,7 @@ const voteReview = async (id: number, type: number) => {
           </button>
 
           <span class="vote-number">
-            {{ $t("Upvote") }} ({{ myReview?.upVotes }})
+            {{ $t("Upvote") }} ({{ myReview?.upVotes?? 0}})
           </span>
         </div>
         <div class="vote">
@@ -108,7 +113,7 @@ const voteReview = async (id: number, type: number) => {
           </button>
 
           <span class="vote-number">
-            {{ $t("Downvote") }} ({{ myReview?.downVotes }})
+            {{ $t("Downvote") }} ({{ myReview?.downVotes??0 }})
           </span>
         </div>
       </div>

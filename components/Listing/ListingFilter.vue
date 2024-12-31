@@ -10,9 +10,29 @@ import type CityModel from "~/features/FetchCitiesFeature/Data/models/city_model
 import FetchCitiesParams from "~/features/FetchCitiesFeature/Core/Params/fetch_cities_params";
 import SearchListingController from "~/features/ListingFeature/Presentation/controllers/search_listing_controller";
 import { FilterStrategy } from "~/features/ListingFeature/Presentation/strategies/filter_strategy";
+import { useI18n } from "vue-i18n";
 
+const { t: $t } = useI18n();
 const withDistance = ref<boolean>(false);
 const withPrice = ref<boolean>(false);
+const filteredItems = computed(() => {
+  return appliedFilters.value.map((item) => {
+    if (item.key === 'status') {
+      return item.value === 1 ? $t('Open') : $t('Closed');
+    }
+    if (item.key === 'rate') {
+      return `${item.value} ${$t('stars')}`; // Replace with appropriate translation
+    }
+    if (item.key === 'country') {
+      return countries.value.find((country) => country.id === item.value)?.title || item.value;
+    }
+    if (item.key === 'city') {
+      return cities.value.find((city) => city.id === item.value)?.title || item.value;
+    }
+    return `${item.value}`; // Fallback for other cases
+  });
+});
+
 
 const distance = ref(3);
 const priceRange = ref<[]>([200, 1600]);
@@ -21,59 +41,53 @@ const address = ref<string>("");
 //applied filters
 const appliedFilters = ref<{ key: string; value: string | number }[]>([]);
 
-const removeAppliedFilter = (key: string) => {
-  appliedFilters.value = appliedFilters.value.filter(
-    (filter) => filter.key !== key,
-  );
-};
-const updateAppliedFilters = (key: string, value: string | number | null) => {
-  const index = appliedFilters.value.findIndex((filter) => filter.key === key);
-
-  if (value === null) {
-    // Remove the filter if value is null
-    if (index !== -1) appliedFilters.value.splice(index, 1);
-  } else {
-    // Update or add the filter
-    if (index !== -1) {
-      appliedFilters.value[index].value = value;
-    } else {
-      appliedFilters.value.push({ key, value });
-    }
-  }
-};
-
 const filterListingParamsBuilder = FilterListingParamsBuilder.Instance;
 const searchListingController = SearchListingController.getInstance();
 searchListingController.setStrategy(new FilterStrategy());
 
 const filterStatus = (e: Event) => {
   const status = (e.target as HTMLInputElement).value;
-  filterListingParamsBuilder.setStatus(parseInt(status));
-
+  appliedFilters.value.push({
+    key: "status",
+    value: parseInt(status) === 1 ? $t("Open") : $t("Closed"),
+  });
+  filterListingParamsBuilder.setStatus(parseInt(status))
   searchListingController.executeStrategy(filterListingParamsBuilder.build());
 };
 
 const filterCountry = async (e: Event) => {
-  const country = (e.target as HTMLInputElement).value;
-  filterListingParamsBuilder.setCountryId(parseInt(country));
-  await fetchCities(parseInt(country));
+  const countryId = (e.target as HTMLInputElement).value;
+  filterListingParamsBuilder.setCountryId(parseInt(countryId));
+  await fetchCities(parseInt(countryId));
+  appliedFilters.value.push({
+    key: "country",
+    value:
+      countries.value.find((c) => c.id === parseInt(countryId))?.title || "",
+  });
   await searchListingController.executeStrategy(
     filterListingParamsBuilder.build(),
   );
 };
+
 const filterCity = async (e: Event) => {
-  const country = (e.target as HTMLInputElement).value;
-  filterListingParamsBuilder.setCityId(parseInt(country));
-  // await fetchCities(country);
+  const cityId = (e.target as HTMLInputElement).value;
+  filterListingParamsBuilder.setCityId(parseInt(cityId));
+  appliedFilters.value.push({
+    key: "city",
+    value: cities.value.find((c) => c.id === parseInt(cityId))?.title || "",
+  });
+  filterListingParamsBuilder.setCityId(parseInt(cityId));
+
+
   await searchListingController.executeStrategy(
     filterListingParamsBuilder.build(),
   );
 };
 
 const filterRate = (e: Event) => {
-  console.log((e.target as HTMLInputElement).value);
   const rate = (e.target as HTMLInputElement).value;
-  filterListingParamsBuilder.setRate(rate);
+  appliedFilters.value.push({ key: "rate", value: rate });
+  filterListingParamsBuilder.setRate(parseInt(rate));
   searchListingController.executeStrategy(filterListingParamsBuilder.build());
 };
 const filterDistance = async () => {
@@ -138,6 +152,46 @@ const fetchCities = async (id: number) => {
     await fetchCitiesController.fetchCities(new FetchCitiesParams(id, 1, 10))
   ).value.data!;
 };
+
+const clearFilters = () => {
+  appliedFilters.value = [];
+  // Reset other filters if necessary
+  distance.value = 3;
+  priceRange.value = [200, 1600];
+  address.value = "";
+
+  // Execute strategy with default state
+  searchListingController.executeStrategy(filterListingParamsBuilder.build());
+};
+
+const removeFilter = (index: number) => {
+  appliedFilters.value.splice(index, 1);
+
+  // Rebuild filters after removal
+  filterListingParamsBuilder.reset();
+
+  appliedFilters.value.forEach(filter => {
+    switch (filter.key) {
+      case 'country':
+        console.log(filter.value.toString())
+        filterListingParamsBuilder.setCountryId(parseInt(filter.value.toString()));
+        break;
+      case 'city':
+        filterListingParamsBuilder.setCityId(parseInt(filter.value.toString()));
+        break;
+      case 'rate':
+        filterListingParamsBuilder.setRate(filter.value);
+        break;
+      case 'status':
+        filterListingParamsBuilder.setStatus(filter.value === $t('Open') ? 1 : 2);
+        break;
+    }
+  });
+
+  // Execute the strategy with the updated filter params
+  searchListingController.executeStrategy(filterListingParamsBuilder.build());
+};
+
 </script>
 
 <template>
@@ -147,25 +201,29 @@ const fetchCities = async (id: number) => {
       <h2 class="filter-title">{{ $t("Filters") }}</h2>
     </div>
     <div class="applied-filter">
-<!--      <div class="flex items-center justify-between">-->
-<!--        <h3 class="filter-title">{{ $t("Applied_Filters") }}</h3>-->
-<!--        <button type="button" class="clear-filter">-->
-<!--          {{ $t("Clear_Filters") }}-->
-<!--        </button>-->
-<!--      </div>-->
-<!--      <div class="filtered-items">-->
-<!--        <span class="filtered-item" v-for="filter in appliedFilters">-->
-<!--          {{ filter.key }}: {{ filter.value }}-->
-<!--          <button-->
-<!--            class="remove"-->
-<!--            type="button"-->
-<!--            @click="removeAppliedFilter(filter)"-->
-<!--            aria-label="remove"-->
-<!--          >-->
-<!--            <IconsRemove />-->
-<!--          </button>-->
-<!--        </span>-->
-<!--      </div>-->
+      <div class="flex items-center justify-between">
+        <h3 class="filter-title">{{ $t("Applied_Filters") }}</h3>
+        <button type="button" class="clear-filter">
+          {{ $t("Clear_Filters") }}
+        </button>
+      </div>
+      <div class="filtered-items">
+        <span
+          class="filtered-item"
+          v-for="(filter, index) in filteredItems"
+          :key="index"
+        >
+          {{ filter }}
+          <button
+            class="remove"
+            type="button"
+            @click="removeFilter(index)"
+            aria-label="remove"
+          >
+            <IconsRemove />
+          </button>
+        </span>
+      </div>
     </div>
     <div class="applied-filter">
       <div class="flex items-center justify-between">
@@ -194,7 +252,6 @@ const fetchCities = async (id: number) => {
           />
           <label for="close" class="filter-item"> {{ $t("Closed") }} </label>
         </div>
-
       </div>
     </div>
     <div>
@@ -213,7 +270,7 @@ const fetchCities = async (id: number) => {
             name="country"
             class="hidden"
             @change="filterCountry"
-            :value="country?.id"
+            :value="country.id"
           />
           <label :for="`country${country?.id}`">
             {{ country?.title }}
@@ -264,9 +321,6 @@ const fetchCities = async (id: number) => {
             @change="filterRate"
           />
           <label for="1"> 1 <IconsStar /> </label>
-
-
-
         </span>
         <span class="filter-item">
           <input
@@ -312,17 +366,15 @@ const fetchCities = async (id: number) => {
           />
           <label for="5"> 5 <IconsStar /> </label>
         </span>
-
       </div>
     </div>
     <div class="range-filter">
       <div class="flex items-center justify-between">
         <h3 class="filter-title">{{ $t("distance_radius") }}</h3>
       </div>
-
-      <div class="input-wrapper-switch">
+      <div class="input-wrapper-switch flex justify-end">
         <div class="switch">
-          <input type="radio" v-model="withDistance" id="distance" />
+          <input type="checkbox" v-model="withDistance" id="distance" />
           <label for="distance" class="slider"></label>
         </div>
       </div>
@@ -344,9 +396,9 @@ const fetchCities = async (id: number) => {
         <h3 class="filter-title">{{ $t("price_range") }}</h3>
       </div>
 
-      <div class="input-wrapper-switch">
+      <div class="input-wrapper-switch flex justify-end">
         <div class="switch">
-          <input type="radio" id="price_range" v-model="withPrice" />
+          <input type="checkbox" id="price_range" v-model="withPrice" />
           <label for="price_range" class="slider"></label>
         </div>
       </div>

@@ -20,18 +20,21 @@ watch(
   },
 );
 
-function onFileChange(event: Event) {
+async function onFileChange(event: Event) {
   const file = (event.target as HTMLInputElement).files?.[0] || null;
 
   if (file) {
+    const base64String = await convertToBase64(file);
+
     if (useRoute().params.id) {
       UpdateListingImageController.getInstance().updateListingImage(
-        new UpdateListingImageParams(
-          useRoute().params.id as string,
-          convertToBase64(file),
-        ),
+          new UpdateListingImageParams(
+              useRoute().params.id as string,
+              base64String, // Pass resolved base64 string
+          ),
       );
     }
+
     imgUrl.value = URL.createObjectURL(file); // Generate preview URL
     image.value = file; // Store file to be sent
     emit("update:image", file); // Emit event to parent with selected file
@@ -41,6 +44,7 @@ function onFileChange(event: Event) {
     emit("update:image", null);
   }
 }
+
 </script>
 
 <template>

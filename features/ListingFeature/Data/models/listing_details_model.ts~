@@ -58,7 +58,7 @@ export default class ListingDetailsModel {
       map["reviews"].map((review: any) => ReviewModel.fromMap(review)),
       map["owner"] ? UserModel.fromMap(map["owner"]) : null,
       map["claim_status"],
-      map["my_reviews"]?.map((review: any) => ReviewModel.fromMap(review)),
+      map["my_review"]?.map((review: any) => ReviewModel.fromMap(review)),
     );
   }
 }

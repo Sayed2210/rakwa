@@ -63,7 +63,7 @@ watch(
     // console.log(basicInformation.value);
     emit("update:basicInformation", basicInformation.value);
   },
-  { deep: true },
+    { deep: true, immediate: true },
 );
 
 //fetch categories

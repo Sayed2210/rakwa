@@ -35,7 +35,7 @@ export default class UpdateListingController extends ControllerInterface<
         console.log(this.state.value.data);
         DialogSelector.instance.successDialog.openDialog({
           dialogName: "dialog",
-          titleContent: "UpdateListing Success",
+          titleContent: "Update Listing Success",
           imageElement: successImage,
           messageContent: null,
         });

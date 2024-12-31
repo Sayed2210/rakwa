@@ -47,8 +47,8 @@ const user = useUserStore().user;
 
 onMounted(() => {
   if (user) {
-    firstName.value = user.name;
-    lastName.value = user.name;
+    firstName.value = user.firstName!;
+    lastName.value = user.lastName!;
     name.value = user.name;
     email.value = user.email;
     phone.value = user.phone!;

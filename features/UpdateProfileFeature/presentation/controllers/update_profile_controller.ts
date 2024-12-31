@@ -1,5 +1,5 @@
 import { ControllerInterface } from "~/base/persention/Controller/controller_interface";
-import UserModel from "~/features/UpdateProfileFeature/Data/models/user_model";
+import UserModel from "~/features/LoginFeature/Data/models/user_model";
 import type { DataState } from "~/base/core/networkStructure/Resources/dataState/data_state";
 import type Params from "~/base/core/Params/params";
 import UpdateProfileUseCase from "~/features/UpdateProfileFeature/Domain/use_case/update_profile_use_case";
@@ -36,9 +36,23 @@ export default class UpdateProfileController extends ControllerInterface<UserMod
           messageContent: null,
         });
         const userStore = useUserStore();
-        if (this.state.value.data) {
-          console.log(this.state.value.data)
-          userStore.setUser(this.state.value.data);
+        if (this.state.value.data && this.state.value.data) {
+          const user = useUserStore().user;
+          if (user) {
+            user.firstName = this.state.value.data.firstName;
+            user.lastName = this.state.value.data.lastName;
+            user.email = this.state.value.data.email;
+            user.phone = this.state.value.data.phone;
+            user.name = this.state.value.data.name;
+            user.aboutMe = this.state.value.data.aboutMe;
+            user.sendNotifications = this.state.value.data.sendNotifications;
+            user.facebook = this.state.value.data.facebook;
+            user.x = this.state.value.data.x;
+            user.instagram = this.state.value.data.instagram;
+            user.youtube = this.state.value.data.youtube;
+            user.linkedin = this.state.value.data.linkedin;
+            user.whatsapp = this.state.value.data.whatsapp;
+          }
         }
       }else {
         throw new Error(this.state.value.error?.title);

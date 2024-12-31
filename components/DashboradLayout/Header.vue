@@ -186,7 +186,7 @@ const setCategory = (id: number) => {
               <span class="name">{{ user.user?.name }}</span>
               <span class="role">{{ user.user?.type }}</span>
             </div>
-            <NuxtImg src="/user-photo.png" alt="user" class="user-photo" />
+            <img @error="setDefaultImage($event)" :src="user.user?.image" alt="user" class="user-photo" />
             <div class="dropdown-content">
               <ul>
                 <li class="dropdown-item">

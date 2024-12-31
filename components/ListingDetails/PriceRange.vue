@@ -77,16 +77,16 @@ const addToBookmark = async () => {
         </Accordion>
       </div>
     </div>
-    <div class="no-verified" v-if="listing.claimStatus == 0">
+    <div class="no-verified" v-if="listing.claimStatus == null">
       {{ $t("not_verified_claim_this_listing_now") }}
     </div>
-    <div class="request-sent" v-if="listing.claimStatus == 1">
+    <div class="request-sent" v-if="listing.claimStatus == 0">
       <span>
         <IconsClockYellow />
       </span>
       {{ $t("claim_request_sent") }}
     </div>
-    <div class="verified" v-if="listing.claimStatus == 2">
+    <div class="verified" v-if="listing.claimStatus == 1">
       <span>
         <IconsClockYellow />
       </span>

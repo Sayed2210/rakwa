@@ -34,7 +34,7 @@ export default class ShowListingDetailsController extends ControllerInterface<
       if (this.isDataSuccess()) {
         DialogSelector.instance.successDialog.openDialog({
           dialogName: "dialog",
-          titleContent: "ShowListingDetails Success",
+          titleContent: "Show Listing Details Success",
           imageElement: successImage,
           messageContent: null,
         });

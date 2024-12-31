@@ -1,3 +1,5 @@
+import { formatTimeToAmPm } from "~/base/persention/utils/format_to_am_pm";
+
 export default class TimeModel {
   public openingTime: string;
   public closingTime: string;
@@ -6,6 +8,9 @@ export default class TimeModel {
     this.closingTime = closingTime;
   }
   static fromMap(map: { [key: string]: any }): TimeModel {
-    return new TimeModel(map["opening_time"], map["closing_time"]);
+    return new TimeModel(
+      formatTimeToAmPm(map["opening_time"]),
+      formatTimeToAmPm(map["closing_time"]),
+    );
   }
 }

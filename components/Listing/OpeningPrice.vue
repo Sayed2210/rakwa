@@ -57,10 +57,10 @@ const emit = defineEmits<{
 watch(
   () => openingHours.value,
   () => {
-    // console.log(basicInformation.value);
+    console.log(openingHours.value);
     emit("update:openingHours", openingHours.value);
   },
-  { deep: true },
+    { deep: true, immediate: true },
 );
 
 const clearTime = (day: DaysParams) => {
