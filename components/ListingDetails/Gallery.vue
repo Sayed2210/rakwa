@@ -25,7 +25,7 @@ const responsiveOptions = ref([
 ]);
 const displayCustom = ref(false);
 
-const imageClick = (index) => {
+const imageClick = (index: number) => {
   activeIndex.value = index;
   displayCustom.value = true;
 };
@@ -56,7 +56,7 @@ const imageClick = (index) => {
     </div>
   </div>
   <Galleria v-model:activeIndex="activeIndex" v-model:visible="displayCustom" :value="images" :responsiveOptions="responsiveOptions" :numVisible="7"
-            containerStyle="width: 80%; margin: auto auto" :circular="true" :fullScreen="true"  :showItemNavigators="true" :showThumbnails="false">
+            containerStyle="width: 70%; margin: auto auto;" :circular="true" :fullScreen="true"  :showItemNavigators="true" :showThumbnails="false">
     <template #item="slotProps">
       <img :src="slotProps.item.image" :alt="slotProps.item.alt" style="max-width: 100%; display: block" />
     </template>

@@ -16,9 +16,9 @@ class FetchBookmarkRepo extends RepoInterface<BookmarkModel[]> {
     return this.instance;
   }
 
-  override get hasPagination(): boolean {
-    return true;
-  }
+  // override get hasPagination(): boolean {
+  //   return true;
+  // }
 
   onParse(data: any): BookmarkModel[] {
     return data.map((item: any) => BookmarkModel.fromMap(item));

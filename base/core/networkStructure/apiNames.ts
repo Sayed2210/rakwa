@@ -77,6 +77,8 @@ class ApiNames {
 
   public addClaim = "add_claim";
   public addRate = "add_rate";
+  public editRate = "edit_rate";
+  public contactUs = "contact_us";
 }
 
 export { ApiNames };

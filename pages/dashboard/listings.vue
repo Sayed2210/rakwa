@@ -32,7 +32,7 @@ watch(
   () => toggle.value,
   () => {
     status.value =
-      toggle.value === "active" ? 1 : toggle.value === "pending" ? 2 : 3;
+      toggle.value === "active" ? 1 : toggle.value === "pending" ? 0 : 2;
     fetchListings();
   },
 );

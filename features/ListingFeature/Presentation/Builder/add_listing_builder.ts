@@ -17,6 +17,7 @@ export default class ListingParamsBuilder {
   private socials: SocialParams | null = null;
   private openingHours: OpeningHoursParams[] = [];
   private pricingBookableServices: PricingBookableServices[] = [];
+  private hasOpeningHours: boolean = false;
 
   // Private constructor to prevent instantiation
   private constructor() {}
@@ -60,6 +61,12 @@ export default class ListingParamsBuilder {
     return this;
   }
 
+  setHasOpeningHours(hasOpeningHours: boolean): this {
+    this.hasOpeningHours = hasOpeningHours;
+    return this;
+  }
+
+
   setPricingBookableServices(
     pricingBookableServices: PricingBookableServices[],
   ): this {
@@ -87,6 +94,7 @@ export default class ListingParamsBuilder {
       this.socials,
       this.openingHours,
       this.pricingBookableServices,
+      this.hasOpeningHours
     );
     // Reset the builder state after building
     this.reset();

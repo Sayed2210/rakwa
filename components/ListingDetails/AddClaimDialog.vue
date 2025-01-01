@@ -35,7 +35,7 @@ const handleImages = async (files: File[]) => {
 <template>
   <button type="button" class="primary-button" @click="visible = true">
     <!--    <IconsAddRate />-->
-    {{ $t("sent_message") }}
+    {{ $t("add_claim") }}
   </button>
 
   <Dialog

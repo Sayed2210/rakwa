@@ -12,6 +12,7 @@ export default class ReviewModel {
   public downVotes: number;
   public isUpVoted: boolean;
   public isDownVoted: boolean;
+  public listing: { id: number; name: string };
 
   constructor(
     id: number,
@@ -24,7 +25,8 @@ export default class ReviewModel {
     upVotes: number = 0,
     downVotes: number = 0,
     isUpVoted: boolean = false,
-    isDownVoted: boolean = false
+    isDownVoted: boolean = false,
+    listing: { id: number; name: string }
   ) {
     this.id = id;
     this.clientName = clientName;
@@ -37,21 +39,23 @@ export default class ReviewModel {
     this.downVotes = downVotes;
     this.isUpVoted = isUpVoted;
     this.isDownVoted = isDownVoted;
+    this.listing = listing;
   }
 
   static fromMap(map: { [key: string]: any }): ReviewModel {
     return new ReviewModel(
       map["id"],
-      map.listing?.name,
+      map["client_name"],
       map["client_image"],
-      map["rate"],
+      map["rating"],
       map["created_at"],
       map["comment"],
       map["images"]?.map((image: any) => ImageModel.fromMap(image))??[],
       map["up_votes"],
       map["down_votes"],
       map["is_upvoted"],
-      map["is_downvoted"]
+      map["is_downvoted"],
+        map["listing"]
     );
   }
 }

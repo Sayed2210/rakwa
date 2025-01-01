@@ -1,4 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type ClientOpinion from "~/types/client_opinion";
+
+const props = defineProps<{
+  clientOpinions: ClientOpinion[];
+}>();
+</script>
 
 <template>
   <section class="client-opinions">
@@ -42,7 +48,11 @@
       }"
       dir="ltr"
     >
-      <SwiperSlide class="client-opinion-card" v-for="i in 5" :key="i">
+      <SwiperSlide
+        class="client-opinion-card"
+        v-for="i in clientOpinions"
+        :key="i.id"
+      >
         <div class="client-opinion-card-img">
           <NuxtImg
             src="quote-down.png"
@@ -52,19 +62,18 @@
           />
         </div>
         <q class="client-opinion-card-text">
-          Rakwa made it so easy to find authentic Middle Eastern restaurants
-          near me!
+          {{ i?.opinion }}
         </q>
         <div class="client-info">
           <NuxtImg
-            src="team-member.png"
-            alt="client"
+            :src="i?.image"
+            :alt="i?.name"
             class="client-opinion-card-img"
             format="webp"
           />
           <div class="client-opinion-card-info">
-            <h3 class="client-opinion-card-name">John Doe</h3>
-            <p class="client-opinion-card-email">example123@gmail.com</p>
+            <h3 class="client-opinion-card-name">{{ i?.name }}</h3>
+            <p class="client-opinion-card-email">{{ i?.email }}</p>
           </div>
         </div>
       </SwiperSlide>

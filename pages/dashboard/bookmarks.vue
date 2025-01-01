@@ -52,7 +52,7 @@ watch(
       ><template #success>
         <div class="flex flex-col gap-4">
           <div v-for="(listing, index) in state.data" :key="index">
-            <BookmarksBookmarkCard :listing="listing" />
+            <BookmarksBookmarkCard :bookmark="listing" />
           </div>
         </div>
       </template>

@@ -8,6 +8,8 @@
     <slot></slot>
     <WebsiteLayoutFooter/>
   </main>
+  <GlobalMainDialog />
+
 </template>
 
 <style scoped></style>

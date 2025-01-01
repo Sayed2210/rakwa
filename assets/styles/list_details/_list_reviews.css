@@ -71,6 +71,18 @@
     flex-direction: column;
     gap: 0.5rem;
     align-items: center;
+    &.voted {
+      .vote-btn {
+        background-color: var(--main-color);
+        color: #ffffff;
+        border-color: var(--main-color);
+        svg {
+          path {
+            fill: #ffffff;
+          }
+        }
+      }
+    }
     .vote-btn {
       display: flex;
       align-items: center;

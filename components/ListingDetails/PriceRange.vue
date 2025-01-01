@@ -27,9 +27,15 @@ const user = useUserStore();
 const addToBookmarkController = AddToBookmarkController.getInstance();
 
 const addToBookmark = async () => {
+  try {
+
   await addToBookmarkController.addToBookmark(
     new AddToBookmarkParams(useRoute().params.id as string),
   );
+
+  }catch (error) {
+    console.log(error)
+  }
 };
 </script>
 

@@ -48,8 +48,8 @@ const props = defineProps<{
           <span> online</span>
         </div>
         <div class="rate flex items-center gap-1">
-          <GlobalRate :rateCount="basicInformation.rate" />
-          <span>({{ basicInformation.rateCount }} {{ $t("rate") }})</span>
+          <GlobalRate :rateCount="basicInformation.rateCount.toFixed()" />
+          <span>({{ basicInformation.rateCount.toFixed() }} {{ $t("rate") }})</span>
         </div>
         <p class="list-description" v-html="basicInformation?.description"></p>
         <div class="location flex items-center gap-1">

@@ -1,0 +1,59 @@
+<script setup lang="ts">
+import {BASE_URL} from "~/base/persention/utils/constant";
+import type AboutUs from "~/types/about_us";
+import type OurVision from "~/types/our_vision";
+import type ClientOpinion from "~/types/client_opinion";
+useSeoMeta({
+  title: "About Us",
+  ogTitle: "About Us",
+  description: "About Us",
+  ogDescription: "About Us",
+});
+
+// const { data: aboutUs } = await useAsyncData("about-us", async () => {
+//   const response = await $fetch<{
+//     data: AboutUs;
+//     message: string;
+//     status: number;
+//   }>(`${BASE_URL}/about_us`, { method: "POST" });
+//   return response.data; // Extract only the `data` part
+// },
+// );
+
+const { data: ourVision } = await useAsyncData("our-vision", async () => {
+
+  const response = await $fetch<{
+    data: OurVision[];
+    message: string;
+    status: number;
+  }>(`${BASE_URL}/our_vision`, { method: "POST" });
+  return response.data; // Extract only the `data` part
+})
+
+const { data: clientOpinions } = await useAsyncData("client-opinions", async () => {
+  const response = await $fetch<{
+    data: ClientOpinion[];
+    message: string;
+    status: number;
+  }>(`${BASE_URL}/client_opinion`, { method: "POST" });
+  return response.data; // Extract only the `data` part
+})
+
+</script>
+
+<template>
+  <section class="about-us">
+    <div class="container mx-auto px-8">
+      <GlobalBreadcrumb title="About Us" />
+      <AboutUsFuture :aboutUs="aboutUs!" />
+      <AboutUsOurVision :ourVision="ourVision!" />
+<!--      <AboutUsOurTeam />-->
+    </div>
+    <AboutUsCallUs />
+    <div class="container mx-auto px-8">
+      <AboutUsClientOpinions :clientOpinions="clientOpinions!" />
+    </div>
+  </section>
+</template>
+
+<style scoped></style>

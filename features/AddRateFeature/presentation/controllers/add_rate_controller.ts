@@ -37,7 +37,7 @@ export default class AddRateController extends ControllerInterface<CommentModel>
           imageElement: successImage,
           messageContent: null,
         });
-        console.log(this.state?.value?.data)
+        // console.log(this.state?.value?.data)
         ShowListingDetailsController.getInstance().showListingDetails(
             new ShowListingDetailsParams(this.state?.value?.data?.id.toString()!),
         );

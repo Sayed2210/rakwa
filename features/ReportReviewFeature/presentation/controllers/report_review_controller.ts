@@ -32,7 +32,7 @@ export default class ReportReviewsController extends ControllerInterface<Comment
       if (this.isDataSuccess()) {
         DialogSelector.instance.successDialog.openDialog({
           dialogName: "dialog",
-          titleContent: "Report Success",
+          titleContent: "Report Sent Success",
           imageElement: successImage,
           messageContent: null,
         });

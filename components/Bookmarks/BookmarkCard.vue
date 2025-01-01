@@ -1,12 +1,16 @@
 <script setup lang="ts">
 
+import Bookmark from "~/features/FetchBookmarkFeature/Data/models/bookmark_model";
+
+const props = defineProps<{ bookmark: Bookmark }>();
+
 </script>
 
 <template>
   <div class="bookmark-card">
     <div class="bookmark-img">
       <NuxtImg
-          src="/place.png"
+          :src="bookmark?.image"
           alt="bookmark image"
           class="bookmark-img"
           format="webp"
@@ -18,18 +22,17 @@
     </div>
     <div class="bookmark-info">
       <p class="bookmark-type">
-        {{ $t("restaurant") }}
+        {{ bookmark?.category?.title }}
       </p>
       <h6 class="bookmark-title">
-        {{ $t("Avail Insurance Solutions") }}
+        {{ bookmark?.name }}
       </h6>
       <div class="rate flex items-center gap-1">
-        <GlobalRate :rateCount="4" />
+        <GlobalRate :rateCount="bookmark?.rate.toFixed()" />
         <span>(136 {{ $t("rate") }})</span>
       </div>
       <p class="bookmark-description">
-        A cozy escape from the hustle and bustle, our café offers a warm
-        ambiance and freshly brewed coffee that comforts the soul.
+        {{ bookmark?.description }}
       </p>
       <div class="location flex items-center gap-1">
         <svg
@@ -44,9 +47,9 @@
               fill="#E80306"
           />
         </svg>
-        <NuxtLink to="/bookmark/1">
-          12, alhamd street ,mansoura eljadida
-        </NuxtLink>
+        <span >
+          {{ bookmark?.address }}
+        </span>
       </div>
     </div>
   </div>

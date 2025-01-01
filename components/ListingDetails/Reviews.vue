@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type ReviewModel from "~/features/ListingFeature/Data/models/review_model";
 
-const props = defineProps<{ rate: number }>();
+const props = defineProps<{ rate: number , myReviews: ReviewModel[] }>();
 const user = useUserStore();
 </script>
 
@@ -9,13 +9,13 @@ const user = useUserStore();
   <section class="listing-reviews">
     <h3>{{ $t("reviews") }}</h3>
     <div class="rating">
-      <div class="add-rate">
-        <h4>{{ $t("Add_your_rating") }}</h4>
-        <ListingDetailsAddRateDialog v-if="user.isAuth" />
+      <div class="add-rate" v-if="!myReviews.length">
+        <h4 >{{ $t("Add_your_rating") }}</h4>
+        <ListingDetailsAddRateDialog v-if="user.isAuth && !myReviews.length" />
       </div>
       <div class="rates">
         <div class="rate-count">
-          <span class="rate-number">{{ rate }}</span>
+          <span class="rate-number">{{ rate.toFixed(2) }}</span>
           <GlobalRate :rateCount="rate.toFixed()!" />
           <span class="rate-description">
             {{ $t("We_have") }} 232 {{ $t("reviews_from_our_customers") }}

@@ -32,12 +32,12 @@ export default class ShowListingDetailsController extends ControllerInterface<
         await this.ShowListingDetailsUseCase.call(params);
       this.setState(dataState);
       if (this.isDataSuccess()) {
-        DialogSelector.instance.successDialog.openDialog({
-          dialogName: "dialog",
-          titleContent: "Show Listing Details Success",
-          imageElement: successImage,
-          messageContent: null,
-        });
+        // DialogSelector.instance.successDialog.openDialog({
+        //   dialogName: "dialog",
+        //   titleContent: "Show Listing Details Success",
+        //   imageElement: successImage,
+        //   messageContent: null,
+        // });
         // await router.push("/");
         // const userStore = useUserStore();
         // if (this.state.value.data) {

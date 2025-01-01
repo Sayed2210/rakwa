@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type OurVision from "~/types/our_vision";
+
+const props = defineProps<{ ourVision: OurVision[] }>();
+</script>
 
 <template>
   <section class="our-vision">
@@ -9,40 +13,18 @@
       {{ $t("Driven_by_your_needs_inspired_by_your_trust") }}
     </p>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
-      <div class="our-vision-card">
+      <div class="our-vision-card" v-for="item in ourVision" :key="item.id">
         <div class="icon">
-          <IconsOurGoal />
+          <NuxtImg
+            :src="item?.image"
+            alt="icon"
+            class="our-vision-card-icon"
+            format="webp"
+          />
         </div>
-        <h3 class="our-vision-card-title">{{ $t("Our_Goal") }}</h3>
+        <h3 class="our-vision-card-title">{{ item?.title }}</h3>
         <p>
-          Rakwa was born out of a vision to simplify access to Arab businesses
-          and services. Whether you’re a resident or a visitor in Turkey, or
-          part of the vibrant Arab American community in the USA, Rakwa is
-          designed to bring you closer to the services you need and love.
-        </p>
-      </div>
-      <div class="our-vision-card">
-        <div class="icon">
-          <IconsOurVision />
-        </div>
-        <h3 class="our-vision-card-title">{{ $t("Our_vision") }}</h3>
-        <p>
-          Rakwa was born out of a vision to simplify access to Arab businesses
-          and services. Whether you’re a resident or a visitor in Turkey, or
-          part of the vibrant Arab American community in the USA, Rakwa is
-          designed to bring you closer to the services you need and love.
-        </p>
-      </div>
-      <div class="our-vision-card">
-        <div class="icon">
-          <IconsOurMission />
-        </div>
-        <h3 class="our-vision-card-title">{{ $t("Our_Mission") }}</h3>
-        <p>
-          Rakwa was born out of a vision to simplify access to Arab businesses
-          and services. Whether you’re a resident or a visitor in Turkey, or
-          part of the vibrant Arab American community in the USA, Rakwa is
-          designed to bring you closer to the services you need and love.
+          {{ item?.description }}
         </p>
       </div>
     </div>

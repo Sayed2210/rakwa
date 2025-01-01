@@ -34,7 +34,7 @@ export default class AddToBookmarkController extends ControllerInterface<
       if (this.isDataSuccess()) {
         DialogSelector.instance.successDialog.openDialog({
           dialogName: "dialog",
-          titleContent: "AddToBookmark Success",
+          titleContent: "Add To Bookmark Success",
           imageElement: successImage,
           messageContent: null,
         });

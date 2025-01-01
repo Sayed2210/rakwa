@@ -1,3 +1,5 @@
+import CategoryModel from "~/features/FetchCategoriesFeature/Data/models/category_model";
+
 export default class BookmarkModel {
   public id: number;
   public name: string;
@@ -6,6 +8,8 @@ export default class BookmarkModel {
   public address: string;
   public views: string;
   public status: number;
+  public category: CategoryModel;
+  public rate: number;
 
   constructor(
     id: number,
@@ -15,6 +19,8 @@ export default class BookmarkModel {
     address: string,
     views: string,
     status: number,
+    category: CategoryModel,
+    rate: number,
   ) {
     this.id = id;
     this.name = name;
@@ -23,17 +29,21 @@ export default class BookmarkModel {
     this.address = address;
     this.views = views;
     this.status = status;
+    this.category = category;
+    this.rate = rate;
   }
 
   static fromMap(map: { [key: string]: any }): BookmarkModel {
     return new BookmarkModel(
       map["id"],
+      map["title"],
       map["image"],
-      map["email"],
       map["description"],
       map["address"],
       map["views"],
       map["status"],
+      CategoryModel.fromMap(map["category"]),
+      map["rate"],
     );
   }
 }

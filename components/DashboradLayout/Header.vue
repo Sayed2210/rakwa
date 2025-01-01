@@ -6,6 +6,7 @@ import Accordion from "primevue/accordion";
 import AccordionContent from "primevue/accordioncontent";
 import AccordionPanel from "primevue/accordionpanel";
 import FilterListingParamsBuilder from "~/features/ListingFeature/Presentation/Builder/filter_listing_builder";
+import {setDefaultImage} from "~/base/persention/utils/set_default_image";
 
 const user = useUserStore();
 const op = ref();

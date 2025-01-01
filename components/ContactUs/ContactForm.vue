@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { useNuxtApp } from "#app";
+import ContactUsController from "~/features/ContactUsFeature/presentation/controllers/contact_us_controller";
+import ContactUsParams from "~/features/ContactUsFeature/Core/Params/contact_us_params";
 
 const { $googleMaps } = useNuxtApp();
 const location = ref({
@@ -40,12 +42,36 @@ const initMap = async () => {
 onMounted(() => {
   initMap();
 });
+
+const email = ref("");
+const name = ref("");
+const message = ref("");
+
+const contactUsController = ContactUsController.getInstance();
+
+const sentContactUs = async () => {
+  try {
+
+    await contactUsController.contactUs(
+        new ContactUsParams(
+            name.value,
+            email.value,
+            message.value,
+        )
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+
 </script>
 
 <template>
   <div class="contact-form grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="form col-span-1">
-      <form action="" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <form @submit.prevent="sentContactUs" class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="col-span-1">
           <div class="input-wrapper">
             <label class="input-label" for="name">{{ $t("name") }}</label>
@@ -55,6 +81,7 @@ onMounted(() => {
               type="text"
               name="name"
               id="name"
+              v-model="name"
             />
           </div>
         </div>
@@ -67,6 +94,7 @@ onMounted(() => {
               placeholder="Enter your email"
               name="email"
               id="email"
+              v-model="email"
             />
           </div>
         </div>
@@ -81,8 +109,14 @@ onMounted(() => {
               type="text"
               name="message"
               id="message"
+              v-model="message"
             />
           </div>
+        </div>
+        <div class="col-span-1 md:col-span-2">
+          <button class="primary-button" >
+            {{ $t("send") }}
+          </button>
         </div>
       </form>
     </div>

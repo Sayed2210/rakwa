@@ -5,6 +5,7 @@ import ImagesParams from "./details_params";
 import OpeningHoursParams from "./opening_hours";
 import PricingBookableServices from "./pricing_bookable_services";
 import SocialParams from "~/features/ListingFeature/Core/Params/social_params";
+
 export default class ListingParams implements Params {
   public basicInformation: BasicInformationParams;
   public Location: LocationParams;
@@ -13,6 +14,7 @@ export default class ListingParams implements Params {
   public social: SocialParams | null;
   public openingHours: OpeningHoursParams[];
   public pricingBookableServices: PricingBookableServices[];
+  public hasOpeningHours: boolean = false;
 
   constructor(
     basicInformation: BasicInformationParams,
@@ -22,6 +24,7 @@ export default class ListingParams implements Params {
     social: SocialParams | null,
     openingHours: OpeningHoursParams[],
     pricingBookableServices: PricingBookableServices[],
+    hasOpeningHours: boolean = false,
   ) {
     this.basicInformation = basicInformation;
     this.Location = Location;
@@ -30,6 +33,7 @@ export default class ListingParams implements Params {
     this.social = social;
     this.openingHours = openingHours;
     this.pricingBookableServices = pricingBookableServices;
+    this.hasOpeningHours = hasOpeningHours;
   }
 
   toMap(): { [p: string]: any } {
@@ -40,12 +44,15 @@ export default class ListingParams implements Params {
     data["gallery"] = this.gallery;
     data["images"] = this.details;
     data["sosial"] = this.social?.toMap();
-    data["opening_hours"] = this.openingHours.map((item: OpeningHoursParams) =>
-      item.toMap(),
-    );
+    this.hasOpeningHours
+      ? (data["opening_hours"] = this.openingHours.map(
+          (item: OpeningHoursParams) => item.toMap(),
+        ))
+      : (data["opening_hours"] = []);
     data["pricing_bookable_services"] = this.pricingBookableServices.map(
       (item: PricingBookableServices) => item.toMap(),
     );
+    data["has_opening_hours"] = this.hasOpeningHours ? 1 : 0;
     return data;
   }
 }
