@@ -7,8 +7,8 @@
     <WebsiteLayoutHeader/>
     <slot></slot>
     <WebsiteLayoutFooter/>
+    <GlobalMainDialog />
   </main>
-  <GlobalMainDialog />
 
 </template>
 
