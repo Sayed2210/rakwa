@@ -2,7 +2,7 @@ import { ControllerInterface } from "~/base/persention/Controller/controller_int
 import type { DataState } from "~/base/core/networkStructure/Resources/dataState/data_state";
 import type Params from "~/base/core/Params/params";
 import ContactUsUseCase from "~/features/ContactUsFeature/Domain/use_case/contact_us_use_case";
-import successImage from "~/assets/images/job-application.png";
+import successImage from "~/assets/images/success-dialog.png";
 import DialogSelector from "~/base/persention/Dialogs/dialog_selector";
 import ContactUsModel from "~/features/ContactUsFeature/Data/models/contact_us_model";
 
